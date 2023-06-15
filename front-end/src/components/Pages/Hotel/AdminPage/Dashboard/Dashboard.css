@@ -1,0 +1,17 @@
+.Dash-title{
+    font-family: serif;
+    font-size: 1.2rem;
+    padding-top: 30px;
+}
+.dash-img-box{
+    width: 100%;
+    height: 500px;
+    /* background-color: gray; */
+}
+.dash-img-fill{
+    width: 100%;
+    height: 100%;
+}
+.mar-bg{
+    background-color: rgba(128, 128, 128, 0.548);
+}
