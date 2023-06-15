@@ -1,0 +1,155 @@
+.item-display {
+    display: flex;
+
+}
+
+.order-bg {
+    width: 80%;
+    height: 100%;
+    background-color: #EBEBEB;
+    margin: auto !important;
+    /* padding: 80px 300px 80px 300px; */
+    padding: 100px 0;
+}
+
+.item-title {
+    font-size: 1.1rem;
+    font-family: serif;
+    font-weight: 700;
+    margin-left: 330px;
+
+}
+.varinat{
+    margin-left: 10px;
+}
+.item-content {
+    font-size: 1.1rem;
+    font-family: serif;
+    padding-left: 10px;
+}
+
+.order-section {
+    margin-top: 20px;
+}
+
+.item-Price {
+    font-size: 1.2rem;
+    font-family: serif;
+    font-weight: 700;
+    margin-left: 350px;
+}
+
+.item-Price2 {
+    font-size: 1.2rem;
+    font-family: serif;
+    padding-left: 10px;
+}
+
+.item-time {
+    font-size: 1.2rem;
+    font-family: serif;
+    font-weight: 700;
+    margin-left: 350px;
+}
+
+.item-time2 {
+    font-size: 1.2rem;
+    font-family: serif;
+    font-family: serif;
+    padding-left: 20px;
+}
+
+.item-date {
+    font-size: 1.2rem;
+    font-family: serif;
+    font-weight: 700;
+    margin-left: 350px;
+}
+
+.item-date2 {
+    font-size: 1.2rem;
+    font-family: serif;
+    font-family: serif;
+    padding-left: 20px;
+}
+
+.total {
+    width: 200px !important;
+    height: 50px;
+    border: 2px solid gray;
+    margin: auto !important;
+    text-align: center;
+    padding-top: 10px;
+    font-family: serif;
+}
+
+
+.pay-btn {
+    width: 100px !important;
+    height: 40px;
+    margin-top: 20px !important;
+
+}
+
+.pay-btn:hover {
+    background-image: linear-gradient(rgb(8, 17, 24), rgb(63, 85, 104));
+    color: white;
+    font-family: serif;
+}
+
+.bill-text {
+    text-align: center;
+    font-size: 2rem;
+    font-family: serif;
+
+}
+
+.bill-hr {
+    width: 300px;
+    margin: auto !important;
+}
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 600px) {
+    .item-title {
+        font-size: 1.1rem;
+        font-family: serif;
+        font-weight: 700;
+        margin-left: 20px !important;
+
+
+    }
+
+    .item-time {
+        font-size: 1.2rem;
+        font-family: serif;
+        font-weight: 700;
+        margin-left: 20px !important;
+
+    }
+
+    .item-Price {
+        font-size: 1.2rem;
+        font-family: serif;
+        font-weight: 700;
+        margin-left: 20px !important;
+
+    }
+
+    .item-date {
+        font-size: 1.2rem;
+        font-family: serif;
+        font-weight: 700;
+        margin-left: 20px !important;
+    }
+
+
+}

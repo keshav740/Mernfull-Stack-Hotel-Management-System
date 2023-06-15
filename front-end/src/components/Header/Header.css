@@ -1,0 +1,39 @@
+.nav-container {
+    width: 100%;
+    height: 100px;
+    background-image: linear-gradient(rgb(8, 17, 24), rgb(63, 85, 104));
+}
+
+.logo-link {
+    text-decoration: none;
+    font-size: 2rem;
+    font-family: serif;
+    font-weight: bold;
+    color: white;
+}
+
+.item-links {
+    text-decoration: none;
+    color: white;
+    padding-left: 20px;
+    font-size: 1.2rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 600px) {
+    .nav-container {
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(rgb(8, 17, 24), rgb(63, 85, 104));
+    }
+    
+  }
