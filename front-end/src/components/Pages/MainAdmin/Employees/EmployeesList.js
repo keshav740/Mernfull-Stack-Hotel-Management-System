@@ -8,13 +8,33 @@ import { AiFillDashboard, AiFillDelete, AiFillEdit,  } from 'react-icons/ai'
 import { Link }  from "react-router-dom"
 import { IoIosCreate } from "react-icons/io";
 import ModalCamp from './ModalCamp';
+import axios from "axios";
 
 
 
 
 
 
-const EmployeesList = ({post}) => {
+const EmployeesList = ({post}) => {   
+  
+  // get api
+  const [data, setData] = useState([]);
+
+
+  useEffect(()=>{
+    getUsers();
+  }, []);
+
+  const getUsers = async () => {
+    const response = await axios.get("http://localhost:4000/api/v1/employees");
+    if (response.status === 200) {
+        setData(response.data);
+    }
+  };
+
+  console.log("data=>",data)
+
+
 
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState({});
@@ -107,12 +127,25 @@ const EmployeesList = ({post}) => {
       </thead>
       <tbody>
       <tr>
+        {data?.data && data.map((item , index)=>{
+          return(
+          <tr key={index}>
+            <th scope="row">{index + 1}</th>
+            <td>{item.Employee_Name}</td>
+            <td>{item.Phone_Number}</td>
+            {/* <td>{item.name}</td> */}
 
+          </tr>
+          )
+        })}
+
+{/* <td>keshav</td>
 <td>keshav</td>
 <td>keshav</td>
 <td>keshav</td>
-<td>keshav</td>
-<td>keshav</td>
+<td>keshav</td> */}
+
+
 <td>
   <Link to="/employees">
   
