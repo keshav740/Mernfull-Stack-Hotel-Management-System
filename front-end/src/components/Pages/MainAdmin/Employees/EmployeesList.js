@@ -21,7 +21,7 @@ const EmployeesList = ({post}) => {
   const [data, setData] = useState([]);
 
 
-  useEffect(()=>{
+  useEffect(() => {
     getUsers();
   }, []);
 
@@ -32,7 +32,7 @@ const EmployeesList = ({post}) => {
     }
   };
 
-  console.log("data=>",data)
+  console.log("data=>",data);
 
 
 
@@ -80,7 +80,7 @@ const EmployeesList = ({post}) => {
         <Table striped bordered hover className='main-table'>
           <thead>
             <tr>
-              <th><h5><AiFillDashboard /> &nbsp; Dashboard/ Room-Details</h5></th>
+              <th><h5><AiFillDashboard /> &nbsp; Dashboard/ Employee-Details</h5></th>
             </tr>
           </thead>
         </Table>
@@ -107,7 +107,7 @@ const EmployeesList = ({post}) => {
       {/* <div className="post-table"> */}
       <div className='form-div'>
 
-<h5 className="w3-center w3-flat-midnight-blue w3-padding-48 w3-border-blue-grey w3-grey text text-center mb-5 mt-3">Room-Details</h5>
+<h5 className="w3-center w3-flat-midnight-blue w3-padding-48 w3-border-blue-grey w3-grey text text-center mb-5 mt-3">Employee-Details</h5>
 <Container>
 
 
@@ -126,28 +126,21 @@ const EmployeesList = ({post}) => {
      </tr>
       </thead>
       <tbody>
-      <tr>
-        {data?.data && data.map((item , index)=>{
-          return(
+      {/* <tr> */}
+        {data?.emp?.map((item ,index ) => {
+          return (
           <tr key={index}>
-            <th scope="row">{index + 1}</th>
+            {/* <th scope="row">{index + 1}</th> */}
             <td>{item.Employee_Name}</td>
             <td>{item.Phone_Number}</td>
-            {/* <td>{item.name}</td> */}
-
-          </tr>
-          )
-        })}
-
-{/* <td>keshav</td>
-<td>keshav</td>
-<td>keshav</td>
-<td>keshav</td>
-<td>keshav</td> */}
+            <td>{item.Employee_Name}</td>
+            <td>{item.Phone_Number}</td>
+            <td>{item.Phone_Number}</td>
 
 
-<td>
-  <Link to="/employees">
+
+            <td>
+  <Link to={`/empupdate/${item.id}`}>
   
     <Button className='table-btn' variant="light" >
         &#9998;Edit
@@ -155,8 +148,10 @@ const EmployeesList = ({post}) => {
     </Link>                   
 </td>
 <td>
+  <Link to={`/empview/${item.id}`}>
     <Button className='table-btn' variant="light" 
-      onClick={() => handleModel()}>
+      onClick={() => handleModel()}
+      >
         &#128065;View
     </Button>
     {open && (
@@ -168,12 +163,37 @@ const EmployeesList = ({post}) => {
               {...user}
             />
           )}
+          </Link>
 
 </td>
+          
+            {/* <td>{item.Gender}</td> */}
+
+          </tr>
+          );
+          })}
+
+{/* <td>keshav</td>
+<td>keshav</td>
+<td>keshav</td>
+<td>keshav</td>
+<td>keshav</td> */}
+
+
+{/* <td>
+  <Link to="/employees">
+  
+    <Button className='table-btn' variant="light" >
+        &#9998;Edit
+    </Button> 
+    </Link>                   
+</td> */}
+
 
 {/* <button className="view-btn">View </button> */}
-</tr>
-      </tbody>
+{/* </tr> */}
+      </tbody>  
+       
     </table>
     </Table>
     </Container>
