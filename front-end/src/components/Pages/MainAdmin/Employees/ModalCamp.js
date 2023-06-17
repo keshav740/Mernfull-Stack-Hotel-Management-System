@@ -1,5 +1,7 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Modal, Button, Container, Row, Col } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 
 
@@ -10,6 +12,26 @@ const ModalCamp = ({
   open,
   setOpen,
 }) => {
+
+  // const [data, setData] = useState([]);
+
+  // const getUsers = async () => {
+  //   const response = await axios.get("http://localhost:4000/api/v1/employees");
+  //   if (response.status === 200) {
+  //     setData(response.data);
+  //   }
+  // };
+
+  // const onDeleteUser = async (id) => {
+  //   if(window.confirm("Are you sure that you wanted to delete that employee record")){
+  //   const response = await axios.delete(`http://localhost:4000/api/v1/employees/${id}`);
+  //   if(response.status === 200){
+  //     toast.success(response.data);
+  //     getUsers();
+  //   }
+  //   }
+
+  // }
 
 
 
@@ -43,7 +65,8 @@ const ModalCamp = ({
 
 
                 <Button className="float-end modal-delete" variant="light"
-                  onClick={() => setOpen(false)}>Delete</Button>
+                  // onClick={() => onDeleteUser(item.id)}
+                  > Delete </Button>
 
               </Col><br /><br />
 
