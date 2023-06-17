@@ -39,9 +39,11 @@ function App() {
   return (
     <>
       <Header />
+      {/* <ToastContainer position="top-center"  />   */}
       <Routes>
-      <ToastContainer position=""  />
+      
         <Route>
+       
           <Route path='/' element={<Home />} />
 
           {/* hotel  sidebar routing start*/}
