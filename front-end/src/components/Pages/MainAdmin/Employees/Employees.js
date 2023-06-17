@@ -5,18 +5,17 @@ import { AiFillDashboard, AiFillDelete, AiFillEdit, AiFillSetting } from 'react-
 import { RiArrowGoBackLine } from 'react-icons/ri';
 import Form from 'react-bootstrap/Form';
 import { IoIosCreate } from 'react-icons/io';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useHistory , useLocation } from "react-router-dom"
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 
 
 
 
 
-
-
-const state = {
+const State = {
     Employee_Name: "",
     Phone_Number:"",
     Address: "",
@@ -30,15 +29,14 @@ const state = {
 
 
 
-
-
-
 const Employees = () => {
 
 
-const [state,setState] =useState(state);
+const [state,setState] =useState(State);
 
-const {Employee_Name,Phone_Number,Address,Email,Gender,Dob,Role,Salary}=state;
+const {Employee_Name,Phone_Number,Address,Email,Gender,Dob,Role,Salary} = State;
+
+const navigate = useNavigate()
 
 const addContact = async (data) => {
 const response = await axios.post("http://localhost:4000/api/v1/employees",data);
@@ -50,7 +48,15 @@ if (response.status === 200) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addContact(state);
+        if(!Employee_Name || !Phone_Number || !Address || !Email || 
+            !Gender || !Dob || !Role || !Salary){
+                toast.error("Please provide value into each input field")
+            } else{
+                addContact(state);
+               navigate.push("/employees-list")
+
+            }
+        
     }
 
     const handleInputChange = (e) => {
