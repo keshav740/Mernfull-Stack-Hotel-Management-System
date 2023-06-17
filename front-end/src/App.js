@@ -31,6 +31,7 @@ import Items from "./components/Pages/Restaurent/Items/Items";
 import Order from "./components/Pages/Restaurent/Order/Order";
 import Rooms from "./components/Pages/Hotel/AdminPage/Rooms/Rooms";
 import ResBilling from "./components/Pages/Restaurent/Res-Billing/ResBilling";
+import { ToastContainer } from "react-bootstrap";
 
 // import RoomServiceList from "./components/Pages/MainAdmin/Roomservice/RoomServiceList";
 function App() {
@@ -39,6 +40,7 @@ function App() {
     <>
       <Header />
       <Routes>
+      <ToastContainer position=""  />
         <Route>
           <Route path='/' element={<Home />} />
 
