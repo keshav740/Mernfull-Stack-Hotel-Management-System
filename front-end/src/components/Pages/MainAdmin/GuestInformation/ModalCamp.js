@@ -46,7 +46,7 @@ const ModalCamp = ({
 
 
                 <Button className="float-end modal-delete" variant="light"
-                  onClick={() => setOpen(false)}>Delete</Button>
+                  onClick={() =>  setOpen(false)}>Delete</Button>
 
               </Col><br /><br />
 
