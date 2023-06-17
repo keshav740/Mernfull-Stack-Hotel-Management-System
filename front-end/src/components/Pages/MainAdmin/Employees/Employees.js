@@ -6,10 +6,9 @@ import { RiArrowGoBackLine } from 'react-icons/ri';
 import Form from 'react-bootstrap/Form';
 import { IoIosCreate } from 'react-icons/io';
 import { Link, useNavigate } from 'react-router-dom';
-import { useHistory , useLocation } from "react-router-dom"
+import { useHistory, useLocation } from "react-router-dom"
 import axios from 'axios';
-import { toast } from 'react-toastify';
-
+// import {toast} from 'react-toastify'
 
 
 
@@ -17,13 +16,13 @@ import { toast } from 'react-toastify';
 
 const State = {
     Employee_Name: "",
-    Phone_Number:"",
+    Phone_Number: "",
     Address: "",
-    Email:"",
-    Gender:"",
-    Dob:"",
-    Role:"",
-    Salary:"",
+    Email: "",
+    Gender: "",
+    Dob: "",
+    Role: "",
+    Salary: "",
 
 }
 
@@ -32,36 +31,36 @@ const State = {
 const Employees = () => {
 
 
-const [state,setState] =useState(State);
+    const [state, setState] = useState(State);
 
-const {Employee_Name,Phone_Number,Address,Email,Gender,Dob,Role,Salary} = State;
+    const { Employee_Name, Phone_Number, Address, Email, Gender, Dob, Role, Salary } = State;
 
-const navigate = useNavigate()
+    const navigate = useNavigate()
 
-const addContact = async (data) => {
-const response = await axios.post("http://localhost:4000/api/v1/employees",data);
-if (response.status === 200) {
-    toast.success(response.data);
-}
+    const addContact = async (data) => {
+        const response = await axios.post("http://localhost:4000/api/v1/employees", data);
+        if (response.status === 200) {
+            // toast.success(response.data);
+        }
     }
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(!Employee_Name || !Phone_Number || !Address || !Email || 
-            !Gender || !Dob || !Role || !Salary){
-                toast.error("Please provide value into each input field")
-            } else{
-                addContact(state);
-               navigate.push("/employees-list")
+        if (!Employee_Name || !Phone_Number || !Address || !Email ||
+            !Gender || !Dob || !Role || !Salary) {
+            // toast.error("Please provide value into each input field")
+        } else {
+            addContact(state);
+            navigate.push("/employees-list")
 
-            }
-        
+        }
+
     }
 
     const handleInputChange = (e) => {
-        let {name,value} =e.target;
-        setState({...state, [name]: value});
+        let { name, value } = e.target;
+        setState({ ...state, [name]: value });
     };
 
 
@@ -109,7 +108,7 @@ if (response.status === 200) {
                             <div class="col-md-4 position-relative">
                                 <label className="label">Employee Name</label>
                                 <input type="text" class="form-control" name='Employee_Name'
-                                onChange={handleInputChange} value={Employee_Name}
+                                    onChange={handleInputChange} value={Employee_Name}
                                 />
                             </div>
 
@@ -117,7 +116,7 @@ if (response.status === 200) {
                             <div class="col-md-4 position-relative">
                                 <label className="label">Phone Aumber</label>
                                 <input type="text" class="form-control" name='Phone_Number'
-                                onChange={handleInputChange} value={Phone_Number}
+                                    onChange={handleInputChange} value={Phone_Number}
                                 />
 
                             </div>
@@ -125,14 +124,14 @@ if (response.status === 200) {
                             <div class="col-md-4 position-relative">
                                 <label className="label">Address</label>
                                 <input type="text" class="form-control" name='Address'
-                                onChange={handleInputChange} value={Address}
+                                    onChange={handleInputChange} value={Address}
                                 />
 
                             </div>
                             <div class="col-md-4 position-relative">
                                 <label className="label">Email</label>
                                 <input type="text" class="form-control" name='Email'
-                                onChange={handleInputChange} value={Email}
+                                    onChange={handleInputChange} value={Email}
                                 />
 
                             </div>
@@ -152,21 +151,21 @@ if (response.status === 200) {
                             <div class="col-md-4 position-relative">
                                 <label className="label">DOB</label>
                                 <input type="text" class="form-control" name='Dob'
-                                onChange={handleInputChange} value={Dob}
+                                    onChange={handleInputChange} value={Dob}
                                 />
 
                             </div>
                             <div class="col-md-4 position-relative">
                                 <label className="label">Role</label>
                                 <input type="text" class="form-control" name='Role'
-                                onChange={handleInputChange} value={Role}
+                                    onChange={handleInputChange} value={Role}
                                 />
 
                             </div>
                             <div class="col-md-4 position-relative">
                                 <label className="label">Salary</label>
                                 <input type="text" class="form-control" name='Salary'
-                                onChange={handleInputChange} value={Salary}
+                                    onChange={handleInputChange} value={Salary}
                                 />
 
                             </div>

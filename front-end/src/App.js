@@ -39,8 +39,9 @@ function App() {
   return (
     <>
       <Header />
+      <ToastContainer position="top-center"  />
       <Routes>
-      <ToastContainer position=""  />
+      
         <Route>
           <Route path='/' element={<Home />} />
 
@@ -72,6 +73,7 @@ function App() {
           <Route path="/item-list" element={<MainAdminSidebar><ItemList /></MainAdminSidebar>} />
           <Route path="/add-rooms" element={<MainAdminSidebar><Room /></MainAdminSidebar>} />
           <Route path="/room-list" element={<MainAdminSidebar><RoomList /></MainAdminSidebar>} />
+          <Route path="/roomupdate/:id" element={<MainAdminSidebar><RoomList /></MainAdminSidebar>} />
           {/* <Route path="/room-service-list"  element={<MainAdminSidebar><RoomServiceList/></MainAdminSidebar>}/> */}
           <Route path="/services" element={<MainAdminSidebar><AddService /></MainAdminSidebar>} />
           <Route path="/service-list" element={<MainAdminSidebar><ServicesList /></MainAdminSidebar>} />

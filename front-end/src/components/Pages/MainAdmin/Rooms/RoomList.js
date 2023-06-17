@@ -20,6 +20,7 @@ const RoomList = ({ post }) => {
   useEffect(() => {
     getUsers();
   }, []);
+
   const getUsers = async () => {
     const response = await axios.get("http://localhost:4000/api/v1/rooms");
     if (response.status === 200) {
@@ -27,6 +28,19 @@ const RoomList = ({ post }) => {
     }
   }
   console.log("data=>", data)
+
+
+  const onDeleteUser = async (id) =>{
+    if(window.confirm("Are you sure that you wanted to delete that user record")) {
+      const response = await axios.delete(`http://localhost:4000/api/v1/rooms/${id}`);
+      if(response.status === 200) {
+        getUsers();
+      }
+    }
+  }
+
+ 
+
 
   return (
 
@@ -64,45 +78,41 @@ const RoomList = ({ post }) => {
 
         <h5 className="w3-center w3-flat-midnight-blue w3-padding-48 w3-border-blue-grey w3-grey text text-center mb-5 mt-3">Room-Details</h5>
         <Container>
-
-
           <Table responsive>
             <table class="table table-bordered border-secondary">
               <thead>
                 <tr>
-
                   <th>Room No.</th>
                   <th>Price</th>
                   <th>Room Type</th>
                   <th>Available/Not Available</th>
                   <th>Action Edit</th>
                   <th>Action View</th>
+                  <th>Action delete</th>
                 </tr>
               </thead>
               <tbody>
-                {data &&
-                  data.map((item, index) => {
+                {data?.rom?.map((item, index) => {
+                  return (
                     <tr key={index}>
-                      <th scope='row'>{index + 1}</th>
                       <td>{item.Room_Number}</td>
                       <td>{item.Price}</td>
                       <td>{item.Room_Type}</td>
                       <td>{item.Avilable_Not}</td>
-                      <td>
-                        <Button className='table-btn' variant="light">&#9998;Edit</Button>
-                      </td>
-                      <td>
-                        <Button className='table-btn' variant="light">&#128065;View</Button>
-                      </td>
-                      {/* <td>
 
-                        <Link to="/rooms">
-                          <Button className='table-btn' variant="light" >
+                      <td>
+
+                        <Link to={`/roomupdate/${item.id}`}>
+                          <Button className='table-btn' variant="light"
+                          // onClick={() => { item.id }}
+                          >
                             &#9998;Edit
                           </Button>
                         </Link>
-                      </td> */}
-                      {/* <td>
+                      </td>
+
+                      <td>
+                        <Link to={`/roomview/${item.id}`}></Link>
                         <Button className='table-btn' variant="light"
                           onClick={() => handleModel()} >
                           &#128065;View
@@ -112,13 +122,20 @@ const RoomList = ({ post }) => {
 
                             open={open}
                             setOpen={setOpen}
-                            updatePost={updatePost}
+                            // updatePost={updatePost}
                             {...user}
                           />
                         )}
-                      </td> */}
+                      </td>
+                      <td>
+                        <Button className='table-btn' variant="light"
+                          onClick={() => onDeleteUser(item.id)}
+                        >
+                          &#9998;delete
+                        </Button></td>
                     </tr>
-                  })
+                  )
+                })
                 }
               </tbody>
             </table>

@@ -15,7 +15,7 @@ import axios from "axios";
 
 
 
-const EmployeesList = ({ post }) => {
+const EmployeesList = ({post}) => {
 
   // get api
   const [data, setData] = useState([]);
@@ -46,30 +46,6 @@ const EmployeesList = ({ post }) => {
     setUser(post);
 
   }
-
-
-  //   const dispatch = useDispatch()
-  //   const leaves = useSelector(state => state.leaves.item)
-  //   const leavesStatus = useSelector(state => state.leaves.status)
-  //   const error = useSelector(state => state.leaves.error)
-
-
-
-  //   useEffect(() => {
-  //     if (leavesStatus === 'idle') {
-  //       dispatch(fetchleaves())
-  //     }
-  //   }, [leavesStatus, dispatch])
-
-  //   let content
-
-  //   if (leavesStatus === 'loading') {
-  //     content = <div>Loading...</div>
-  //   } else if (leavesStatus === 'succeeded') {
-  //     content = leaves.map(leave => <Leave key={leave.id} leave={leave} />)
-  //   } else if (leavesStatus === 'failed') {
-  //     content = <div>{error}</div>
-  //   }
 
 
 
@@ -173,34 +149,18 @@ const EmployeesList = ({ post }) => {
                   );
                 })}
 
-                {/* <td>keshav</td>
-<td>keshav</td>
-<td>keshav</td>
-<td>keshav</td>
-<td>keshav</td> */}
 
-
-                {/* <td>
-  <Link to="/employees">
-  
-    <Button className='table-btn' variant="light" >
-        &#9998;Edit
-    </Button> 
-    </Link>                   
-</td> */}
-
-
-                {/* <button className="view-btn">View </button> */}
-                {/* </tr> */}
               </tbody>
 
             </table>
           </Table>
         </Container>
+        </div>
 
 
       </>
 
       )
 }
+     
       export default EmployeesList;
