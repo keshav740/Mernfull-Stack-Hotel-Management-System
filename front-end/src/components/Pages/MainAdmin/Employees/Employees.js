@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 // import HotelSidebar from '../../HotelSidebar'
-import { Container, Col, Row, Table, Button, Toast } from 'react-bootstrap'
+import { Container, Col, Row, Table, Button, Toast, ToastContainer } from 'react-bootstrap'
 import { AiFillDashboard, AiFillDelete, AiFillEdit, AiFillSetting } from 'react-icons/ai';
 import { RiArrowGoBackLine } from 'react-icons/ri';
 import Form from 'react-bootstrap/Form';
 import { IoIosCreate } from 'react-icons/io';
 import { Link, useNavigate } from 'react-router-dom';
-import { useHistory , useLocation } from "react-router-dom"
+import { useHistory, useLocation } from "react-router-dom"
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
@@ -15,53 +15,64 @@ import { toast } from 'react-toastify';
 
 
 
-const State = {
-    Employee_Name: "",
-    Phone_Number:"",
-    Address: "",
-    Email:"",
-    Gender:"",
-    Dob:"",
-    Role:"",
-    Salary:"",
 
-}
 
 
 
 const Employees = () => {
 
+    const Initialstate = {
+        Employee_Name: "",
+        Phone_Number: "",
+        Address: "",
+        Email: "",
+        Gender: "",
+        Dob: "",
+        Role: "",
+        Salary: "",
 
-const [state,setState] =useState(State);
-
-const {Employee_Name,Phone_Number,Address,Email,Gender,Dob,Role,Salary} = State;
-
-const navigate = useNavigate()
-
-const addContact = async (data) => {
-const response = await axios.post("http://localhost:4000/api/v1/employees",data);
-if (response.status === 200) {
-    toast.success(response.data);
-}
     }
+
+
+
+    const [state, setState] = useState(Initialstate);
+    const [formSubmitted, setFormSubmitted] = useState(false);
+
+    const { Employee_Name, Phone_Number, Address, Email, Gender, Dob, Role, Salary } = state;
+
+    const navigate = useNavigate()
+
+    const addContact = async (data) => {
+        const response = await axios.post("http://localhost:4000/api/v1/employee/new", data);
+        if (response.status === 200) {
+            toast.success("Employee Added Successfully");
+            setFormSubmitted(true);
+        }
+    };
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(!Employee_Name || !Phone_Number || !Address || !Email || 
-            !Gender || !Dob || !Role || !Salary){
-                toast.error("Please provide value into each input field")
-            } else{
-                addContact(state);
-               navigate.push("/employees-list")
-
+        if (!Employee_Name || !Phone_Number || !Address || !Email ||
+            !Gender || !Dob || !Role || !Salary) {
+            toast.error("Please provide value into each input field");
+            // console.log("kuchbhi")
+        } else {
+            addContact(state);
+            if (formSubmitted) {
+                setState(Initialstate);
+                toast.info('Form submitted successfully!');
+                setFormSubmitted(false);
             }
-        
-    }
+            navigate("/employees-list")
+
+        }
+
+    };
 
     const handleInputChange = (e) => {
-        let {name,value} =e.target;
-        setState({...state, [name]: value});
+        const { name, value } = e.target;
+        setState({ ...state, [name]: value });
     };
 
 
@@ -70,6 +81,7 @@ if (response.status === 200) {
 
     return (
         <>
+         <ToastContainer position="top-center"  /> 
 
             <Container style={{ width: "90%", marginTop: "20px" }} >
                 <Table striped bordered hover className='main-table'>
@@ -108,31 +120,33 @@ if (response.status === 200) {
 
                             <div class="col-md-4 position-relative">
                                 <label className="label">Employee Name</label>
-                                <input type="text" class="form-control" name='Employee_Name'
-                                onChange={handleInputChange} value={Employee_Name}
+                                <input type="text" className="form-control"
+                                    name='Employee_Name'
+                                    onChange={handleInputChange} value={Employee_Name}
                                 />
                             </div>
 
 
                             <div class="col-md-4 position-relative">
-                                <label className="label">Phone Aumber</label>
-                                <input type="text" class="form-control" name='Phone_Number'
-                                onChange={handleInputChange} value={Phone_Number}
+                                <label className="label">Phone Number</label>
+                                <input type="text" className="form-control" name='Phone_Number'
+                                    onChange={handleInputChange} value={Phone_Number}
                                 />
 
                             </div>
 
                             <div class="col-md-4 position-relative">
                                 <label className="label">Address</label>
-                                <input type="text" class="form-control" name='Address'
-                                onChange={handleInputChange} value={Address}
+                                <input type="text" className="form-control" name='Address'
+                                    onChange={handleInputChange} value={Address}
                                 />
 
                             </div>
+
                             <div class="col-md-4 position-relative">
                                 <label className="label">Email</label>
-                                <input type="text" class="form-control" name='Email'
-                                onChange={handleInputChange} value={Email}
+                                <input type="text" className="form-control" name='Email'
+                                    onChange={handleInputChange} value={Email}
                                 />
 
                             </div>
@@ -141,40 +155,58 @@ if (response.status === 200) {
                             <div class="col-md-4 position-relative"
                             // controlId="formGridState" className='input2'
                             >
-                                <label class="form-label">Gender</label>
-                                <Form.Select>
-                                    <option>Choose</option>
+                                <label className="form-label"  >Gender</label>
+                                {/* <Form.Select  value={Gender} onChange={handleInputChange}   >
+                                    <option  >Choose</option>
                                     <option value="1">Male</option>
                                     <option value="2">Female</option>
-                                </Form.Select>
-                            </div>
+                                </Form.Select> */}
+                                 <input type="text" class="form-control" name='Gender'
+                                    onChange={handleInputChange} value={Gender}
+                                /> 
+                            </div> 
+
+                            {/* <div class="col-md-4 position-relative">
+                                <label class="form-label">Gender</label>
+                                <select class="form-select" value={Gender} onChange={handleInputChange}>
+                                    <option >choose</option>
+                                    <option >Male </option>
+                                    <option >Female</option>
+                                    <option >Other</option>
+
+                                </select>
+                            </div> */}
 
                             <div class="col-md-4 position-relative">
                                 <label className="label">DOB</label>
                                 <input type="text" class="form-control" name='Dob'
-                                onChange={handleInputChange} value={Dob}
+                                    onChange={handleInputChange} value={Dob}
                                 />
 
                             </div>
+
                             <div class="col-md-4 position-relative">
                                 <label className="label">Role</label>
                                 <input type="text" class="form-control" name='Role'
-                                onChange={handleInputChange} value={Role}
+                                    onChange={handleInputChange} value={Role}
                                 />
 
                             </div>
+
                             <div class="col-md-4 position-relative">
                                 <label className="label">Salary</label>
                                 <input type="text" class="form-control" name='Salary'
-                                onChange={handleInputChange} value={Salary}
+                                    onChange={handleInputChange} value={Salary}
                                 />
 
                             </div>
+
                             <center>
 
                                 <Button className="stu_btn"
                                     variant="success"
                                     type="submit"
+                                    value="Add"
                                 >
                                     Submit
                                 </Button>
