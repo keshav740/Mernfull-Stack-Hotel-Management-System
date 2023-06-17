@@ -88,16 +88,6 @@ const Room = () => {
                                 
                                 </Form.Select>
                             </div>
-
-
-
-                            <div class="col-md-4 position-relative">
-                                <label className="label">Image</label>
-                                <input type="file" class="form-control" />
-                            </div>
-
-
-
                             <center>
 
                                 <Button className="stu_btn"
