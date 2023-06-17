@@ -1,112 +1,166 @@
-import React from 'react'
+import React, { useState } from 'react'
 // import HotelSidebar from '../../HotelSidebar'
-import { Container, Col, Row, Table, Button } from 'react-bootstrap'
+import { Container, Col, Row, Table, Button, Toast } from 'react-bootstrap'
 import { AiFillDashboard, AiFillDelete, AiFillEdit, AiFillSetting } from 'react-icons/ai';
 import { RiArrowGoBackLine } from 'react-icons/ri';
 import Form from 'react-bootstrap/Form';
 import { IoIosCreate } from 'react-icons/io';
 import { Link } from 'react-router-dom';
-// import './RoomBooking.css'
+import { useHistory , useLocation } from "react-router-dom"
+import axios from 'axios';
+
+
+
+
+
+
+
+
+const state = {
+    Employee_Name: "",
+    Phone_Number:"",
+    Address: "",
+    Email:"",
+    Gender:"",
+    Dob:"",
+    Role:"",
+    Salary:"",
+
+}
+
+
+
+
+
+
 const Employees = () => {
+
+
+const [state,setState] =useState(state);
+
+const {Employee_Name,Phone_Number,Address,Email,Gender,Dob,Role,Salary}=state;
+
+const addContact = async (data) => {
+const response = await axios.post("http://localhost:4000/api/v1/employees",data);
+if (response.status === 200) {
+    toast.success(response.data);
+}
+    }
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        addContact(state);
+    }
+
+    const handleInputChange = (e) => {
+        let {name,value} =e.target;
+        setState({...state, [name]: value});
+    };
+
+
+
+
+
     return (
         <>
 
-            
-                <Container style={{ width: "90%", marginTop: "20px" }} >
-                    <Table striped bordered hover className='main-table'>
+            <Container style={{ width: "90%", marginTop: "20px" }} >
+                <Table striped bordered hover className='main-table'>
+                    <thead>
+                        <tr>
+                            <th><h5><AiFillDashboard /> &nbsp;Dasboard / Add New Employee</h5></th>
+                        </tr>
+                    </thead>
+                </Table>
+                <Row>
+                    <Table striped bordered hover>
                         <thead>
                             <tr>
-                                <th><h5><AiFillDashboard /> &nbsp;Dasboard / Add New Employee</h5></th>
+                                <th>
+                                    <div className='table-div'>
+
+                                        <Button className='table-btn' variant="light" >
+                                            <IoIosCreate />&nbsp;<Link to="/employees-list">Go Back</Link>
+                                        </Button>
+                                    </div>
+                                </th>
                             </tr>
                         </thead>
                     </Table>
-                    <Row>
-                        <Table striped bordered hover>
-                            <thead>
-                                <tr>
-                                    <th>
-                                        <div className='table-div'>
+                    <hr />
+                </Row>
+            </Container>
+            {/* form section start */}
 
-                                            <Button className='table-btn' variant="light" >
-                                                <IoIosCreate />&nbsp;<Link to="/employees-list">Go Back</Link>
-                                            </Button>
-                                        </div>
-                                    </th>
-                                </tr>
-                            </thead>
-                        </Table>
-                        <hr />
-                    </Row>
-                </Container>
-                {/* form section start */}
-                <div className='form-div' >
+            <div className='form-div' >
                 <Container>
                     <Row>
 
 
-                        <form className="row g-4 p-3 registration-form" >
+                        <form className="row g-4 p-3 registration-form" onSubmit={handleSubmit} >
 
                             <div class="col-md-4 position-relative">
                                 <label className="label">Employee Name</label>
-                                <input type="text" class="form-control"
-
+                                <input type="text" class="form-control" name='Employee_Name'
+                                onChange={handleInputChange} value={Employee_Name}
                                 />
-
                             </div>
+
 
                             <div class="col-md-4 position-relative">
                                 <label className="label">Phone Aumber</label>
-                                <input type="text" class="form-control"
-
+                                <input type="text" class="form-control" name='Phone_Number'
+                                onChange={handleInputChange} value={Phone_Number}
                                 />
 
                             </div>
-                            
+
                             <div class="col-md-4 position-relative">
                                 <label className="label">Address</label>
-                                <input type="text" class="form-control"
-
+                                <input type="text" class="form-control" name='Address'
+                                onChange={handleInputChange} value={Address}
                                 />
 
                             </div>
                             <div class="col-md-4 position-relative">
                                 <label className="label">Email</label>
-                                <input type="text" class="form-control"
-
+                                <input type="text" class="form-control" name='Email'
+                                onChange={handleInputChange} value={Email}
                                 />
 
                             </div>
 
 
                             <div class="col-md-4 position-relative"
-                        // controlId="formGridState" className='input2'
-                        >
-                            <label class="form-label">Gender</label>
-                            <Form.Select>
-                                <option>Choose</option>
-                                <option value="1">Male</option>
-                                <option value="2">Female</option>
-                            </Form.Select>
-                        </div>
+                            // controlId="formGridState" className='input2'
+                            >
+                                <label class="form-label">Gender</label>
+                                <Form.Select>
+                                    <option>Choose</option>
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                </Form.Select>
+                            </div>
 
-                        <div class="col-md-4 position-relative">
+                            <div class="col-md-4 position-relative">
                                 <label className="label">DOB</label>
-                                <input type="date" class="form-control"
-
+                                <input type="text" class="form-control" name='Dob'
+                                onChange={handleInputChange} value={Dob}
                                 />
 
                             </div>
                             <div class="col-md-4 position-relative">
                                 <label className="label">Role</label>
-                                <input type="text" class="form-control"
-
+                                <input type="text" class="form-control" name='Role'
+                                onChange={handleInputChange} value={Role}
                                 />
 
                             </div>
                             <div class="col-md-4 position-relative">
                                 <label className="label">Salary</label>
-                                <input type="text" class="form-control"
-
+                                <input type="text" class="form-control" name='Salary'
+                                onChange={handleInputChange} value={Salary}
                                 />
 
                             </div>
@@ -124,7 +178,7 @@ const Employees = () => {
                         </form>
                     </Row>
                 </Container>
-                </div>
+            </div>
 
 
 

@@ -3,6 +3,14 @@ const app = express();
 
 app.use(express.json());
 
+
+
+// ADD THIS
+var cors = require('cors');
+app.use(cors());
+
+
+
 //all routes import 
 const item= require("./routes/itemRoute");
 const employee= require("./routes/employeeRoute");
