@@ -79,19 +79,14 @@ const EmployeesList = ({post}) => {
         </Row>
       </Container>
 
-
       {/* <div className="post-table"> */}
       <div className='form-div'>
-
         <h5 className="w3-center w3-flat-midnight-blue w3-padding-48 w3-border-blue-grey w3-grey text text-center mb-5 mt-3">Employee-Details</h5>
         <Container>
-
-
           <Table responsive>
             <table class="table table-bordered border-secondary">
               <thead>
                 <tr>
-
                   <th>Employee Name</th>
                   <th>Phone Number</th>
                   <th>Gender</th>

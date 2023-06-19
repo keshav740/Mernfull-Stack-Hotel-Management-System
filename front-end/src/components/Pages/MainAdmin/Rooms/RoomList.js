@@ -8,15 +8,15 @@ import axios from 'axios'
 
 
 const RoomList = ({ post }) => {
-
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState({});
   const [data, setData] = useState([]);
+  
   const handleModel = () => {
     setOpen(true);
     setUser(post);
-
   }
+
   useEffect(() => {
     getUsers();
   }, []);
@@ -29,19 +29,39 @@ const RoomList = ({ post }) => {
   }
   console.log("data=>", data)
 
+//  const handaledit =(id)=>{
+//   axios.get(`http://localhost:4000/api/v1/room/new/${id}`).then
+//     (res => {
+//       setData(res.data)
+//       getUsers()
+//     })
+//  }
+//  const handleUpdate = (id) => {
+//       axios.get(`http://localhost:4000/api/v1/room/new/${id}` )
+//           .then(res => {
+//               // setData({  Room_Number: "",  Price: ""  });
+//               setData(res.data)
+//           })
+//           .catch(err => console.log(err))
 
-  const onDeleteUser = async (id) =>{
-    if(window.confirm("Are you sure that you wanted to delete that user record")) {
-      const response = await axios.delete(`http://localhost:4000/api/v1/rooms/${id}`);
-      if(response.status === 200) {
-        getUsers();
-      }
-    }
-  }
+// };
 
- 
-
-
+  // const onDeleteUser = async (id) =>{
+  //   if(window.confirm("Are you sure that you wanted to delete that user record")) {
+  //     const response = await axios.delete(`http://localhost:4000/api/v1/rooms/${id}`);
+  //     if(response.status === 200) {
+  //       getUsers();
+  //     }
+  //   }
+  // }
+const handalupdate=(e)=>{
+  e.preventDefault()
+  axios.put("http://localhost:4000/api/v1/rooms",data)
+    .then((response) =>{
+      console.log(response)
+    })
+}
+    
   return (
 
     <>
@@ -102,34 +122,37 @@ const RoomList = ({ post }) => {
 
                       <td>
 
-                        <Link to={`/roomupdate/${item.id}`}>
+                        <Link to={`/add-room/${item.id}`}>
                           <Button className='table-btn' variant="light"
-                          // onClick={() => { item.id }}
+                          onClick={handalupdate}
+                          // onClick={() =>handleUpdate(item.id)}
                           >
-                            &#9998;Edit
+                          
+                            &#9998;update
                           </Button>
                         </Link>
                       </td>
 
                       <td>
-                        <Link to={`/roomview/${item.id}`}></Link>
+                        <Link to={`/roomview/${item.id}`}>
                         <Button className='table-btn' variant="light"
-                          onClick={() => handleModel()} >
+                          onClick={() => handleModel()} 
+                          >
                           &#128065;View
                         </Button>
                         {open && (
                           <ModalCamp
-
                             open={open}
                             setOpen={setOpen}
-                            // updatePost={updatePost}
                             {...user}
                           />
                         )}
+                        </Link>
                       </td>
                       <td>
                         <Button className='table-btn' variant="light"
-                          onClick={() => onDeleteUser(item.id)}
+                          // onClick={() => onDeleteUser(item.id)}
+
                         >
                           &#9998;delete
                         </Button></td>

@@ -1,15 +1,15 @@
 import React from 'react'
 import { Container, Col, Row, Table, Button, } from 'react-bootstrap'
-import { ToastContainer, toast } from 'react-toastify';
+// import { ToastContainer, toast } from 'react-toastify';
 import { AiFillDashboard, AiFillDelete, AiFillEdit, AiFillSetting } from 'react-icons/ai';
 import { RiArrowGoBackLine } from 'react-icons/ri';
 import Form from 'react-bootstrap/Form';
 import { IoIosCreate } from 'react-icons/io';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
+// import { Navigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import 'react-toastify/dist/ReactToastify.css';
+// import 'react-toastify/dist/ReactToastify.css';
 
 const Guest = () => {
     const initialState = {
@@ -47,7 +47,7 @@ const Guest = () => {
     const addGuest = async (data) => {
         const response = await axios.post('http://localhost:4000/api/v1/guest/new', data);
         if (response.status === 200) {
-            toast.success('Guest Added Successfully');
+            // toast.success('Guest Added Successfully');
             setFormSubmitted(true);
 
         }
@@ -56,12 +56,12 @@ const Guest = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!Guest_Name || !Email) {
-            toast.error('Please Provide required value');
+            // toast.error('Please Provide required value');
         } else {
             addGuest(state);
             if (formSubmitted) {
                 setState(initialState);
-                toast.info('Form submitted successfully!');
+                // toast.info('Form submitted successfully!');
                 setFormSubmitted(false);
             }
         }
@@ -74,7 +74,7 @@ const Guest = () => {
 
     return (
         <>
-      <ToastContainer position='top-center' />
+      {/* <ToastContainer position='top-center' /> */}
 
             <Container style={{ width: "90%", marginTop: "20px" }} >
                 <Table striped bordered hover className='main-table'>
