@@ -12,13 +12,6 @@ import { toast } from 'react-toastify';
 
 
 
-
-
-
-
-
-
-
 const Employees = () => {
 
     const Initialstate = {
