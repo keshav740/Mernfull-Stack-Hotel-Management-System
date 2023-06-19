@@ -9,13 +9,14 @@ import { Link } from "react-router-dom"
 import { IoIosCreate } from "react-icons/io";
 import ModalCamp from './ModalCamp';
 import axios from "axios";
+import { toast } from 'react-toastify';
 
 
 
 
 
 
-const EmployeesList = ({post}) => {
+const EmployeesList = ({ post }) => {
 
   // get api
   const [data, setData] = useState([]);
@@ -32,6 +33,20 @@ const EmployeesList = ({post}) => {
     }
   };
 
+
+// delete api
+  const onDeleteUser = async (id) => {
+    if (window.confirm("Are you sure that you wanted to delete that employee record")) {
+      const response = await axios.delete(`http://localhost:4000/api/v1/employee/${id}`);
+      if (response.status === 200) {
+        toast.success(response.data);
+        getUsers();
+      }
+    }
+  }
+
+
+
   console.log("data=>", data);
 
 
@@ -46,6 +61,31 @@ const EmployeesList = ({post}) => {
     setUser(post);
 
   }
+
+ 
+
+  //   const dispatch = useDispatch()
+  //   const leaves = useSelector(state => state.leaves.item)
+  //   const leavesStatus = useSelector(state => state.leaves.status)
+  //   const error = useSelector(state => state.leaves.error)
+
+
+
+  //   useEffect(() => {
+  //     if (leavesStatus === 'idle') {
+  //       dispatch(fetchleaves())
+  //     }
+  //   }, [leavesStatus, dispatch])
+
+  //   let content
+
+  //   if (leavesStatus === 'loading') {
+  //     content = <div>Loading...</div>
+  //   } else if (leavesStatus === 'succeeded') {
+  //     content = leaves.map(leave => <Leave key={leave.id} leave={leave} />)
+  //   } else if (leavesStatus === 'failed') {
+  //     content = <div>{error}</div>
+  //   }
 
 
 
@@ -81,8 +121,11 @@ const EmployeesList = ({post}) => {
 
       {/* <div className="post-table"> */}
       <div className='form-div'>
+
         <h5 className="w3-center w3-flat-midnight-blue w3-padding-48 w3-border-blue-grey w3-grey text text-center mb-5 mt-3">Employee-Details</h5>
         <Container>
+
+
           <Table responsive>
             <table class="table table-bordered border-secondary">
               <thead>
@@ -104,9 +147,13 @@ const EmployeesList = ({post}) => {
                       {/* <th scope="row">{index + 1}</th> */}
                       <td>{item.Employee_Name}</td>
                       <td>{item.Phone_Number}</td>
-                      <td>{item.Employee_Name}</td>
-                      <td>{item.Phone_Number}</td>
-                      <td>{item.Phone_Number}</td>
+                      <td>{item.Gender}</td>
+                      <td>{item.Salary}</td>
+                      <td>{item.Role}</td>
+                      {/* <td>{item.Dob}</td> */}
+                      {/* <td>{item.Address}</td> */}
+                      {/* <td>{item.Email}</td> */}
+
 
 
 
@@ -138,24 +185,41 @@ const EmployeesList = ({post}) => {
 
                       </td>
 
-                      {/* <td>{item.Gender}</td> */}
+                      <td>
+                        {/* <Link> */}
+
+
+                        <Button className='table-btn' variant="light"
+                          onClick={() => onDeleteUser(item.id)}>
+                          &#9998;Delete
+                        </Button>
+                        {/* </Link> */}
+                      </td>
+
+                
 
                     </tr>
                   );
                 })}
 
 
+
+
+           
               </tbody>
 
             </table>
           </Table>
         </Container>
-        </div>
+
+      </div>
 
 
-      </>
 
-      )
+
+    </>
+
+  )
 }
      
       export default EmployeesList;

@@ -43,6 +43,7 @@ function App() {
       <Routes>
       
         <Route>
+       
           <Route path='/' element={<Home />} />
 
           {/* hotel  sidebar routing start*/}
