@@ -74,7 +74,7 @@ const Guest = () => {
 
     return (
         <>
-      <ToastContainer position='top-center' />
+            <ToastContainer position='top-center' />
 
             <Container style={{ width: "90%", marginTop: "20px" }} >
                 <Table striped bordered hover className='main-table'>
@@ -154,7 +154,7 @@ const Guest = () => {
                                 <input type="text" name="Number_Of_Adults" className="form-control" onChange={handleInputChange} value={Number_Of_Adults} />
                             </div>
                             <center>
-                                
+
                                 <Button className="stu_btn"
                                     variant="success"
                                     type="submit"
