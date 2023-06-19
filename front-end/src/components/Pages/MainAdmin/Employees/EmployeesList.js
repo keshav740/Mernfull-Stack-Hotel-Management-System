@@ -34,25 +34,7 @@ const EmployeesList = ({ post }) => {
   };
 
 
-  // const onDeleteUser = async (id) => {
-  //   if (window.confirm("Are you sure you want to delete this employee record?")) {
-  //     try {
-  //       const response = await axios.delete(`http://localhost:4000/api/v1/employee/${id}`);
-  //       if (response.status === 200) {
-  //         toast.success(response.data);
-  //         getUsers();
-  //       }
-  //     } catch (error) {
-  //       // Handle error
-  //       console.error("Error deleting user:", error);
-  //       toast.error("An error occurred while deleting the user.");
-  //     }
-  //   }
-  // };
-
-
-
-
+// delete api
   const onDeleteUser = async (id) => {
     if (window.confirm("Are you sure that you wanted to delete that employee record")) {
       const response = await axios.delete(`http://localhost:4000/api/v1/employee/${id}`);
@@ -80,6 +62,7 @@ const EmployeesList = ({ post }) => {
 
   }
 
+ 
 
   //   const dispatch = useDispatch()
   //   const leaves = useSelector(state => state.leaves.item)
@@ -207,6 +190,7 @@ const EmployeesList = ({ post }) => {
                       <td>
                         {/* <Link> */}
 
+
                         <Button className='table-btn' variant="light"
                           onClick={() => onDeleteUser(item.id)}>
                           &#9998;Delete
@@ -214,31 +198,16 @@ const EmployeesList = ({ post }) => {
                         {/* </Link> */}
                       </td>
 
-                      {/* <td>{item.Gender}</td> */}
+                
 
                     </tr>
                   );
                 })}
 
-                {/* <td>keshav</td>
-<td>keshav</td>
-<td>keshav</td>
-<td>keshav</td>
-<td>keshav</td> */}
 
 
-                {/* <td>
-  <Link to="/employees">
-  
-    <Button className='table-btn' variant="light" >
-        &#9998;Edit
-    </Button> 
-    </Link>                   
-</td> */}
 
-
-                {/* <button className="view-btn">View </button> */}
-                {/* </tr> */}
+           
               </tbody>
 
             </table>
