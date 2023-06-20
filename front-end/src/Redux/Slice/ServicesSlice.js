@@ -1,9 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { addsallery, fetchsallerys } from '../action/salleryAction'
+import { addservice, fetchservices } from '../action/ServiceAction'
 
 
-const sallerysSlice = createSlice({
-  name: 'details',
+
+
+const ServicesSlice = createSlice({
+  name: 'services',
   initialState: {
     item: [],
     status: 'idle',
@@ -12,26 +14,26 @@ const sallerysSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(fetchsallerys.pending, state => {
+      .addCase(fetchservices.pending, state => {
         state.status = 'loading'
       })
-      .addCase(fetchsallerys.fulfilled, (state, action) => {
+      .addCase(fetchservices.fulfilled, (state, action) => {
         state.status = 'succeeded'
         state.item = action.payload
       })
-      .addCase(fetchsallerys.rejected, (state, action) => {state.status = 'failed'
+      .addCase(fetchservices.rejected, (state, action) => {state.status = 'failed'
       state.error = action.error.message
       })
 
 
-      .addCase(addsallery.pending, state => {
+      .addCase(addservice.pending, state => {
       state.status = 'loading'
       })
-      .addCase(addsallery.fulfilled, (state, action) => {
+      .addCase(addservice.fulfilled, (state, action) => {
       state.status = 'succeeded'
       state.item.push(action.payload)
       })
-      .addCase(addsallery.rejected, (state, action) => {
+      .addCase(addservice.rejected, (state, action) => {
       state.status = 'failed'
       state.error = action.error.message
       })
@@ -51,9 +53,21 @@ const sallerysSlice = createSlice({
       //   state.status = 'failed'
       //   state.error = action.error.message
       //   })
+  
+
+
+
+
+
+
+
+    
+
+
+
 
 
       }
       })
       
-      export default sallerysSlice.reducer
+      export default ServicesSlice.reducer
