@@ -32,7 +32,9 @@ import Order from "./components/Pages/Restaurent/Order/Order";
 import Rooms from "./components/Pages/Hotel/AdminPage/Rooms/Rooms";
 import ResBilling from "./components/Pages/Restaurent/Res-Billing/ResBilling";
 import { ToastContainer } from "react-bootstrap";
+import RoomForm from "./components/Pages/MainAdmin/Rooms/RoomForm";
 
+// 
 // import RoomServiceList from "./components/Pages/MainAdmin/Roomservice/RoomServiceList";
 function App() {
 
@@ -72,9 +74,12 @@ function App() {
           <Route path="/main-admin-dashboard" element={<MainAdminSidebar><AdminDashboard /></MainAdminSidebar>} />
           <Route path="/items" element={<MainAdminSidebar><Item /></MainAdminSidebar>} />
           <Route path="/item-list" element={<MainAdminSidebar><ItemList /></MainAdminSidebar>} />
-          <Route path="/add-rooms" element={<MainAdminSidebar><Room /></MainAdminSidebar>} />
+
+
+          {/* <Route path="/add-rooms" element={<MainAdminSidebar><Room /></MainAdminSidebar>} /> */}
+          <Route path="/add-rooms" element={<MainAdminSidebar><RoomForm /></MainAdminSidebar>} />
           <Route path="/room-list" element={<MainAdminSidebar><RoomList /></MainAdminSidebar>} />
-          <Route path="/roomupdate/:id" element={<MainAdminSidebar><RoomList /></MainAdminSidebar>} />
+         
           {/* <Route path="/room-service-list"  element={<MainAdminSidebar><RoomServiceList/></MainAdminSidebar>}/> */}
           <Route path="/services" element={<MainAdminSidebar><AddService /></MainAdminSidebar>} />
           <Route path="/service-list" element={<MainAdminSidebar><ServicesList /></MainAdminSidebar>} />

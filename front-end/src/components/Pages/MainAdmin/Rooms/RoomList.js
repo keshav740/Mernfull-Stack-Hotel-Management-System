@@ -5,62 +5,65 @@ import { Link } from "react-router-dom"
 import { IoIosCreate } from "react-icons/io";
 import ModalCamp from './ModalCamp';
 import axios from 'axios'
-
+import Rooms from '../../Hotel/AdminPage/Rooms/Rooms';
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchRoom } from '../../../../Redux/action/RoomAction';
 
 const RoomList = ({ post }) => {
+
+
+
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState({});
   const [data, setData] = useState([]);
+
+
+  const dispatch = useDispatch()
+  const Rooms = useSelector(state => state.Rooms.item)
+  const RoomsStatus = useSelector(state => state.Rooms.status)
+  const error = useSelector(state => state.Rooms.error)
   
   const handleModel = () => {
     setOpen(true);
     setUser(post);
   }
-
   useEffect(() => {
-    getUsers();
-  }, []);
-
-  const getUsers = async () => {
-    const response = await axios.get("http://localhost:4000/api/v1/rooms");
-    if (response.status === 200) {
-      setData(response.data);
+    if (RoomsStatus === 'idle') {
+      dispatch(fetchRoom())
     }
+  }, [RoomsStatus, dispatch])
+
+  let content
+
+  if (RoomsStatus === 'loading') {
+    content = <div>Loading...</div>
+  } else if (RoomsStatus === 'succeeded') {
+    content = Rooms.map(Room => <Rooms key={Room.id} room={Room} />)
+  } else if (RoomsStatus === 'failed') {
+    content = <div>{error}</div>
   }
-  console.log("data=>", data)
 
-//  const handaledit =(id)=>{
-//   axios.get(`http://localhost:4000/api/v1/room/new/${id}`).then
-//     (res => {
-//       setData(res.data)
-//       getUsers()
+
+//   useEffect(() => {
+//     getUsers();
+//   }, []);
+
+//   const getUsers = async () => {
+//     const response = await axios.get("http://localhost:4000/api/v1/rooms");
+//     if (response.status === 200) {
+//       setData(response.data);
+//     }
+//   }
+//   console.log("data=>", data)
+
+
+// const handalupdate=(e)=>{
+//   e.preventDefault()
+//   axios.put("http://localhost:4000/api/v1/rooms",data)
+//     .then((response) =>{
+//       console.log(response)
 //     })
-//  }
-//  const handleUpdate = (id) => {
-//       axios.get(`http://localhost:4000/api/v1/room/new/${id}` )
-//           .then(res => {
-//               // setData({  Room_Number: "",  Price: ""  });
-//               setData(res.data)
-//           })
-//           .catch(err => console.log(err))
-
-// };
-
-  // const onDeleteUser = async (id) =>{
-  //   if(window.confirm("Are you sure that you wanted to delete that user record")) {
-  //     const response = await axios.delete(`http://localhost:4000/api/v1/rooms/${id}`);
-  //     if(response.status === 200) {
-  //       getUsers();
-  //     }
-  //   }
-  // }
-const handalupdate=(e)=>{
-  e.preventDefault()
-  axios.put("http://localhost:4000/api/v1/rooms",data)
-    .then((response) =>{
-      console.log(response)
-    })
-}
+// }
     
   return (
 
@@ -111,7 +114,8 @@ const handalupdate=(e)=>{
                   <th>Action delete</th>
                 </tr>
               </thead>
-              <tbody>
+              {content}
+              {/* <tbody>
                 {data?.rom?.map((item, index) => {
                   return (
                     <tr key={index}>
@@ -125,7 +129,7 @@ const handalupdate=(e)=>{
                         <Link to={`/add-room/${item.id}`}>
                           <Button className='table-btn' variant="light"
                           onClick={handalupdate}
-                          // onClick={() =>handleUpdate(item.id)}
+                       
                           >
                           
                             &#9998;update
@@ -151,7 +155,7 @@ const handalupdate=(e)=>{
                       </td>
                       <td>
                         <Button className='table-btn' variant="light"
-                          // onClick={() => onDeleteUser(item.id)}
+                          onClick={() => onDeleteUser(item.id)}
 
                         >
                           &#9998;delete
@@ -160,7 +164,7 @@ const handalupdate=(e)=>{
                   )
                 })
                 }
-              </tbody>
+              </tbody> */}
             </table>
           </Table>
         </Container>

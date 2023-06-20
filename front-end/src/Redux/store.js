@@ -1,12 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import sallerySlice from "./slice/sallerySlice";
+import RoomSlice from "./Slice/RoomSlice";
+
 
 
 
 const store = configureStore({
     reducer:{
   
-    sallerys:sallerySlice
+        Rooms:RoomSlice
 
     
     },
