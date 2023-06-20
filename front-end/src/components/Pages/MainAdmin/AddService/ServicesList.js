@@ -6,11 +6,9 @@ import { IoIosCreate } from "react-icons/io";
 import ModalCamp from './ModalCamp';
 import "./RoomService.css"
 import axios from 'axios';
-import { useDispatch, useSelector } from "react-redux"
-import { fetchservice, fetchservices } from '../../../../Redux/action/ServiceAction';
+import {useDispatch, useSelector} from "react-redux"
+import { fetchservices } from '../../../../Redux/action/ServiceAction';
 import Service from './Service';
-
-
 
 
 
@@ -18,12 +16,12 @@ const ServicesList = ({ post }) => {
 
 
   const dispatch = useDispatch()
-  const services = useSelector(state => state.services.item)
+  const services = useSelector(state => state.services.item.ser)
   const servicesStatus = useSelector(state => state.services.status)
   const error = useSelector(state => state.services.error)
 
-
-
+ 
+ console.log(services , "hello")
   useEffect(() => {
     if (servicesStatus === 'idle') {
       dispatch(fetchservices())
@@ -35,7 +33,7 @@ const ServicesList = ({ post }) => {
   if (servicesStatus === 'loading') {
     content = <div>Loading...</div>
   } else if (servicesStatus === 'succeeded') {
-    content = services.map(service => <Service key={service.id} service={service} />)
+    content = services.length>0 && services.map(service => <Service key={service.id} service={service} />)
   } else if (servicesStatus === 'failed') {
     content = <div>{error}</div>
   }
@@ -48,22 +46,22 @@ const ServicesList = ({ post }) => {
   const [user, setUser] = useState({});
 
 
-  // // get api
+  // get api
   // const [service, setService] = useState([]);
 
 
   // useEffect(() => {
-  //   getService();
+  //   fetchservices();
   // }, []);
 
-  // const getService = async () => {
+  // const fetchservices = async () => {
   //   const response = await axios.get("http://localhost:4000/api/v1/room-services");
   //   if (response.status === 200) {
   //     setService(response.data);
   //   }
   // };
 
-  // // console.log("data=>", service);
+  // console.log("data=>", service);
 
 
 
