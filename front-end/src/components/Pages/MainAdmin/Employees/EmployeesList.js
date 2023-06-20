@@ -9,7 +9,7 @@ import { Link } from "react-router-dom"
 import { IoIosCreate } from "react-icons/io";
 import ModalCamp from './ModalCamp';
 import axios from "axios";
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 
 
 
@@ -39,7 +39,7 @@ const EmployeesList = ({ post }) => {
     if (window.confirm("Are you sure that you wanted to delete that employee record")) {
       const response = await axios.delete(`http://localhost:4000/api/v1/employee/${id}`);
       if (response.status === 200) {
-        toast.success(response.data);
+        // toast.success(response.data);
         getUsers();
       }
     }

@@ -37,7 +37,7 @@ const Employees = () => {
     const addContact = async (data) => {
         const response = await axios.post("http://localhost:4000/api/v1/employee/new", data);
         if (response.status === 200) {
-            toast.success("Employee Added Successfully");
+            // toast.success("Employee Added Successfully");
             setFormSubmitted(true);
         }
     };
