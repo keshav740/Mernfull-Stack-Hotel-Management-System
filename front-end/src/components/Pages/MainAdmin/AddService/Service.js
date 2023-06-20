@@ -9,6 +9,7 @@ const Service = ({ service }) => {
 
       <tbody>
         <tr>
+
           <td>{service.Service_Name}</td>
           <td>{service.Servive_Charge}</td>
 
@@ -17,7 +18,7 @@ const Service = ({ service }) => {
 
 
     </>
-    
+
   )
 }
 

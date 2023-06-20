@@ -3,9 +3,6 @@ import { Modal, Button, Container, Row, Col } from "react-bootstrap";
 
 
 
-
-
-
 const ModalCamp = ({
   open,
   setOpen,

@@ -15,83 +15,77 @@ import { addservice } from '../../../../Redux/action/ServiceAction';
 
 
 
-
 const AddService = () => {
 
-    const dispatch = useDispatch();
-    
+    // const dispatch = useDispatch();
 
-    const [servicename, setServicename] = useState("");
-    const [servicecharge, setServicecharge] = useState("");
+    // const [servicename, setServicename] = useState("");
+    // const [servicecharge, setServicecharge] = useState("");
 
 
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     if (
+    //         servicename && servicecharge
+    //           ) {
+    //       dispatch(addservice({ 
+    //         servicename, servicecharge
     
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        if (
-            servicename && servicecharge
-              ) {
-          dispatch(addservice({ 
-            servicename, servicecharge
-    
-          }));
+    //       }));
          
-          setServicename("");
-          setServicecharge("");
-        }
-    };
+    //       setServicename("");
+    //       setServicecharge("");
+    //     }
+    // };
   
       
 
 
-
-
-
-
-    // const Initialstate = {
-    //     Service_Name: "",
-    //     Servive_Charge: "",
+    const Initialstate = {
+        Service_Name: "",
+        Servive_Charge: "",
     
-    // }
-    
-    // const [state, setState] = useState(Initialstate);
-    // const [formSubmitted, setFormSubmitted] = useState(false);
+    }
 
-    // const { Service_Name, Servive_Charge,} = state;
+    const dispatch = useDispatch();
+    const [state, setState] = useState(Initialstate);
+    const [formSubmitted, setFormSubmitted] = useState(false);
 
-    // const navigate = useNavigate()
+    const { Service_Name, Servive_Charge,} = state;
 
-    // const addService = async (data) => {
-    //     const response = await axios.post("http://localhost:4000/api/v1/room-service/new", data);
-    //     if (response.status === 200) {
-    //         toast.success("Services Added Successfully");
-    //         setFormSubmitted(true);
-    //     }
-    // };
+     const navigate = useNavigate()
+
+    const addservice = async (data) => {
+        const response = await axios.post("http://localhost:4000/api/v1/room-service/new", data);
+        if (response.status === 200) {
+            toast.success("Services Added Successfully");
+            setFormSubmitted(true);
+        }
+    };
 
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     if ( !Service_Name || !Servive_Charge ) {
-    //         toast.error("Please provide value into each input field");
-    //         // console.log("kuchbhi")
-    //     } else {
-    //         addService(state);
-    //         if (formSubmitted) {
-    //             setState(Initialstate);
-    //             toast.info('Form submitted successfully!');
-    //             setFormSubmitted(false);
-    //         }
-    //         navigate("/service-list")
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if ( !Service_Name || !Servive_Charge ) {
+            toast.error("Please provide value into each input field");
+            // console.log("kuchbhi")
+        } else {
+            addservice(state);
+            if (formSubmitted) {
+                setState(Initialstate);
+                toast.info('Form submitted successfully!');
+                setFormSubmitted(false);
+            }
+            navigate("/service-list")
 
-    //     }
+        }
 
-    // };
+    };
 
-    // const handleInputChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setState({ ...state, [name]: value });
-    // };
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setState({ ...state, [name]: value });
+    };
 
 
 
@@ -141,11 +135,11 @@ const AddService = () => {
                                 <label className="label">Service Name</label>
                                 <input type="text" class="form-control"
                                  name='Service_Name'
-                                 value={servicename} onChange={(event) => setServicename(event.target.value)}
+                            onChange={handleInputChange} value={Service_Name}
+                                //  value={servicename} onChange={(event) => setServicename(event.target.value)}
 
                                 />
-                                {/* <input type="text" class="form-control" 
-                                value={firstname1} onChange={(event) => setFirstname1(event.target.value)} */}
+                          
 
                             </div>
 
@@ -156,7 +150,8 @@ const AddService = () => {
                                 <label className="label">Service Charges</label>
                                 <input type="text" class="form-control"
                                  name='Servive_Charge'
-                                 value={servicecharge} onChange={(event) => setServicecharge(event.target.value)}
+                                 onChange={handleInputChange} value={Servive_Charge}
+                                //  value={servicecharge} onChange={(event) => setServicecharge(event.target.value)}
 
 
                                 />
