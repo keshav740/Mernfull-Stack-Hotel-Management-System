@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { addservice, fetchservices } from '../action/ServiceAction'
+import { addservice, fetchservices, updateservice } from '../action/ServiceAction'
 
 
 
@@ -26,6 +26,8 @@ const ServicesSlice = createSlice({
       })
 
 
+
+
       .addCase(addservice.pending, state => {
       state.status = 'loading'
       })
@@ -37,6 +39,23 @@ const ServicesSlice = createSlice({
       state.status = 'failed'
       state.error = action.error.message
       })
+
+
+
+
+      .addCase(updateservice.pending, state => {
+        state.status = 'loading'
+        })
+        .addCase(updateservice.fulfilled, (state, action) => {
+        state.status = 'succeeded'
+        const index = state.data.findIndex((service) => service.id === action.payload.id)
+        state.data[index] = action.payload
+        // state.data.push(action.update)
+        })
+        .addCase(updateservice.rejected, (state, action) => {
+        state.status = 'failed'
+        state.error = action.error.message
+        })
 
 
 
