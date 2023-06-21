@@ -74,7 +74,7 @@ const Guest = () => {
 
     return (
         <>
-            <ToastContainer position='top-center' />
+      {/* <ToastContainer position='top-center' /> */}
 
             <Container style={{ width: "90%", marginTop: "20px" }} >
                 <Table striped bordered hover className='main-table'>
