@@ -12,7 +12,7 @@ const store = configureStore({
 
 
         rooms: RoomSlice,
-        employee: EmployeeSlice
+        employee: EmployeeSlice,
         services: ServicesSlice,
 
 
