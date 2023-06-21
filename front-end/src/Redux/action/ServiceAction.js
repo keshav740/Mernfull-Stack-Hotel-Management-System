@@ -1,18 +1,18 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-export const fetchsallerys = createAsyncThunk('sallerys/fetchsallerys', async () => {
-    const response = await fetch('http://localhost:5008/sallerys')
+export const fetchservices = createAsyncThunk('services/fetchservices', async () => {
+    const response = await fetch("http://localhost:4000/api/v1/room-services")
     const item = await response.json()
     return item
   })
   
-  export const addsallery = createAsyncThunk('sallerys/addsallery', async (sallery) => {
-    const response = await fetch('http://localhost:5008/sallerys', {
+  export const addservice = createAsyncThunk('services/addservice', async (service) => {
+    const response = await fetch("http://localhost:4000/api/v1/room-service/new", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(sallery)
+      body: JSON.stringify(service)
     })
     const item = await response.json()
     return item
@@ -72,6 +72,12 @@ export const fetchsallerys = createAsyncThunk('sallerys/fetchsallerys', async ()
 //     }
 //   }
 
+
+
+
+
+ 
+  
 
 
 
