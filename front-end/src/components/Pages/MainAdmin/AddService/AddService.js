@@ -7,25 +7,53 @@ import Form from 'react-bootstrap/Form';
 import { Link, useNavigate } from 'react-router-dom';
 import './RoomService.css'
 import axios from 'axios';
+import {useDispatch} from "react-redux"
+import { addservice } from '../../../../Redux/action/ServiceAction';
+
 
 
 
 const AddService = () => {
+
+    // const dispatch = useDispatch();
+
+    // const [servicename, setServicename] = useState("");
+    // const [servicecharge, setServicecharge] = useState("");
+
+
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     if (
+    //         servicename && servicecharge
+    //           ) {
+    //       dispatch(addservice({ 
+    //         servicename, servicecharge
+    
+    //       }));
+         
+    //       setServicename("");
+    //       setServicecharge("");
+    //     }
+    // };
+  
+      
+
 
     const Initialstate = {
         Service_Name: "",
         Servive_Charge: "",
     
     }
-    
+
+    const dispatch = useDispatch();
     const [state, setState] = useState(Initialstate);
     const [formSubmitted, setFormSubmitted] = useState(false);
 
     const { Service_Name, Servive_Charge,} = state;
 
-    const navigate = useNavigate()
+     const navigate = useNavigate()
 
-    const addService = async (data) => {
+    const addservice = async (data) => {
         const response = await axios.post("http://localhost:4000/api/v1/room-service/new", data);
         if (response.status === 200) {
             // toast.success("Services Added Successfully");
@@ -40,7 +68,7 @@ const AddService = () => {
             // toast.error("Please provide value into each input field");
             // console.log("kuchbhi")
         } else {
-            addService(state);
+            addservice(state);
             if (formSubmitted) {
                 setState(Initialstate);
                 // toast.info('Form submitted successfully!');
@@ -105,9 +133,11 @@ const AddService = () => {
                                 <label className="label">Service Name</label>
                                 <input type="text" class="form-control"
                                  name='Service_Name'
-                                 onChange={handleInputChange} value={Service_Name}
+                            onChange={handleInputChange} value={Service_Name}
+                                //  value={servicename} onChange={(event) => setServicename(event.target.value)}
 
                                 />
+                          
 
                             </div>
 
@@ -119,6 +149,7 @@ const AddService = () => {
                                 <input type="text" class="form-control"
                                  name='Servive_Charge'
                                  onChange={handleInputChange} value={Servive_Charge}
+                                //  value={servicecharge} onChange={(event) => setServicecharge(event.target.value)}
 
 
                                 />

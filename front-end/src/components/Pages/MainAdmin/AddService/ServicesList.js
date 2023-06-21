@@ -6,31 +6,60 @@ import { IoIosCreate } from "react-icons/io";
 import ModalCamp from './ModalCamp';
 import "./RoomService.css"
 import axios from 'axios';
-
-
+import {useDispatch, useSelector} from "react-redux"
+import { fetchservices } from '../../../../Redux/action/ServiceAction';
+import Service from './Service';
 
 
 
 const ServicesList = ({ post }) => {
+
+
+  const dispatch = useDispatch()
+  const services = useSelector(state => state.services.item.ser)
+  const servicesStatus = useSelector(state => state.services.status)
+  const error = useSelector(state => state.services.error)
+
+ 
+ console.log(services , "hello")
+  useEffect(() => {
+    if (servicesStatus === 'idle') {
+      dispatch(fetchservices())
+    }
+  }, [servicesStatus, dispatch])
+
+  let content
+
+  if (servicesStatus === 'loading') {
+    content = <div>Loading...</div>
+  } else if (servicesStatus === 'succeeded') {
+    content = services.length>0 && services.map(service => <Service key={service.id} service={service} />)
+  } else if (servicesStatus === 'failed') {
+    content = <div>{error}</div>
+  }
+
+
+
+
 
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState({});
 
 
   // get api
-  const [service, setService] = useState([]);
+  // const [service, setService] = useState([]);
 
 
-  useEffect(() => {
-    getService();
-  }, []);
+  // useEffect(() => {
+  //   fetchservices();
+  // }, []);
 
-  const getService = async () => {
-    const response = await axios.get("http://localhost:4000/api/v1/room-services");
-    if (response.status === 200) {
-      setService(response.data);
-    }
-  };
+  // const fetchservices = async () => {
+  //   const response = await axios.get("http://localhost:4000/api/v1/room-services");
+  //   if (response.status === 200) {
+  //     setService(response.data);
+  //   }
+  // };
 
   // console.log("data=>", service);
 
@@ -98,11 +127,12 @@ const ServicesList = ({ post }) => {
                     <th>Action View</th>
                   </tr>
                 </thead>
-                <tbody>
+                {content}
+                {/* <tbody>
                   {service?.ser?.map((item, index) => {
                     return (
                       <tr key={index}>
-                        {/* <th scope="row">{index + 1}</th> */}
+                      
                         <td>{item.Service_Name}</td>
                         <td>{item.Servive_Charge}</td>
                        
@@ -124,7 +154,7 @@ const ServicesList = ({ post }) => {
 
                               open={open}
                               setOpen={setOpen}
-                              // updatePost={updatePost}
+                         
                               {...user}
                             />
                           )}
@@ -134,7 +164,7 @@ const ServicesList = ({ post }) => {
                   })}
 
 
-                </tbody>
+                </tbody> */}
               </table>
             </Table>
           </Row>
