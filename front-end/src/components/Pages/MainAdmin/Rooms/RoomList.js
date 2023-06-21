@@ -10,9 +10,6 @@ import {  fetchroom } from '../../../../Redux/action/RoomAction';
 import Rooms from './Rooms';
 
 const RoomList = ({ post }) => {
-
-
-
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState({});
   const [data, setData] = useState([]);
@@ -98,8 +95,6 @@ const RoomList = ({ post }) => {
           <hr />
         </Row>
       </Container>
-
-
 
       <div className='form-div'>
 
