@@ -32,8 +32,6 @@ const UpdateService = () => {
             id:id,
             Service_Name:uservice_Name,
             Servive_Charge: uservive_Charge,
-
-
         }))
         navigate("/service-list")
     }

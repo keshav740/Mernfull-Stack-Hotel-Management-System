@@ -154,7 +154,7 @@ const Guest = () => {
                                 <input type="text" name="Number_Of_Adults" className="form-control" onChange={handleInputChange} value={Number_Of_Adults} />
                             </div>
                             <center>
-                                
+
                                 <Button className="stu_btn"
                                     variant="success"
                                     type="submit"
