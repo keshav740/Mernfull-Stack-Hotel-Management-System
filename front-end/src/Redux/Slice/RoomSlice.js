@@ -1,8 +1,8 @@
 import {  createAsyncThunk,createSlice } from '@reduxjs/toolkit'
-import { fetchRoom,addRoom } from '../action/RoomAction'
+import { fetchroom,addroom } from '../action/RoomAction'
 
 const RoomSlice = createSlice({
-    name: 'Rooms',
+    name: 'rooms',
     initialState: {
         item: [],
         status: 'idle',
@@ -11,26 +11,26 @@ const RoomSlice = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder
-            .addCase(fetchRoom.pending, state => {
+            .addCase(fetchroom.pending, state => {
                 state.status = 'loading'
             })
-            .addCase(fetchRoom.fulfilled, (state, action) => {
+            .addCase(fetchroom.fulfilled, (state, action) => {
                 state.status = 'succeeded'
                 state.item = action.payload
             })
-            .addCase(fetchRoom.rejected, (state, action) => {
+            .addCase(fetchroom.rejected, (state, action) => {
                 state.status = 'failed'
                 state.error = action.error.message
             })
 
-            .addCase(addRoom.pending, state => {
+            .addCase(addroom.pending, state => {
                 state.status = 'loading'
             })
-            .addCase(addRoom.fulfilled, (state, action) => {
+            .addCase(addroom.fulfilled, (state, action) => {
                 state.status = 'succeeded'
                 state.item.push(action.payload)
             })
-            .addCase(addRoom.rejected, (state, action) => {
+            .addCase(addroom.rejected, (state, action) => {
                 state.status = 'failed'
                 state.error = action.error.message
             })

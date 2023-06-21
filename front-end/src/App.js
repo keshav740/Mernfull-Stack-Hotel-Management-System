@@ -19,20 +19,18 @@ import Room from "./components/Pages/MainAdmin/Rooms/Rooms";
 import RoomList from "./components/Pages/MainAdmin/Rooms/RoomList";
 import AddService from "./components/Pages/MainAdmin/AddService/AddService";
 import ServicesList from "./components/Pages/MainAdmin/AddService/ServicesList";
-
-import Employees from "./components/Pages/MainAdmin/Employees/Employees";
-import EmployeesList from "./components/Pages/MainAdmin/Employees/EmployeesList";
 import Guest from "./components/Pages/MainAdmin/GuestInformation/Guest";
 import GuestList from "./components/Pages/MainAdmin/GuestInformation/GuestList";
-
 import ResDashboard from "./components/Pages/Restaurent/ResDashboard/ResDashboard";
 import RestaurentSidebar from "./components/Pages/Restaurent/RestaurentSidebar";
 import Items from "./components/Pages/Restaurent/Items/Items";
 import Order from "./components/Pages/Restaurent/Order/Order";
-import Rooms from "./components/Pages/Hotel/AdminPage/Rooms/Rooms";
 import ResBilling from "./components/Pages/Restaurent/Res-Billing/ResBilling";
 import { ToastContainer } from "react-bootstrap";
 import RoomForm from "./components/Pages/MainAdmin/Rooms/RoomForm";
+import HotelRooms from "./components/Pages/Hotel/AdminPage/HotelRoom/HotelRooms";
+import EmployeesForm from "./components/Pages/MainAdmin/Employees/Employeesform";
+import EmployeesList from "./components/Pages/MainAdmin/Employees/EmployeesList";
 
 // 
 // import RoomServiceList from "./components/Pages/MainAdmin/Roomservice/RoomServiceList";
@@ -54,7 +52,7 @@ function App() {
           <Route path='/booking/:id' element={<RoomBooking />} />
           <Route path='/roomlist' element={<HotelSidebar><BookingList /></HotelSidebar>} />
           <Route path="/room-service-lists" element={<HotelSidebar><ServiceList /></HotelSidebar>} />
-          <Route path='/rooms' element={<HotelSidebar><Rooms /></HotelSidebar>} />
+          <Route path='/hotel-rooms' element={<HotelSidebar><HotelRooms /></HotelSidebar>} />
           <Route path='/billing' element={<Billing />} />
           <Route path='/roomservice' element={<HotelSidebar><RoomService /></HotelSidebar>} />
           {/* hotel  sidebar routing end*/}
@@ -83,14 +81,10 @@ function App() {
           {/* <Route path="/room-service-list"  element={<MainAdminSidebar><RoomServiceList/></MainAdminSidebar>}/> */}
           <Route path="/services" element={<MainAdminSidebar><AddService /></MainAdminSidebar>} />
           <Route path="/service-list" element={<MainAdminSidebar><ServicesList /></MainAdminSidebar>} />
-          <Route path="/employees" element={<MainAdminSidebar><Employees /></MainAdminSidebar>} />
-          <Route path="/empupdate/:id" element={<MainAdminSidebar><Employees /></MainAdminSidebar>} />
+          <Route path="/employees" element={<MainAdminSidebar><EmployeesForm /></MainAdminSidebar>} />
           <Route path="/employees-list" element={<MainAdminSidebar><EmployeesList /></MainAdminSidebar>} />
-          <Route path="/empview/:id" element={<MainAdminSidebar><EmployeesList /></MainAdminSidebar>} />
           <Route path="/add-guest" element={<MainAdminSidebar><Guest /></MainAdminSidebar>} />
           <Route path="/guest-details" element={<MainAdminSidebar><GuestList /></MainAdminSidebar>} />
-
-
           {/* Admin  sidebar routing end*/}
 
 

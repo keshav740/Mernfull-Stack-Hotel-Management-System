@@ -5,9 +5,9 @@ import { Link } from "react-router-dom"
 import { IoIosCreate } from "react-icons/io";
 import ModalCamp from './ModalCamp';
 import axios from 'axios'
-import Rooms from '../../Hotel/AdminPage/Rooms/Rooms';
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchRoom } from '../../../../Redux/action/RoomAction';
+import {  fetchroom } from '../../../../Redux/action/RoomAction';
+import Rooms from './Rooms';
 
 const RoomList = ({ post }) => {
 
@@ -19,27 +19,31 @@ const RoomList = ({ post }) => {
 
 
   const dispatch = useDispatch()
-  const Rooms = useSelector(state => state.Rooms.item)
-  const RoomsStatus = useSelector(state => state.Rooms.status)
-  const error = useSelector(state => state.Rooms.error)
+  const rooms = useSelector(state => state.rooms.item.rom)
+  const roomsStatus = useSelector(state => state.rooms.status)
+  const error = useSelector(state => state.rooms.error)
   
   const handleModel = () => {
     setOpen(true);
     setUser(post);
   }
+  
   useEffect(() => {
-    if (RoomsStatus === 'idle') {
-      dispatch(fetchRoom())
+    if (roomsStatus === 'idle') {
+      dispatch(fetchroom())
     }
-  }, [RoomsStatus, dispatch])
+  }, [roomsStatus, dispatch])
 
   let content
 
-  if (RoomsStatus === 'loading') {
+  console.log(rooms,"hello")
+
+  if (roomsStatus === 'loading') {
     content = <div>Loading...</div>
-  } else if (RoomsStatus === 'succeeded') {
-    content = Rooms.map(Room => <Rooms key={Room.id} room={Room} />)
-  } else if (RoomsStatus === 'failed') {
+  } else if (roomsStatus === 'succeeded') {
+    content = rooms.length>0 && rooms.map(room => <Rooms key={room.id} room={room} />)
+    // content=[]
+  } else if (roomsStatus === 'failed') {
     content = <div>{error}</div>
   }
 
@@ -96,7 +100,7 @@ const RoomList = ({ post }) => {
       </Container>
 
 
-      {/* <div className="post-table"> */}
+
       <div className='form-div'>
 
         <h5 className="w3-center w3-flat-midnight-blue w3-padding-48 w3-border-blue-grey w3-grey text text-center mb-5 mt-3">Room-Details</h5>
@@ -115,56 +119,7 @@ const RoomList = ({ post }) => {
                 </tr>
               </thead>
               {content}
-              {/* <tbody>
-                {data?.rom?.map((item, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>{item.Room_Number}</td>
-                      <td>{item.Price}</td>
-                      <td>{item.Room_Type}</td>
-                      <td>{item.Avilable_Not}</td>
-
-                      <td>
-
-                        <Link to={`/add-room/${item.id}`}>
-                          <Button className='table-btn' variant="light"
-                          onClick={handalupdate}
-                       
-                          >
-                          
-                            &#9998;update
-                          </Button>
-                        </Link>
-                      </td>
-
-                      <td>
-                        <Link to={`/roomview/${item.id}`}>
-                        <Button className='table-btn' variant="light"
-                          onClick={() => handleModel()} 
-                          >
-                          &#128065;View
-                        </Button>
-                        {open && (
-                          <ModalCamp
-                            open={open}
-                            setOpen={setOpen}
-                            {...user}
-                          />
-                        )}
-                        </Link>
-                      </td>
-                      <td>
-                        <Button className='table-btn' variant="light"
-                          onClick={() => onDeleteUser(item.id)}
-
-                        >
-                          &#9998;delete
-                        </Button></td>
-                    </tr>
-                  )
-                })
-                }
-              </tbody> */}
+           
             </table>
           </Table>
         </Container>

@@ -28,7 +28,7 @@ const HotelSidebar = ({children}) => {
     },
     
     {
-      path: "/rooms",
+      path: "/hotel-rooms",
       name: "Rooms",
       icon: <SiGoogleclassroom />
     },

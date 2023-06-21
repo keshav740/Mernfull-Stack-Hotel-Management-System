@@ -1,64 +1,58 @@
-import React,{useState} from 'react'
-import { Button, Container, Row, Table ,Form} from 'react-bootstrap';
+import React, { useState } from 'react'
+import { Button, Container, Row, Table, Form } from 'react-bootstrap';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { AiFillDashboard, AiOutlineDashboard } from 'react-icons/ai';
-import { addRoom } from '../../../../Redux/action/RoomAction';
+import {  addroom } from '../../../../Redux/action/RoomAction';
 import { useDispatch } from 'react-redux';
+import { useNavigate,navigate } from 'react-router-dom';
 const RoomForm = () => {
 
-    //  const initialState = {
-    //     Room_Number: '',
-    //     Price: '',
-    //     Room_Type: '',
-    //     Available_Not: '',
-    // };
-
-    // const [state, setState] = useState(initialState);
-    // const [success, setSuccess] = useState(false);
-    // const { Room_Number, Price,Room_Type, Available_Not } = state;
-
-    //   const navigate = useNavigate();
-
-    // const addRoom = async (data) => {
-    //     try {
-    //         const response = await axios.post('http://localhost:4000/api/v1/room/new', data);
-    //         if (response.status === 200) {
-    //             setSuccess(true);
-    //             setError('');
-    //         }
-    //     } catch (error) {
-    //         setError('Failed to add room. Please try again.');
-    //     }
-    // };
-
+    const initialState = {
+        Room_Number: '',
+        Price: '',
+        Room_Type: '',
+        Available_Not: '',
+    };
     const dispatch = useDispatch();
-    const [roomNumber, setRoomNumber]=useState("")
-    const [price, setPrice]=useState("")
-    const [roomType, setRoomType]=useState("")
-    const [availableNot, setAvailableNot]=useState("")
+    const [state, setState] = useState(initialState);
+    const [formSubmitted, setFormSubmitted] = useState(false);
+    const { Room_Number, Price, Room_Type, Available_Not } = state;
+
+      const navigate = useNavigate();
+
+    const addroom = async (data) => {
+            const response = await axios.post('http://localhost:4000/api/v1/room/new', data);
+            if (response.status === 200) {
+                setFormSubmitted(true);
+            }
+     
+    }
+
+
+
 
     const handalSubmit = (event) =>{
         event.preventDefalut();
-        if( roomNumber && price && roomType && availableNot ) {
-            dispatch (addRoom ({
-                roomNumber, price, roomType, availableNot
+        if( ! Room_Number || !Price || !Room_Type || !Available_Not ) {
+          
+        }else{
+            addroom(state);
+            if(formSubmitted) {
+                setState(initialState)
+                setFormSubmitted(false)
             }
-            ))
-            setRoomNumber("");
-            setPrice("");
-            setRoomType("");
-            setAvailableNot("");
+            navigate("/room-list")
         }
     }
-    //   const handleInputChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setState((prevState) => ({ ...prevState, [name]: value }));
-    // };
-  return (
-  <>
-  
-  <Container style={{ width: '90%', marginTop: '20px' }}>
+      const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setState({... state, [name]: value})
+    };
+    return (
+        <>
+
+            <Container style={{ width: '90%', marginTop: '20px' }}>
                 <Table striped bordered hover className="main-table">
                     <thead>
                         <tr>
@@ -89,18 +83,17 @@ const RoomForm = () => {
                 <Container>
                     <Row>
                         <form className="row g-4 p-3 registration-form"
-                         onSubmit={handalSubmit}
-                         >
-                          
+                            onSubmit={handalSubmit}
+                        >
+
                             <div className="col-md-4 position-relative">
                                 <label className="label">Room No.</label>
                                 <input
                                     type="text"
                                     className="form-control"
                                     name="Room_Number"
-                                    value={roomNumber} onChange={(event) => setRoomNumber(event.target.value)}
-                                    // value={Room_Number}
-                                    // onChange={handleInputChange}
+                                value={Room_Number}
+                                onChange={handleInputChange}
                                 />
                             </div>
                             <div className="col-md-4 position-relative">
@@ -109,13 +102,15 @@ const RoomForm = () => {
                                     type="text"
                                     className="form-control"
                                     name="Price"
-                                    value={price} onChange={(event) => setPrice(event.target.value)}
+                                    value={Price}
+                                    onChange={handleInputChange}
                                 />
                             </div>
                             <div className="col-md-4 position-relative" controlId="formGridState" >
                                 <label className="form-label">Room Type</label>
-                                <Form.Select name="Room_Type" 
-                               value={roomType} onChange={(event) => setRoomType(event.target.value)}
+                                <Form.Select name="Room_Type"
+                                       value={Room_Type}
+                                       onChange={handleInputChange}
                                 >
                                     <option>Choose</option>
                                     <option value="Luxury">Luxury</option>
@@ -127,7 +122,8 @@ const RoomForm = () => {
                             <div className="col-md-4 position-relative" controlId="formGridState">
                                 <label className="form-label">Available/Not-Available</label>
                                 <Form.Select name="Available_Not"
-                              value={availableNot} onChange={(event) => setAvailableNot(event.target.value)}
+                                      value={Available_Not}
+                                      onChange={handleInputChange}
                                 >
                                     <option>Choose</option>
                                     <option value="Yes">Yes</option>
@@ -143,12 +139,12 @@ const RoomForm = () => {
                     </Row>
                 </Container>
             </div>
-  
-  
-  
-  
-  </>
-  )
+
+
+
+
+        </>
+    )
 }
 
 export default RoomForm
