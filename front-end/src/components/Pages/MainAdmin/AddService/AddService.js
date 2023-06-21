@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-// import HotelSidebar from '../../HotelSidebar'
 import { Container, Col, Row, Table, Button } from 'react-bootstrap'
 import { AiFillDashboard, AiFillDelete, AiFillEdit, AiFillSetting } from 'react-icons/ai';
 import { RiArrowGoBackLine } from 'react-icons/ri';
@@ -7,7 +6,6 @@ import { IoIosCreate } from 'react-icons/io';
 import Form from 'react-bootstrap/Form';
 import { Link, useNavigate } from 'react-router-dom';
 import './RoomService.css'
-import { toast } from 'react-toastify';
 import axios from 'axios';
 import {useDispatch} from "react-redux"
 import { addservice } from '../../../../Redux/action/ServiceAction';
@@ -58,7 +56,7 @@ const AddService = () => {
     const addservice = async (data) => {
         const response = await axios.post("http://localhost:4000/api/v1/room-service/new", data);
         if (response.status === 200) {
-            toast.success("Services Added Successfully");
+            // toast.success("Services Added Successfully");
             setFormSubmitted(true);
         }
     };
@@ -67,13 +65,13 @@ const AddService = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if ( !Service_Name || !Servive_Charge ) {
-            toast.error("Please provide value into each input field");
+            // toast.error("Please provide value into each input field");
             // console.log("kuchbhi")
         } else {
             addservice(state);
             if (formSubmitted) {
                 setState(Initialstate);
-                toast.info('Form submitted successfully!');
+                // toast.info('Form submitted successfully!');
                 setFormSubmitted(false);
             }
             navigate("/service-list")

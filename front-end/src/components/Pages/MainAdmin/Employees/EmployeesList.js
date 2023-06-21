@@ -1,60 +1,25 @@
 import React, { useEffect, useState } from 'react'
-// import MainLayout from '../../Admin/Pages/MainLayout'
 import { Button, Container, Row, Table } from 'react-bootstrap'
 import { AiFillDashboard, AiFillDelete, AiFillEdit, } from 'react-icons/ai'
-// import { useDispatch, useSelector } from 'react-redux'
-// import { fetchleaves } from '../../reducer/action/leaveAction'
-// import Leave from './Leave'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from "react-router-dom"
 import { IoIosCreate } from "react-icons/io";
 import ModalCamp from './ModalCamp';
 import axios from "axios";
-import { toast } from 'react-toastify';
+import Employees from './Employees'
+import { fetchemployees } from '../../../../Redux/action/EmployeeAction'
+// import context from 'react-bootstrap/esm/AccordionContext'
 
 
 
 
 
 
-const EmployeesList = ({ post }) => {
 
-  // get api
-  const [data, setData] = useState([]);
-
-
-  useEffect(() => {
-    getUsers();
-  }, []);
-
-  const getUsers = async () => {
-    const response = await axios.get("http://localhost:4000/api/v1/employees");
-    if (response.status === 200) {
-      setData(response.data);
-    }
-  };
-
-
-// delete api
-  const onDeleteUser = async (id) => {
-    if (window.confirm("Are you sure that you wanted to delete that employee record")) {
-      const response = await axios.delete(`http://localhost:4000/api/v1/employee/${id}`);
-      if (response.status === 200) {
-        toast.success(response.data);
-        getUsers();
-      }
-    }
-  }
-
-
-
-  console.log("data=>", data);
-
-
+const EmployeesList = ({post}) => {
 
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState({});
-
-
 
   const handleModel = () => {
     setOpen(true);
@@ -62,32 +27,61 @@ const EmployeesList = ({ post }) => {
 
   }
 
- 
+
+    const dispatch = useDispatch()
+    const employees = useSelector(state => state.employees.item)
+    const employeesStatus = useSelector(state => state.employees.status)
+    const error = useSelector(state => state.employees.error)
+
+
+    console.log(employees,"hellow")
+    useEffect(() => {
+      if (employeesStatus === 'idle') {
+        dispatch(fetchemployees())
+      }
+    }, [employeesStatus, dispatch])
+
+    let content
+
+  
+
+    if (employeesStatus === 'loading') {
+      content = <div>Loading...</div>
+    } else if (employeesStatus === 'succeeded') {
+      content = employees.lenght>0 && employees.map(employe => <Employees key={employe.id} employe={employe} />)
+    } else if (employeesStatus === 'failed') {
+      content = <div>{error}</div>
+    }
+
+
+
 
   //   const dispatch = useDispatch()
-  //   const leaves = useSelector(state => state.leaves.item)
-  //   const leavesStatus = useSelector(state => state.leaves.status)
-  //   const error = useSelector(state => state.leaves.error)
+  // const employees = useSelector(state => state.employees.item)
+  // const employeesStatus = useSelector(state => state.employees.status)
+  // const error = useSelector(state => state.employees.error)
+
+ 
 
 
-
-  //   useEffect(() => {
-  //     if (leavesStatus === 'idle') {
-  //       dispatch(fetchleaves())
-  //     }
-  //   }, [leavesStatus, dispatch])
-
-  //   let content
-
-  //   if (leavesStatus === 'loading') {
-  //     content = <div>Loading...</div>
-  //   } else if (leavesStatus === 'succeeded') {
-  //     content = leaves.map(leave => <Leave key={leave.id} leave={leave} />)
-  //   } else if (leavesStatus === 'failed') {
-  //     content = <div>{error}</div>
+  // useEffect(() => {
+  //   if (employeesStatus === 'idle') {
+  //     dispatch(fetchemployees())
   //   }
+  // }, [employeesStatus, dispatch])
 
 
+  // let content
+
+  // console.log(employees,"hello")
+
+  // if (employeesStatus === 'loading') {
+  //   content = <div>Loading...</div>
+  // } else if (employeesStatus === 'succeeded') {
+  //   content = employees.length>0 && employees.map(employe => <Employees key={employe.id} employe={employe} />)
+  // } else if (employeesStatus === 'failed') {
+  //   content = <div>{error}</div>
+  // }
 
   return (
 
@@ -120,7 +114,6 @@ const EmployeesList = ({ post }) => {
       </Container>
 
 
-      {/* <div className="post-table"> */}
       <div className='form-div'>
 
         <h5 className="w3-center w3-flat-midnight-blue w3-padding-48 w3-border-blue-grey w3-grey text text-center mb-5 mt-3">Employee-Details</h5>
@@ -131,7 +124,6 @@ const EmployeesList = ({ post }) => {
             <table class="table table-bordered border-secondary">
               <thead>
                 <tr>
-
                   <th>Employee Name</th>
                   <th>Phone Number</th>
                   <th>Gender</th>
@@ -141,75 +133,7 @@ const EmployeesList = ({ post }) => {
                   <th>Action View</th>
                 </tr>
               </thead>
-              <tbody>
-                {/* <tr> */}
-                {data?.emp?.map((item, index) => {
-                  return (
-                    <tr key={index}>
-                      {/* <th scope="row">{index + 1}</th> */}
-                      <td>{item.Employee_Name}</td>
-                      <td>{item.Phone_Number}</td>
-                      <td>{item.Gender}</td>
-                      <td>{item.Salary}</td>
-                      <td>{item.Role}</td>
-                      {/* <td>{item.Dob}</td> */}
-                      {/* <td>{item.Address}</td> */}
-                      {/* <td>{item.Email}</td> */}
-
-
-
-
-                      <td>
-                        <Link to={`/empupdate/${item.id}`}>
-
-                          <Button className='table-btn' variant="light" >
-                            &#9998;Edit
-                          </Button>
-                        </Link>
-                      </td>
-                      <td>
-                        <Link to={`/empview/${item.id}`}>
-                          <Button className='table-btn' variant="light"
-                            onClick={() => handleModel()}
-                          >
-                            &#128065;View
-                          </Button>
-                          {open && (
-                            <ModalCamp
-
-                              open={open}
-                              setOpen={setOpen}
-                              // updatePost={updatePost}
-                              {...user}
-                            />
-                          )}
-                        </Link>
-
-                      </td>
-
-                      <td>
-                        {/* <Link> */}
-
-
-                        <Button className='table-btn' variant="light"
-                          onClick={() => onDeleteUser(item.id)}>
-                          &#9998;Delete
-                        </Button>
-                        {/* </Link> */}
-                      </td>
-
-                
-
-                    </tr>
-                  );
-                })}
-
-
-
-
-           
-              </tbody>
-
+                {content}
             </table>
           </Table>
         </Container>
@@ -223,4 +147,5 @@ const EmployeesList = ({ post }) => {
 
   )
 }
-export default EmployeesList;
+     
+      export default EmployeesList;
