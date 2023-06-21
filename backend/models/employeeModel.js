@@ -18,10 +18,10 @@ const EmployeeSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please enter your Item Number"],
         },
-    Gender: {
-        type: String,
-        required: [true, "Please enter your Item Number"],
-        },
+    // Gender: {
+    //     type: String,
+    //     required: [true, "Please enter your Item Number"],
+    //     },
     Dob: {
         type: String,
         required: [true, "Please enter your Item Number"],

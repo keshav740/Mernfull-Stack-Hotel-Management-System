@@ -1,13 +1,39 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { Button, Container, Row, Table, Form } from 'react-bootstrap';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { AiFillDashboard, AiOutlineDashboard } from 'react-icons/ai';
-import {  addroom } from '../../../../Redux/action/RoomAction';
-import { useDispatch } from 'react-redux';
-import { useNavigate,navigate } from 'react-router-dom';
+import { useDispatch,useSelector } from 'react-redux';
+import { useNavigate,navigate,useParams } from 'react-router-dom';
+import { updatroom } from '../../../../Redux/action/RoomAction';
 
 const UpdateRoom = () => {
+    const { id } = useParams();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    
+  const [updateData, setUpdateData] = useState();
+
+  const { rooms, loading } = useSelector((state) => state.app);
+  
+    useEffect(() => {
+    if (id) {
+      const singleUser = rooms.filter((room) => room.id === id);
+      setUpdateData(singleUser[0]);
+    }
+  }, []);
+
+  const newData = (e) => {
+    setUpdateData({ ...updateData, [e.target.name]: e.target.value });
+  };
+
+  console.log("updated data", updateData);
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    dispatch(updatroom(updateData));
+    navigate("/add-room");
+  };
+  
   return (
   <>
   
@@ -42,7 +68,7 @@ const UpdateRoom = () => {
                 <Container>
                     <Row>
                         <form className="row g-4 p-3 registration-form"
-                            onSubmit={handalSubmit}
+                            onSubmit={handleUpdate}
                         >
 
                             <div className="col-md-4 position-relative">
@@ -51,8 +77,8 @@ const UpdateRoom = () => {
                                     type="text"
                                     className="form-control"
                                     name="Room_Number"
-                                value={Room_Number}
-                                onChange={handleInputChange}
+                                value={updateData && updateData.Room_Number}
+                                onChange={newData}
                                 />
                             </div>
                             <div className="col-md-4 position-relative">
@@ -61,15 +87,17 @@ const UpdateRoom = () => {
                                     type="text"
                                     className="form-control"
                                     name="Price"
-                                    value={Price}
-                                    onChange={handleInputChange}
+                                    value={updateData && updateData.Price}
+                                    onChange={newData}
                                 />
                             </div>
                             <div className="col-md-4 position-relative" controlId="formGridState" >
                                 <label className="form-label">Room Type</label>
                                 <Form.Select name="Room_Type"
-                                       value={Room_Type}
-                                       onChange={handleInputChange}
+                                      
+                                       
+                                    value={updateData && updateData.Room_Type}
+                                    onChange={newData}
                                 >
                                     <option>Choose</option>
                                     <option value="Luxury">Luxury</option>
@@ -81,8 +109,9 @@ const UpdateRoom = () => {
                             <div className="col-md-4 position-relative" controlId="formGridState">
                                 <label className="form-label">Available/Not-Available</label>
                                 <Form.Select name="Available_Not"
-                                      value={Available_Not}
-                                      onChange={handleInputChange}
+                                  
+                                    value={updateData && updateData.Available_Not}
+                                    onChange={newData}
                                 >
                                     <option>Choose</option>
                                     <option value="Yes">Yes</option>

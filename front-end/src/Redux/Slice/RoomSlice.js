@@ -1,5 +1,5 @@
 import {  createAsyncThunk,createSlice } from '@reduxjs/toolkit'
-import { fetchroom,addroom } from '../action/RoomAction'
+import { fetchroom,addroom,updatroom } from '../action/RoomAction'
 
 const RoomSlice = createSlice({
     name: 'rooms',
@@ -31,6 +31,22 @@ const RoomSlice = createSlice({
                 state.item.push(action.payload)
             })
             .addCase(addroom.rejected, (state, action) => {
+                state.status = 'failed'
+                state.error = action.error.message
+            })
+
+            .addCase(updatroom.pending, state => {
+                state.status = 'loading'
+            })
+            .addCase(updatroom.fulfilled, (state, action) => {
+                state.status = 'succeeded'
+                // state.item.push(action.payload)
+                state.loading = false;
+                state.rooms = state.rooms.map((room) =>
+                  room.id === action.payload.id ? action.payload : room
+                );
+            })
+            .addCase(updatroom.rejected, (state, action) => {
                 state.status = 'failed'
                 state.error = action.error.message
             })

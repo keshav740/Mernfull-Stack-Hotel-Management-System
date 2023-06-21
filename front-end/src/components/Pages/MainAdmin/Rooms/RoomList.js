@@ -20,11 +20,8 @@ const RoomList = ({ post }) => {
   const roomsStatus = useSelector(state => state.rooms.status)
   const error = useSelector(state => state.rooms.error)
   
-  const handleModel = () => {
-    setOpen(true);
-    setUser(post);
-  }
-  
+
+  console.log(rooms,"hello")
   useEffect(() => {
     if (roomsStatus === 'idle') {
       dispatch(fetchroom())
@@ -33,38 +30,19 @@ const RoomList = ({ post }) => {
 
   let content
 
-  console.log(rooms,"hello")
-
   if (roomsStatus === 'loading') {
     content = <div>Loading...</div>
   } else if (roomsStatus === 'succeeded') {
     content = rooms.length>0 && rooms.map(room => <Rooms key={room.id} room={room} />)
-    // content=[]
   } else if (roomsStatus === 'failed') {
     content = <div>{error}</div>
   }
 
+  // const handleModel = () => {
+  //   setOpen(true);
+  //   setUser(post);
+  // }
 
-//   useEffect(() => {
-//     getUsers();
-//   }, []);
-
-//   const getUsers = async () => {
-//     const response = await axios.get("http://localhost:4000/api/v1/rooms");
-//     if (response.status === 200) {
-//       setData(response.data);
-//     }
-//   }
-//   console.log("data=>", data)
-
-
-// const handalupdate=(e)=>{
-//   e.preventDefault()
-//   axios.put("http://localhost:4000/api/v1/rooms",data)
-//     .then((response) =>{
-//       console.log(response)
-//     })
-// }
     
   return (
 

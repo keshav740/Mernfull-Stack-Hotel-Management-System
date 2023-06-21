@@ -1,8 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import RoomSlice from "./Slice/RoomSlice";
-import EmployeeSlice from "./Slice/EmployeeSlice";
-
 import ServicesSlice from "./Slice/ServicesSlice";
+import EmployeeSlice from "./Slice/EmployeeSlice";
 
 
 
@@ -12,10 +11,9 @@ const store = configureStore({
 
 
         rooms: RoomSlice,
-        employee: EmployeeSlice,
+        employees: EmployeeSlice,
         services: ServicesSlice,
-
-
+  
 
     },
 });
