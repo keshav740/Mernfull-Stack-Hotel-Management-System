@@ -19,7 +19,7 @@ export const fetchservices = createAsyncThunk('services/fetchservices', async ()
   })
 
   export const updateservice = createAsyncThunk('services/updateservice', async (service) => {
-   
+   console.log("ser",service)
     const response = await fetch(`http://localhost:4000/api/v1/room-service/${service.id}`, {
       method: 'PUT',
       headers: {
