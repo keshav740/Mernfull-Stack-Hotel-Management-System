@@ -18,59 +18,35 @@ export const fetchservices = createAsyncThunk('services/fetchservices', async ()
     return item
   })
 
+  export const updateservice = createAsyncThunk('services/updateservice', async (service) => {
+   
+    const response = await fetch(`http://localhost:4000/api/v1/room-service/${service.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(service)
+    })
+    const data = await response.json()
+    return data
+  })
 
 
-//   export const postUpdated = post => ({
-//     type: 'posts/postUpdated',
-//     payload: post
-//   })
-  
-//   export const postDeleted = id => ({
-//     type: 'posts/postDeleted',
-//     payload: id
-//   })
+  //   export const updatePost = createAsyncThunk('posts/updatePost', async (post) => {
+   
+  //   const response = await fetch(`http://localhost:5000/posts/${post.id}`, {
+  //     method: 'PUT',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify(post)
+  //   })
+  //   const data = await response.json()
+  //   return data
+  // })
 
-//   export const updatePost = (id, data) => {
-//     return async dispatch => {
-//       try {
-//         const response = await fetch(`http://localhost:3001/posts/${id}`, {
-//           method: 'PUT',
-//           headers: {
-//             'Content-Type': 'application/json'
-//           },
-//           body: JSON.stringify(data)
-//         })
-  
-//         if (!response.ok) {
-//           throw new Error('Failed to update post.')
-//         }
-  
-//         const post = await response.json()
-  
-//         dispatch(postUpdated(post))
-//       } catch (error) {
-//         console.error(error)
-//       }
-//     }
-//   }
-  
-//   export const deletePost = id => {
-//     return async dispatch => {
-//       try {
-//         const response = await fetch(`http://localhost:3001/posts/${id}`, {
-//           method: 'DELETE'
-//         })
-  
-//         if (!response.ok) {
-//           throw new Error('Failed to delete post.')
-//         }
-  
-//         dispatch(postDeleted(id))
-//       } catch (error) {
-//         console.error(error)
-//       }
-//     }
-//   }
+
+
 
 
 
