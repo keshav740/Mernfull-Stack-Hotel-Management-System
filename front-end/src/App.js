@@ -32,6 +32,7 @@ import Order from "./components/Pages/Restaurent/Order/Order";
 import Rooms from "./components/Pages/Hotel/AdminPage/Rooms/Rooms";
 import ResBilling from "./components/Pages/Restaurent/Res-Billing/ResBilling";
 import { ToastContainer } from "react-bootstrap";
+import UpdateService from "./components/Pages/MainAdmin/AddService/UpdateService";
 
 // import RoomServiceList from "./components/Pages/MainAdmin/Roomservice/RoomServiceList";
 function App() {
@@ -77,6 +78,7 @@ function App() {
           {/* <Route path="/room-service-list"  element={<MainAdminSidebar><RoomServiceList/></MainAdminSidebar>}/> */}
           <Route path="/services" element={<MainAdminSidebar><AddService /></MainAdminSidebar>} />
           <Route path="/service-list" element={<MainAdminSidebar><ServicesList /></MainAdminSidebar>} />
+          <Route path="/serviceEdit/:id" element={<MainAdminSidebar><UpdateService /></MainAdminSidebar>} />
           <Route path="/employees" element={<MainAdminSidebar><Employees /></MainAdminSidebar>} />
           <Route path="/empupdate/:id" element={<MainAdminSidebar><Employees /></MainAdminSidebar>} />
           <Route path="/employees-list" element={<MainAdminSidebar><EmployeesList /></MainAdminSidebar>} />
