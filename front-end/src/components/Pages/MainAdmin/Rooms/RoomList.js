@@ -12,8 +12,6 @@ import ModalCamp from './ModalCamp';
 
 
 
-
-
 const RoomList = ({post}) => {
 
   const [open, setOpen] = useState(false);
