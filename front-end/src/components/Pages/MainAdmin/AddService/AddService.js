@@ -53,7 +53,7 @@ const AddService = () => {
 
      const navigate = useNavigate()
 
-    const addservice = async (data) => {
+  const addservice = async (data) => {
         const response = await axios.post("http://localhost:4000/api/v1/room-service/new", data);
         if (response.status === 200) {
             // toast.success("Services Added Successfully");

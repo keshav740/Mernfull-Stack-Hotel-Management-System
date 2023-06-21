@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const Service = ({ service }) => {
+  console.log(service.Name)
 
 
   return (
@@ -13,7 +14,7 @@ const Service = ({ service }) => {
           <td>{service.Service_Name}</td>
           <td>{service.Servive_Charge}</td>
           <td>
-            <Link to={`/serviceEdit/${service.id}`} >
+          <Link to={`/serviceEdit/${service._id}`}>
               {/* <Link to="/serviceEdit/:id"> */}
 
               <Button className='table-btn' variant="light" >

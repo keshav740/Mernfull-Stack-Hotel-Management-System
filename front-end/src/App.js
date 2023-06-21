@@ -84,7 +84,7 @@ function App() {
           <Route path="/services" element={<MainAdminSidebar><AddService /></MainAdminSidebar>} />
           <Route path="/service-list" element={<MainAdminSidebar><ServicesList /></MainAdminSidebar>} />
           <Route path="/employees" element={<MainAdminSidebar><EmployeesForm /></MainAdminSidebar>} />
-          <Route path="/serviceEdit/:id" element={<MainAdminSidebar><UpdateService /></MainAdminSidebar>} />
+          <Route path="/serviceEdit/:serviceId" element={<MainAdminSidebar><UpdateService /></MainAdminSidebar>} />
           <Route path="/employees" element={<MainAdminSidebar><Employees /></MainAdminSidebar>} />
           <Route path="/empupdate/:id" element={<MainAdminSidebar><Employees /></MainAdminSidebar>} />
           <Route path="/employees-list" element={<MainAdminSidebar><EmployeesList /></MainAdminSidebar>} />

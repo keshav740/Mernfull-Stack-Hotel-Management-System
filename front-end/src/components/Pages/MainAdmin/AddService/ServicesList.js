@@ -21,7 +21,7 @@ const ServicesList = ({ post }) => {
   const error = useSelector(state => state.services.error)
 
  
- console.log(services , "hello")
+//  console.log(services , "hello")
   useEffect(() => {
     if (servicesStatus === 'idle') {
       dispatch(fetchservices())
