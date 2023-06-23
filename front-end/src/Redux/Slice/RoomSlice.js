@@ -1,5 +1,5 @@
-import {  createAsyncThunk,createSlice } from '@reduxjs/toolkit'
-import { fetchroom,addroom,updatroom } from '../action/RoomAction'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { fetchroom, addroom, updatroom } from '../action/RoomAction'
 
 const RoomSlice = createSlice({
     name: 'rooms',
@@ -40,16 +40,32 @@ const RoomSlice = createSlice({
             })
             .addCase(updatroom.fulfilled, (state, action) => {
                 state.status = 'succeeded'
-                // state.item.push(action.payload)
-                state.loading = false;
-                state.rooms = state.rooms.map((room) =>
-                  room.id === action.payload.id ? action.payload : room
-                );
+                console.log(action.payload)
+                // const index = state.data.findIndex((room) => room.id === action.payload.id)
+                // state.data[index] = action.payload
+                state.data.push(action.payload.id)
             })
             .addCase(updatroom.rejected, (state, action) => {
                 state.status = 'failed'
                 state.error = action.error.message
             })
+
+
+        // .addCase(updatroom.pending, state => {
+        //     state.status = 'loading'
+        // })
+        // .addCase(updatroom.fulfilled, (state, action) => {
+        //     state.status = 'succeeded'
+        //     state.item.push(action.payload)
+        //     state.loading = false;
+        //     state.rooms = state.rooms.map((room) =>
+        //       room.id === action.payload.id ? action.payload : room
+        //     );
+        // })
+        // .addCase(updatroom.rejected, (state, action) => {
+        //     state.status = 'failed'
+        //     state.error = action.error.message
+        // })
 
     }
 })

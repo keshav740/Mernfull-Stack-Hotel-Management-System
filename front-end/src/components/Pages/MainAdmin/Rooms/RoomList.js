@@ -21,7 +21,7 @@ const RoomList = ({ post }) => {
   const error = useSelector(state => state.rooms.error)
   
 
-  console.log(rooms,"hello")
+  // console.log(rooms,"hello")
   useEffect(() => {
     if (roomsStatus === 'idle') {
       dispatch(fetchroom())

@@ -25,8 +25,7 @@ const EmployeesForm = () => {
         Salary: "",
 
     }
-
-
+    
     const dispatch = useDispatch();
     const [state, setState] = useState(Initialstate);
     const [formSubmitted, setFormSubmitted] = useState(false);

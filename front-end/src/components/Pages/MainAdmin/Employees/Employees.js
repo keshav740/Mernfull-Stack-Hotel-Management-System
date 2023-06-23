@@ -17,11 +17,11 @@ const Employees = ({employe}) => {
           {/* <td>{employe.Role}</td> */}
           <td>{employe.Salary}</td>
           <td>
-            <Link to={`/emp/${employe.id}`}>
+            {/* <Link to={`/emp/${employe.id}`}> */}
             <Button className='table-btn' variant="light" >
               &#9998;Edit
             </Button>
-            </Link>
+            {/* </Link> */}
           </td>
           <td>
             <Button className='table-btn' variant="light" >

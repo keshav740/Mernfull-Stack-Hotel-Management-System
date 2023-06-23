@@ -29,7 +29,12 @@ const MainAdminSidebar = ({ children }) => {
       path: "/add-rooms",
       name: "Rooms",
       icon: <MdOutlineMeetingRoom />
-    },
+    }, 
+    //  {
+    //   path: "/create",
+    //   name: "create",
+    //   icon: <MdOutlineMeetingRoom />
+    // },
 
     {
       path: "/services",

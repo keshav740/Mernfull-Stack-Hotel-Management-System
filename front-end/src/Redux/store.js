@@ -6,6 +6,8 @@ import EmployeeSlice from "./Slice/EmployeeSlice";
 
 
 
+
+
 const store = configureStore({
     reducer: {
 
@@ -13,6 +15,8 @@ const store = configureStore({
         rooms: RoomSlice,
         employees: EmployeeSlice,
         services: ServicesSlice,
+    
+       
   
 
     },
