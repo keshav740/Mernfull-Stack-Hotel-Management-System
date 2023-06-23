@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { addservice, fetchservices, updateservice } from '../action/ServiceAction'
+import { addbook, fetchbooks, updatebook } from '../action/BookingAction'
 
 
 
 
-const ServicesSlice = createSlice({
-  name: 'services',
+
+const BooksSlice = createSlice({
+  name: 'books',
   initialState: {
     item: [],
     status: 'idle',
@@ -14,28 +15,28 @@ const ServicesSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(fetchservices.pending, state => {
+      .addCase(fetchbooks.pending, state => {
         state.status = 'loading'
       })
-      .addCase(fetchservices.fulfilled, (state, action) => {
+      .addCase(fetchbooks.fulfilled, (state, action) => {
         state.status = 'succeeded'
         state.item = action.payload
       })
-      .addCase(fetchservices.rejected, (state, action) => {state.status = 'failed'
+      .addCase(fetchbooks.rejected, (state, action) => {state.status = 'failed'
       state.error = action.error.message
       })
 
 
 
 
-      .addCase(addservice.pending, state => {
+      .addCase(addbook.pending, state => {
       state.status = 'loading'
       })
-      .addCase(addservice.fulfilled, (state, action) => {
+      .addCase(addbook.fulfilled, (state, action) => {
       state.status = 'succeeded'
       state.item.push(action.payload)
       })
-      .addCase(addservice.rejected, (state, action) => {
+      .addCase(addbook.rejected, (state, action) => {
       state.status = 'failed'
       state.error = action.error.message
       })
@@ -61,15 +62,15 @@ const ServicesSlice = createSlice({
 
 
       
-      .addCase(updateservice.pending, state => {
+      .addCase(updatebook.pending, state => {
         state.status = 'loading'
 
         })
-        .addCase(updateservice.fulfilled, (state, action) => {
+        .addCase(updatebook.fulfilled, (state, action) => {
         state.status = 'succeeded'
         state.data.put(action.payload._id)
         })
-        .addCase(updateservice.rejected, (state, action) => {
+        .addCase(updatebook.rejected, (state, action) => {
         state.status = 'failed'
         state.error = action.error.message
         })
@@ -107,4 +108,4 @@ const ServicesSlice = createSlice({
       }
       })
       
-      export default ServicesSlice.reducer
+      export default BooksSlice.reducer

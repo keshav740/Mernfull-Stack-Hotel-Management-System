@@ -12,65 +12,67 @@ import axios from 'axios';
 // import 'react-toastify/dist/ReactToastify.css';
 
 const Guest = () => {
-    const initialState = {
-        Guest_Name: '',
-        Guest_Number: '',
-        Address: '',
-        Email: '',
-        Room_Number: '',
-        Room_Quantity: '',
-        Booking_Date_Time: '',
-        Checkin_Date_Time: '',
-        Checkout_Date_Time: '',
-        Number_Of_Children: '',
-        Number_Of_Adults: '',
-    };
-
-    const [state, setState] = useState(initialState);
-    const [formSubmitted, setFormSubmitted] = useState(false);
 
 
-    const {
-        Guest_Name,
-        Guest_Number,
-        Address,
-        Email,
-        Room_Number,
-        Room_Quantity,
-        Booking_Date_Time,
-        Checkin_Date_Time,
-        Checkout_Date_Time,
-        Number_Of_Children,
-        Number_Of_Adults,
-    } = state;
+    // const initialState = {
+    //     Guest_Name: '',
+    //     Guest_Number: '',
+    //     Address: '',
+    //     Email: '',
+    //     Room_Number: '',
+    //     Room_Quantity: '',
+    //     Booking_Date_Time: '',
+    //     Checkin_Date_Time: '',
+    //     Checkout_Date_Time: '',
+    //     Number_Of_Children: '',
+    //     Number_Of_Adults: '',
+    // };
 
-    const addGuest = async (data) => {
-        const response = await axios.post('http://localhost:4000/api/v1/guest/new', data);
-        if (response.status === 200) {
-            // toast.success('Guest Added Successfully');
-            setFormSubmitted(true);
+    // const [state, setState] = useState(initialState);
+    // const [formSubmitted, setFormSubmitted] = useState(false);
 
-        }
-    };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (!Guest_Name || !Email) {
-            // toast.error('Please Provide required value');
-        } else {
-            addGuest(state);
-            if (formSubmitted) {
-                setState(initialState);
-                // toast.info('Form submitted successfully!');
-                setFormSubmitted(false);
-            }
-        }
-    };
+    // const {
+    //     Guest_Name,
+    //     Guest_Number,
+    //     Address,
+    //     Email,
+    //     Room_Number,
+    //     Room_Quantity,
+    //     Booking_Date_Time,
+    //     Checkin_Date_Time,
+    //     Checkout_Date_Time,
+    //     Number_Of_Children,
+    //     Number_Of_Adults,
+    // } = state;
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setState({ ...state, [name]: value });
-    };
+    // const addGuest = async (data) => {
+    //     const response = await axios.post('http://localhost:4000/api/v1/guest/new', data);
+    //     if (response.status === 200) {
+    //         // toast.success('Guest Added Successfully');
+    //         setFormSubmitted(true);
+
+    //     }
+    // };
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     if (!Guest_Name || !Email) {
+    //         // toast.error('Please Provide required value');
+    //     } else {
+    //         addGuest(state);
+    //         if (formSubmitted) {
+    //             setState(initialState);
+    //             // toast.info('Form submitted successfully!');
+    //             setFormSubmitted(false);
+    //         }
+    //     }
+    // };
+
+    // const handleInputChange = (e) => {
+    //     const { name, value } = e.target;
+    //     setState({ ...state, [name]: value });
+    // };
 
     return (
         <>
@@ -108,50 +110,74 @@ const Guest = () => {
             <div className='form-div'>
                 <Container>
                     <Row>
-                        <form className="row g-4 p-3 registration-form" onSubmit={handleSubmit}>
+                        <form className="row g-4 p-3 registration-form" 
+                        // onSubmit={handleSubmit}
+                        >
                             <div className="col-md-4 position-relative">
                                 <label htmlFor='Guest_Name' className="label">Guest Name</label>
-                                <input type="text" name="Guest_Name" id="Guest_Name" className="form-control" onChange={handleInputChange} value={Guest_Name} />
+                                <input type="text" name="Guest_Name" id="Guest_Name"className="form-control"
+                                //  onChange={handleInputChange} value={Guest_Name}
+                                  />
                             </div>
                             <div className="col-md-4 position-relative">
                                 <label className="label">Guest Number</label>
-                                <input type="text" name="Guest_Number" className="form-control" onChange={handleInputChange} value={Guest_Number} />
+                                <input type="text" name="Guest_Number" className="form-control"
+                                //  onChange={handleInputChange} value={Guest_Number} 
+                                 />
                             </div>
                             <div className="col-md-4 position-relative">
                                 <label className="label">Address</label>
-                                <input type="text" name="Address" className="form-control" onChange={handleInputChange} value={Address} />
+                                <input type="text" name="Address" className="form-control"
+                                //  onChange={handleInputChange} value={Address}
+                                  />
                             </div>
                             <div className="col-md-4 position-relative">
                                 <label className="label">Email</label>
-                                <input type="text" name="Email" className="form-control" onChange={handleInputChange} value={Email} />
+                                <input type="text" name="Email" className="form-control" 
+                                // onChange={handleInputChange} value={Email}
+                                 />
                             </div>
                             <div className="col-md-4 position-relative">
                                 <label className="label">Room No.</label>
-                                <input type="text" name="Room_Number" className="form-control" onChange={handleInputChange} value={Room_Number} />
+                                <input type="text" name="Room_Number" className="form-control" 
+                                // onChange={handleInputChange} value={Room_Number} 
+                                />
                             </div>
                             <div className="col-md-4 position-relative">
                                 <label className="label">Room Quantity</label>
-                                <input type="text" name="Room_Quantity" className="form-control" onChange={handleInputChange} value={Room_Quantity} />
+                                <input type="text" name="Room_Quantity" className="form-control" 
+                                // onChange={handleInputChange} value={Room_Quantity} 
+                                />
                             </div>
                             <div className="col-md-4 position-relative">
                                 <label className="label">Booking Date & Time</label>
-                                <input type="datetime-local" name="Booking_Date_Time" className="form-control" onChange={handleInputChange} value={Booking_Date_Time} />
+                                <input type="datetime-local" name="Booking_Date_Time" className="form-control" 
+                                // onChange={handleInputChange} value={Booking_Date_Time}
+                                 />
                             </div>
                             <div className="col-md-4 position-relative">
                                 <label className="label">Check-in Date & Time</label>
-                                <input type="datetime-local" name="Checkin_Date_Time" className="form-control" onChange={handleInputChange} value={Checkin_Date_Time} />
+                                <input type="datetime-local" name="Checkin_Date_Time" className="form-control"
+                                //  onChange={handleInputChange} value={Checkin_Date_Time}
+                                  />
                             </div>
                             <div className="col-md-4 position-relative">
                                 <label className="label">Check-Out Date & Time</label>
-                                <input type="datetime-local" name="Checkout_Date_Time" className="form-control" onChange={handleInputChange} value={Checkout_Date_Time} />
+                                <input type="datetime-local" name="Checkout_Date_Time" className="form-control"
+                                //  onChange={handleInputChange} value={Checkout_Date_Time} 
+                                 />
                             </div>
                             <div className="col-md-4 position-relative">
                                 <label className="label">Number Of Childrens</label>
-                                <input type="text" name="Number_Of_Children" className="form-control" onChange={handleInputChange} value={Number_Of_Children} />
+                                <input type="text" name="Number_Of_Children" className="form-control"
+                                //  onChange={handleInputChange} value={Number_Of_Children} 
+                                 />
                             </div>
                             <div className="col-md-4 position-relative">
                                 <label className="label">Number Of Adults</label>
-                                <input type="text" name="Number_Of_Adults" className="form-control" onChange={handleInputChange} value={Number_Of_Adults} />
+                                <input type="text" name="Number_Of_Adults" className="form-control"
+                                //  onChange={handleInputChange} value={Number_Of_Adults} 
+                                 />
                             </div>
                             <center>
 
