@@ -48,8 +48,12 @@ const ServicesSlice = createSlice({
         })
         .addCase(updateservice.fulfilled, (state, action) => {
         state.status = 'succeeded'
-        const index = state.data.findIndex((service) => service.id === action.payload.id)
+        console.log(action.payload)
+        const index = state.data.findIndex((service) => service._id === action.payload._id)
+
         state.data[index] = action.payload
+
+        
         // state.data.push(action.update)
         })
         .addCase(updateservice.rejected, (state, action) => {

@@ -88,6 +88,7 @@ function App() {
           <Route path="/services" element={<MainAdminSidebar><AddService /></MainAdminSidebar>} />
           <Route path="/service-list" element={<MainAdminSidebar><ServicesList /></MainAdminSidebar>} />
           <Route path="/serviceEdit/:id" element={<MainAdminSidebar><UpdateService /></MainAdminSidebar>} />
+          <Route path="/employees" element={<MainAdminSidebar><EmployeesForm /></MainAdminSidebar>} />
           <Route path="/employees" element={<MainAdminSidebar><Employees /></MainAdminSidebar>} />
           <Route path="/add-guest" element={<MainAdminSidebar><Guest /></MainAdminSidebar>} />
           <Route path="/guest-details" element={<MainAdminSidebar><GuestList /></MainAdminSidebar>} />
