@@ -1,31 +1,32 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-export const fetchservices = createAsyncThunk('services/fetchservices', async () => {
-    const response = await fetch("http://localhost:4000/api/v1/room-services")
+export const fetchbooks = createAsyncThunk('books/fetchbooks', async () => {
+    const response = await fetch("http://localhost:4000/api/v1/room-bookings")
     const item = await response.json()
+    console.log(item)
     return item
   })
   
-  export const addservice = createAsyncThunk('services/addservice', async (service) => {
-    const response = await fetch("http://localhost:4000/api/v1/room-service/new", {
+  export const addbook = createAsyncThunk('books/addbook', async (book) => {
+    const response = await fetch("http://localhost:4000/api/v1/room-booking/new", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(service)
+      body: JSON.stringify(book)
     })
     const item = await response.json()
     return item
   })
 
-  export const updateservice = createAsyncThunk('services/updateservice', async (service) => {
-   console.log("ser",service)
-    const response = await fetch(`http://localhost:4000/api/v1/room-service/${service._id}`, {
+  export const updatebook = createAsyncThunk('books/updatebook', async (book) => {
+//    console.log("ser",service)
+    const response = await fetch(`http://localhost:4000/api/v1/room-booking/${book.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(service)
+      body: JSON.stringify(book)
     })
     const data = await response.json()
     return data
