@@ -9,6 +9,9 @@ import { Link }  from "react-router-dom"
 import { IoIosCreate } from "react-icons/io";
 import { useNavigate } from 'react-router-dom'
 import ModalCamp from './ModalCamp';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchbooks } from '../../../../../Redux/action/BookingAction';
+import Booking from './Booking';
 
 
 
@@ -30,28 +33,28 @@ const BookingList = ({post}) => {
   }
  
 
-//   const dispatch = useDispatch()
-//   const leaves = useSelector(state => state.leaves.item)
-//   const leavesStatus = useSelector(state => state.leaves.status)
-//   const error = useSelector(state => state.leaves.error)
+  const dispatch = useDispatch()
+  const books = useSelector(state => state.books.item)
+  const booksStatus = useSelector(state => state.books.status)
+  const error = useSelector(state => state.books.error)
 
  
 
-//   useEffect(() => {
-//     if (leavesStatus === 'idle') {
-//       dispatch(fetchleaves())
-//     }
-//   }, [leavesStatus, dispatch])
+  useEffect(() => {
+    if (booksStatus === 'idle') {
+      dispatch(fetchbooks())
+    }
+  }, [booksStatus, dispatch])
 
-//   let content
+  let content
 
-//   if (leavesStatus === 'loading') {
-//     content = <div>Loading...</div>
-//   } else if (leavesStatus === 'succeeded') {
-//     content = leaves.map(leave => <Leave key={leave.id} leave={leave} />)
-//   } else if (leavesStatus === 'failed') {
-//     content = <div>{error}</div>
-//   }
+  if (booksStatus === 'loading') {
+    content = <div>Loading...</div>
+  } else if (booksStatus === 'succeeded') {
+    content = books.map(book => <Booking key={book.id} book={book} />)
+  } else if (booksStatus === 'failed') {
+    content = <div>{error}</div>
+  }
 
 
 
@@ -109,7 +112,8 @@ const BookingList = ({post}) => {
           <th>Action View</th>
      </tr>
       </thead>
-      <tbody>
+      {content}
+      {/* <tbody>
       <tr>
 
 <td>keshav</td>
@@ -123,7 +127,7 @@ const BookingList = ({post}) => {
 
   <Link to="/roombooking">
     <Button className='table-btn' variant="light" 
-      // onClick={() => navigate(`/booking/${""}`)}
+      
       >
         &#9998;Edit
     </Button>   </Link>                 
@@ -139,16 +143,16 @@ const BookingList = ({post}) => {
             
               open={open}
               setOpen={setOpen}
-              // updatePost={updatePost}
+             
               {...user}
             />
           )}
  
 </td>
 
-{/* <button className="view-btn">View </button> */}
+
 </tr>
-      </tbody>
+      </tbody> */}
     </table>
     </Table>
     </Row>
