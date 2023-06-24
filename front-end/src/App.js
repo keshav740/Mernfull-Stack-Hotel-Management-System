@@ -33,6 +33,7 @@ import EmployeesForm from "./components/Pages/MainAdmin/Employees/Employeesform"
 import EmployeesList from "./components/Pages/MainAdmin/Employees/EmployeesList";
 import UpdateService from "./components/Pages/MainAdmin/AddService/UpdateService";
 import Employees from "./components/Pages/MainAdmin/Employees/Employees";
+import GuestUpdate from "./components/Pages/MainAdmin/GuestInformation/GuestUpdate";
 
 
 //
@@ -92,6 +93,7 @@ function App() {
           <Route path="/employees" element={<MainAdminSidebar><Employees /></MainAdminSidebar>} />
           <Route path="/add-guest" element={<MainAdminSidebar><Guest /></MainAdminSidebar>} />
           <Route path="/guest-details" element={<MainAdminSidebar><GuestList /></MainAdminSidebar>} />
+          <Route path="/guestEdit/:id" element={<MainAdminSidebar><GuestUpdate /></MainAdminSidebar>} />
           {/* Admin  sidebar routing end*/}
       
         </Route>
