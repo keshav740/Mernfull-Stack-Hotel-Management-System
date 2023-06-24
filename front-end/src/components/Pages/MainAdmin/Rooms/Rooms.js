@@ -1,10 +1,17 @@
-import React,{useEffect} from 'react'
+import React,{useEffect,useState} from 'react'
 import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 
-const Rooms = ({ room }) => {
+const Rooms = ({ room,post }) => {
+  const [open, setOpen] = useState(false);
+  const [user, setUser] = useState({});
+  const [data, setData] = useState([]);
   
+  const handleModel = () => {
+    setOpen(true);
+    setUser(post);
+  }
   return (
     <>
       <tbody>
@@ -17,9 +24,9 @@ const Rooms = ({ room }) => {
             {/* <Link to={`/roomedit/${room.id}`}> */}
             <Button className='table-btn' variant="light" >
               &#9998;Edit
-              {/* {isUpdating ? 'Update' : 'Add'} */}
+            
             </Button>
-            {/* </Lirsnk> */}
+            {/* </Link> */}
           </td>
           <td>
             <Button className='table-btn' variant="light" >

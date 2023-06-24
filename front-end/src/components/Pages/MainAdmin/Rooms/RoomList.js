@@ -3,24 +3,15 @@ import { Button, Container, Row, Table } from 'react-bootstrap'
 import { AiFillDashboard, AiFillDelete, AiFillEdit, } from 'react-icons/ai'
 import { Link } from "react-router-dom"
 import { IoIosCreate } from "react-icons/io";
-import ModalCamp from './ModalCamp';
-import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import {  fetchroom } from '../../../../Redux/action/RoomAction';
 import Rooms from './Rooms';
 
 const RoomList = ({ post }) => {
-  const [open, setOpen] = useState(false);
-  const [user, setUser] = useState({});
-  const [data, setData] = useState([]);
-
-
   const dispatch = useDispatch()
   const rooms = useSelector(state => state.rooms.item.rom)
   const roomsStatus = useSelector(state => state.rooms.status)
   const error = useSelector(state => state.rooms.error)
-  
-
   // console.log(rooms,"hello")
   useEffect(() => {
     if (roomsStatus === 'idle') {
@@ -38,10 +29,6 @@ const RoomList = ({ post }) => {
     content = <div>{error}</div>
   }
 
-  // const handleModel = () => {
-  //   setOpen(true);
-  //   setUser(post);
-  // }
 
     
   return (

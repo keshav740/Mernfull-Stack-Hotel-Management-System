@@ -20,41 +20,17 @@ export const fetchroom = createAsyncThunk('rooms/fetchroom', async () => {
     return item
   })
 
-  export const updatroom = createAsyncThunk('rooms/updatroom', async (rooms) => {
-    const response = await fetch(`http://localhost:4000/api/v1/rooms//${rooms.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(rooms)
-    })
-    const data = await response.json()
-    return data
-  })
-
-
-
-  // export const updatroom = createAsyncThunk("rooms/updatroom",async (rooms, { rejectWithValue }) => {
-  //     console.log("updated data", rooms);
-  //     const response = await fetch(
-  //       `http://localhost:4000/api/v1/rooms/${rooms.id}`,
-  //       {
-  //         method: "PUT",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify(rooms),
-  //       }
-  //     );
-  
-  //     try {
-  //       const result = await response.json();
-  //       return result;
-  //     } catch (error) {
-  //       return rejectWithValue(error);
-  //     }
-  //   }
-  // );
+  // export const updatroom = createAsyncThunk('rooms/updatroom', async (rooms) => {
+  //   const response = await fetch(`http://localhost:4000/api/v1/rooms//${rooms.id}`, {
+  //     method: 'PUT',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify(rooms)
+  //   })
+  //   const data = await response.json()
+  //   return data
+  // })
 
 
   // export const deleteroom = createAsyncThunk(
