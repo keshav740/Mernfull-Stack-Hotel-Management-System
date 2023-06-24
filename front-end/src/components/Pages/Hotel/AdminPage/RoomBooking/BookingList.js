@@ -9,6 +9,9 @@ import { Link } from "react-router-dom"
 import { IoIosCreate } from "react-icons/io";
 import { useNavigate } from 'react-router-dom'
 import ModalCamp from './ModalCamp';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchbooks } from '../../../../../Redux/action/BookingAction';
+import Booking from './Booking';
 
 
 const BookingList = ({ post }) => {
@@ -21,29 +24,28 @@ const BookingList = ({ post }) => {
 
   }
 
-
-  //   const dispatch = useDispatch()
-  //   const leaves = useSelector(state => state.leaves.item)
-  //   const leavesStatus = useSelector(state => state.leaves.status)
-  //   const error = useSelector(state => state.leaves.error)
-
+  const dispatch = useDispatch()
+  const books = useSelector(state => state.books.item)
+  const booksStatus = useSelector(state => state.books.status)
+  const error = useSelector(state => state.books.error)
 
 
-  //   useEffect(() => {
-  //     if (leavesStatus === 'idle') {
-  //       dispatch(fetchleaves())
-  //     }
-  //   }, [leavesStatus, dispatch])
 
-  //   let content
+  useEffect(() => {
+    if (booksStatus === 'idle') {
+      dispatch(fetchbooks())
+    }
+  }, [booksStatus, dispatch])
 
-  //   if (leavesStatus === 'loading') {
-  //     content = <div>Loading...</div>
-  //   } else if (leavesStatus === 'succeeded') {
-  //     content = leaves.map(leave => <Leave key={leave.id} leave={leave} />)
-  //   } else if (leavesStatus === 'failed') {
-  //     content = <div>{error}</div>
-  //   }
+  let content
+
+  if (booksStatus === 'loading') {
+    content = <div>Loading...</div>
+  } else if (booksStatus === 'succeeded') {
+    content = books.map(book => <Booking key={book.id} book={book} />)
+  } else if (booksStatus === 'failed') {
+    content = <div>{error}</div>
+  }
 
 
 
@@ -76,20 +78,14 @@ const BookingList = ({ post }) => {
           <hr />
         </Row>
       </Container>
-
-
       <div className="post-table">
-
         <h5 className="w3-center w3-flat-midnight-blue w3-padding-48 w3-border-blue-grey w3-grey text text-center mb-5 mt-3">Room Booking Details</h5>
         <Container>
           <Row>
-
-
             <Table responsive>
               <table class="table table-bordered border-secondary">
                 <thead>
                   <tr>
-
                     <th>Guest Name</th>
                     <th>Phone No.</th>
                     <th>Address</th>
@@ -101,55 +97,12 @@ const BookingList = ({ post }) => {
                     <th>Action View</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-
-                    <td>keshav</td>
-                    <td>keshav</td>
-                    <td>keshav</td>
-                    <td>keshav</td>
-                    <td>keshav</td>
-                    <td>keshav</td>
-                    <td>keshav</td>
-                    <td>
-
-                      <Link to="/roombooking">
-                        <Button className='table-btn' variant="light"
-                        // onClick={() => navigate(`/booking/${""}`)}
-                        >
-                          &#9998;Edit
-                        </Button>   </Link>
-                    </td>
-                    <td>
-                      <Button className='table-btn' variant="light"
-                        onClick={() => handleModel()}
-                      >
-                        &#128065;View
-                      </Button>
-                      {open && (
-                        <ModalCamp
-
-                          open={open}
-                          setOpen={setOpen}
-                          // updatePost={updatePost}
-                          {...user}
-                        />
-                      )}
-
-                    </td>
-
-                    {/* <button className="view-btn">View </button> */}
-                  </tr>
-                </tbody>
-              </table>
-            </Table>
-          </Row>
-        </Container>
-
+                {content}
+              </table >
+            </Table >
+          </Row >
+        </Container >
       </div>
-
-
-
 
     </>
 
