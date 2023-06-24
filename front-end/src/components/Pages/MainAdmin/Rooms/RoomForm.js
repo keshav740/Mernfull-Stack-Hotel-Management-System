@@ -6,6 +6,11 @@ import { AiFillDashboard, AiOutlineDashboard } from 'react-icons/ai';
 import {  addroom } from '../../../../Redux/action/RoomAction';
 import { useDispatch } from 'react-redux';
 import { useNavigate,navigate } from 'react-router-dom';
+
+
+
+
+
 const RoomForm = () => {
 
     const initialState = {
@@ -32,8 +37,8 @@ const RoomForm = () => {
 
 
 
-    const handalSubmit = (event) =>{
-        event.preventDefalut();
+    const handalSubmit = (e) =>{
+        e.preventDefault();
         if( ! Room_Number || !Price || !Room_Type || !Available_Not ) {
           
         }else{
