@@ -20,8 +20,9 @@ const EmployeeSlice = createSlice({
         state.status = 'succeeded'
         state.item = action.payload
       })
-      .addCase(fetchemployees.rejected, (state, action) => {state.status = 'failed'
-      state.error = action.error.message
+      .addCase(fetchemployees.rejected, (state, action) => {
+        state.status = 'failed'
+        state.error = action.error.message
       })
 
 

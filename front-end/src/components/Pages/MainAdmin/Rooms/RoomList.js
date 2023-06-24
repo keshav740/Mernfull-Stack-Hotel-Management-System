@@ -6,7 +6,7 @@ import { IoIosCreate } from "react-icons/io";
 import ModalCamp from './ModalCamp';
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
-import {  fetchroom } from '../../../../Redux/action/RoomAction';
+import {  fetchrooms } from '../../../../Redux/action/RoomAction';
 import Rooms from './Rooms';
 
 
@@ -33,13 +33,13 @@ const RoomList = ({post}) => {
   
   useEffect(() => {
     if (roomsStatus === 'idle') {
-      dispatch(fetchroom())
+      dispatch(fetchrooms())
     }
   }, [roomsStatus, dispatch])
 
   let content
 
-  console.log(rooms,"hello")
+  console.log(rooms,"roomL")
 
   if (roomsStatus === 'loading') {
     content = <div>Loading...</div>
