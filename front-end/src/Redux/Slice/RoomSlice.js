@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { fetchroom, addroom } from '../action/RoomAction'
+import { addroom, fetchrooms } from '../action/RoomAction'
 
 const RoomSlice = createSlice({
     name: 'rooms',
