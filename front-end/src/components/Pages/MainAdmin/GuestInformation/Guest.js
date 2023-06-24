@@ -9,9 +9,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 // import { Navigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import { addguest } from '../../../../Redux/action/GuestAction';
 // import 'react-toastify/dist/ReactToastify.css';
 
 const Guest = () => {
+
+
+
     const initialState = {
         Guest_Name: '',
         Guest_Number: '',
@@ -28,7 +32,7 @@ const Guest = () => {
 
     const [state, setState] = useState(initialState);
     const [formSubmitted, setFormSubmitted] = useState(false);
-
+    const navigate = useNavigate()
 
     const {
         Guest_Name,
@@ -44,7 +48,7 @@ const Guest = () => {
         Number_Of_Adults,
     } = state;
 
-    const addGuest = async (data) => {
+   const addguest = async (data) => {
         const response = await axios.post('http://localhost:4000/api/v1/guest/new', data);
         if (response.status === 200) {
             // toast.success('Guest Added Successfully');
@@ -58,12 +62,13 @@ const Guest = () => {
         if (!Guest_Name || !Email) {
             // toast.error('Please Provide required value');
         } else {
-            addGuest(state);
+            addguest(state);
             if (formSubmitted) {
                 setState(initialState);
                 // toast.info('Form submitted successfully!');
                 setFormSubmitted(false);
             }
+            navigate("/guest-details")
         }
     };
 

@@ -5,6 +5,9 @@ import { Link } from "react-router-dom"
 import { IoIosCreate } from "react-icons/io";
 import ModalCamp from './ModalCamp';
 import axios from "axios"
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchguests } from '../../../../Redux/action/GuestAction';
+import GuestMap from './GuestMap';
 
 
 
@@ -15,19 +18,46 @@ const GuestList = ({ post }) => {
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState({});
   const [guest, setGuest] = useState([])
+  const dispatch = useDispatch()
+  const guests = useSelector(state => state.guests.item.gue)
+  const guestsStatus = useSelector(state => state.guests.status)
+  const error = useSelector(state => state.guests.error)
 
+
+  console.log(guests , "Guest")
 
   useEffect(() => {
-    getGuests()
-  }, [])
-
-  const getGuests = async () => {
-    const response = await axios.get("http://localhost:4000/api/v1/guests")
-    if (response.status === 200) {
-      setGuest(response.data)
+    if (guestsStatus === 'idle') {
+      dispatch(fetchguests())
     }
+  }, [guestsStatus, dispatch])
+
+  let content
+
+  if (guestsStatus === 'loading') {
+    content = <div>Loading...</div>
+  } else if (guestsStatus === 'succeeded') {
+    content = guests.length>0 && guests.map(guest => <GuestMap key={guest.id} guest={guest} />)
+  } else if (guestsStatus === 'failed') {
+    content = <div>{error}</div>
   }
-  console.log(guest)
+
+
+
+
+  // useEffect(() => {
+  //   getGuests()
+  // }, [])
+
+  // const getGuests = async () => {
+  //   const response = await axios.get("http://localhost:4000/api/v1/guests")
+  //   if (response.status === 200) {
+  //     setGuest(response.data)
+  //   }
+  // }
+  // console.log(guest)
+
+
   const handleModel = () => {
     setOpen(true);
     setUser(post);
@@ -79,7 +109,7 @@ const GuestList = ({ post }) => {
             <table class="table table-bordered border-secondary">
               <thead>
                 <tr>
-                  <th>S.No</th>
+                  {/* <th>S.No</th> */}
                   <th>Guest Name</th>
                   <th>Guest Number</th>
                   <th>Room Quantity</th>
@@ -89,7 +119,9 @@ const GuestList = ({ post }) => {
                   <th>Action View</th>
                 </tr>
               </thead>
-              <tbody>
+              {content}
+              
+              {/* <tbody>
                 {guest?.gue?.map((guest, index) => {
                   return (
                     <tr key={index}>
@@ -130,12 +162,8 @@ const GuestList = ({ post }) => {
                 })}
                 <tr>
 
-
-
-
-                  {/* <button className="view-btn">View </button> */}
                 </tr>
-              </tbody>
+              </tbody> */}
             </table>
           </Table>
         </Container>

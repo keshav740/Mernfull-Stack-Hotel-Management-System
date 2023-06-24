@@ -5,6 +5,8 @@ export const fetchservices = createAsyncThunk('services/fetchservices', async ()
     const item = await response.json()
     return item
   })
+
+  
   
   export const addservice = createAsyncThunk('services/addservice', async (service) => {
     const response = await fetch("http://localhost:4000/api/v1/room-service/new", {
