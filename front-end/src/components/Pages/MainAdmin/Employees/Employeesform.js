@@ -15,7 +15,7 @@ import { addemployees } from '../../../../Redux/action/EmployeeAction';
 
 const EmployeesForm = () => {
 
-    const initialstate = {
+    const Initialstate = {
         Employee_Name: "",
         Phone_Number: "",
         Address: "",
@@ -25,10 +25,9 @@ const EmployeesForm = () => {
         Salary: "",
 
     }
-
-
+    
     const dispatch = useDispatch();
-    const [state, setState] = useState(initialstate);
+    const [state, setState] = useState(Initialstate);
     const [formSubmitted, setFormSubmitted] = useState(false);
 
     const { Employee_Name, Phone_Number, Address, Email, Dob, Role, Salary } = state;
@@ -52,10 +51,10 @@ const EmployeesForm = () => {
         } else {
             addemployees(state);
             if(formSubmitted) {
-                setState(initialstate)
-                setFormSubmitted(false)
+                setState(Initialstate)
+                setFormSubmitted(false);
             }
-            navigate("/employee-list")
+            navigate("/employees-list")
         }
 
     }
