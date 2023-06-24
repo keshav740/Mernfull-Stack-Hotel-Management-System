@@ -3,7 +3,8 @@ import { Button, Container, Row, Table, Form } from 'react-bootstrap';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { AiFillDashboard, AiOutlineDashboard } from 'react-icons/ai';
-import {  addroom } from '../../../../Redux/action/RoomAction';
+// import {  addroom } from '../../../../Redux/action/RoomAction';
+import { addroom } from '../../../../Redux/action/RoomAction';
 import { useDispatch } from 'react-redux';
 import { useNavigate,navigate } from 'react-router-dom';
 
@@ -33,9 +34,6 @@ const RoomForm = () => {
             }
      
     }
-
-
-
 
     const handalSubmit = (e) =>{
         e.preventDefault();
@@ -114,7 +112,7 @@ const RoomForm = () => {
                             <div className="col-md-4 position-relative" controlId="formGridState" >
                                 <label className="form-label">Room Type</label>
                                 <Form.Select name="Room_Type"
-                                    //    value={Room_Type}
+                                       value={Room_Type}
                                        onChange={handleInputChange}
                                 >
                                     <option>Choose</option>
@@ -127,7 +125,7 @@ const RoomForm = () => {
                             <div className="col-md-4 position-relative" controlId="formGridState">
                                 <label className="form-label">Available/Not-Available</label>
                                 <Form.Select name="Available_Not"
-                                    //   value={Available_Not}
+                                      value={Available_Not}
                                       onChange={handleInputChange}
                                 >
                                     <option>Choose</option>

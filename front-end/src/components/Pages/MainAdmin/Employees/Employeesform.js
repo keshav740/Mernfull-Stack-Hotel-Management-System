@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-// import HotelSidebar from '../../HotelSidebar'
 import { Container, Col, Row, Table, Button, Toast, ToastContainer } from 'react-bootstrap'
 import { AiFillDashboard, AiFillDelete, AiFillEdit, AiFillSetting } from 'react-icons/ai';
 import { RiArrowGoBackLine } from 'react-icons/ri';

@@ -33,10 +33,9 @@ import EmployeesForm from "./components/Pages/MainAdmin/Employees/Employeesform"
 import EmployeesList from "./components/Pages/MainAdmin/Employees/EmployeesList";
 import UpdateService from "./components/Pages/MainAdmin/AddService/UpdateService";
 import Employees from "./components/Pages/MainAdmin/Employees/Employees";
-import Rupdate from "./components/Pages/MainAdmin/Rooms/Rupdate";
-import Create from "./components/Pages/MainAdmin/User/Create";
-import Read from "./components/Pages/MainAdmin/User/Read";
-// import Update from "./components/Pages/MainAdmin/User/Update";
+
+
+//
 
 
 
@@ -82,7 +81,6 @@ function App() {
           {/* rooms and employee  */}
           <Route path="/add-rooms" element={<MainAdminSidebar><RoomForm /></MainAdminSidebar>} />
           <Route path="/room-list" element={<MainAdminSidebar><RoomList /></MainAdminSidebar>} />
-          {/* <Route path="/roomedit/:id" element={<MainAdminSidebar><Rupdate /></MainAdminSidebar>} /> */}
           <Route path="/employees" element={<MainAdminSidebar><EmployeesForm /></MainAdminSidebar>} />
           <Route path="/employees-list" element={<MainAdminSidebar><EmployeesList /></MainAdminSidebar>} />
           {/* rooms and employee  */}
@@ -95,47 +93,12 @@ function App() {
           <Route path="/add-guest" element={<MainAdminSidebar><Guest /></MainAdminSidebar>} />
           <Route path="/guest-details" element={<MainAdminSidebar><GuestList /></MainAdminSidebar>} />
           {/* Admin  sidebar routing end*/}
-          {/* <Route path="/create" element={<MainAdminSidebar><Create /></MainAdminSidebar>} />
-          <Route path="/read" element={<MainAdminSidebar><Read /></MainAdminSidebar>} />
-          <Route path="/edit/:id" element={<MainAdminSidebar><Update /></MainAdminSidebar>} /> */}
-
-
-          {/* <Route
-            exact
-            path="/roombooking"
-            element={
-              <PrivateRoute>
-                <HotelSidebar>
-                  <RoomBooking />
-                </HotelSidebar>
-              </PrivateRoute>
-            }
-          /> */}
+      
         </Route>
       </Routes>
 
 
-      {/* <Router>
-        <AuthProvider value={{ currentUser, timeActive, setTimeActive }}>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path="/hotel" element={<HotelSidebar />} />
-            <Route path="/restauren" element={<RestaurentSidebar />} />
-            <Route
-              exact
-              path="/roombooking"
-              element={
-                <PrivateRoute>
-                  <HotelSidebar>
-                    <RoomBooking />
-                  </HotelSidebar>
-                </PrivateRoute>
-              }
-            />
-
-          </Routes>
-        </AuthProvider>
-      </Router> */}
+     
     </>
   );
 }

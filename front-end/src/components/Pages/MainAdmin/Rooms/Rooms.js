@@ -3,15 +3,8 @@ import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 
-const Rooms = ({ room,post }) => {
-  const [open, setOpen] = useState(false);
-  const [user, setUser] = useState({});
-  const [data, setData] = useState([]);
-  
-  const handleModel = () => {
-    setOpen(true);
-    setUser(post);
-  }
+const Rooms = ({ room }) => {
+
   return (
     <>
       <tbody>
