@@ -20,6 +20,7 @@ const Rooms = ({ room,post }) => {
           <td>{room.Price}</td>
           <td>{room.Room_Type}</td>
           <td>{room.Available_Not}</td>
+          
           <td>
             {/* <Link to={`/roomedit/${room.id}`}> */}
             <Button className='table-btn' variant="light" >
@@ -28,11 +29,13 @@ const Rooms = ({ room,post }) => {
             </Button>
             {/* </Link> */}
           </td>
+
           <td>
             <Button className='table-btn' variant="light" >
             &#128065;View
             </Button>
           </td>
+
           <td>
             <Button className='table-btn' variant="light"
           
@@ -41,6 +44,7 @@ const Rooms = ({ room,post }) => {
              
             </Button>
           </td>
+
         </tr>
       </tbody>
 

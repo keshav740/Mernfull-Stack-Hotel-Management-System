@@ -4,7 +4,7 @@ import { AiFillDashboard, AiFillDelete, AiFillEdit, } from 'react-icons/ai'
 import { Link } from "react-router-dom"
 import { IoIosCreate } from "react-icons/io";
 import { useDispatch, useSelector } from 'react-redux'
-import {  fetchroom } from '../../../../Redux/action/RoomAction';
+import {  fetchrooms } from '../../../../Redux/action/RoomAction';
 import Rooms from './Rooms';
 
 const RoomList = ({ post }) => {
@@ -15,7 +15,7 @@ const RoomList = ({ post }) => {
   // console.log(rooms,"hello")
   useEffect(() => {
     if (roomsStatus === 'idle') {
-      dispatch(fetchroom())
+      dispatch(fetchrooms())
     }
   }, [roomsStatus, dispatch])
 

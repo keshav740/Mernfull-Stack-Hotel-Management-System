@@ -18,7 +18,7 @@ const RoomSchema = new mongoose.Schema({
     Avilable_Not: {
         type: String,
         required: [true, "Room Avialable or Not "],
-        enum:['Yes','No']
+        // enum:['Yes','No']
         },
 });
 
