@@ -9,9 +9,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import {  fetchroom } from '../../../../Redux/action/RoomAction';
 import Rooms from './Rooms';
 
-const RoomList = ({ post }) => {
 
 
+
+
+
+const RoomList = ({post}) => {
 
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState({});
