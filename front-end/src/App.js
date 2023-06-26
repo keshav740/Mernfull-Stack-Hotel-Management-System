@@ -13,7 +13,7 @@ import BookingList from "./components/Pages/Hotel/AdminPage/RoomBooking/BookingL
 import ServiceList from "./components/Pages/Hotel/AdminPage/RoomService/ServiceList";
 import MainAdminSidebar from "./components/Pages/MainAdmin/MainAdminSidebar/MainAdminSidebar";
 import AdminDashboard from "./components/Pages/MainAdmin/Dashboard/Dashboard";
-import Item from "./components/Pages/MainAdmin/Item/Items";
+// import Item from "./components/Pages/MainAdmin/Item/Items";
 import ItemList from "./components/Pages/MainAdmin/Item/ItemList";
 // import Room from "./components/Pages/MainAdmin/Rooms/Rooms";
 import RoomList from "./components/Pages/MainAdmin/Rooms/RoomList";
@@ -23,7 +23,6 @@ import Guest from "./components/Pages/MainAdmin/GuestInformation/Guest";
 import GuestList from "./components/Pages/MainAdmin/GuestInformation/GuestList";
 import ResDashboard from "./components/Pages/Restaurent/ResDashboard/ResDashboard";
 import RestaurentSidebar from "./components/Pages/Restaurent/RestaurentSidebar";
-import Items from "./components/Pages/Restaurent/Items/Items";
 import Order from "./components/Pages/Restaurent/Order/Order";
 import ResBilling from "./components/Pages/Restaurent/Res-Billing/ResBilling";
 import { ToastContainer } from "react-bootstrap";
@@ -34,6 +33,9 @@ import EmployeesList from "./components/Pages/MainAdmin/Employees/EmployeesList"
 import UpdateService from "./components/Pages/MainAdmin/AddService/UpdateService";
 import Employees from "./components/Pages/MainAdmin/Employees/Employees";
 import GuestUpdate from "./components/Pages/MainAdmin/GuestInformation/GuestUpdate";
+import ItemsForm from "./components/Pages/Restaurent/Items/ItemsForm";
+import AddItem from "./components/Pages/MainAdmin/Item/AddItems";
+import UpdateItem from "./components/Pages/MainAdmin/Item/UpdateItem";
 
 
 //
@@ -67,7 +69,7 @@ function App() {
 
           {/* Restaurent  sidebar routing start*/}
           <Route path="/restaurent-dashboard" element={<RestaurentSidebar><ResDashboard /></RestaurentSidebar>} />
-          <Route path="/res-items" element={<RestaurentSidebar><Items /></RestaurentSidebar>} />
+          <Route path="/res-items" element={<RestaurentSidebar><ItemsForm /></RestaurentSidebar>} />
           <Route path="/order" element={<RestaurentSidebar><Order /></RestaurentSidebar>} />
           <Route path="/res-billing" element={<RestaurentSidebar><ResBilling /></RestaurentSidebar>} />
 
@@ -77,8 +79,9 @@ function App() {
 
           {/* Admin  sidebar routing start*/}
           <Route path="/main-admin-dashboard" element={<MainAdminSidebar><AdminDashboard /></MainAdminSidebar>} />
-          <Route path="/items" element={<MainAdminSidebar><Item /></MainAdminSidebar>} />
+          <Route path="/add-item" element={<MainAdminSidebar><AddItem /></MainAdminSidebar>} />
           <Route path="/item-list" element={<MainAdminSidebar><ItemList /></MainAdminSidebar>} />
+          <Route path="/edit/:id" element={<MainAdminSidebar><UpdateItem /></MainAdminSidebar>} />
           {/* rooms and employee  */}
           <Route path="/add-rooms" element={<MainAdminSidebar><RoomForm /></MainAdminSidebar>} />
           <Route path="/room-list" element={<MainAdminSidebar><RoomList /></MainAdminSidebar>} />

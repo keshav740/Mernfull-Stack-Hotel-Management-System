@@ -4,7 +4,7 @@ import { AiFillDashboard, AiFillDelete, AiFillEdit, AiFillSetting } from 'react-
 import { RiArrowGoBackLine } from 'react-icons/ri';
 import Form from 'react-bootstrap/Form';
 import { IoIosCreate } from 'react-icons/io';
-import { Link, useNavigate ,navigate} from 'react-router-dom';
+import { Link, useNavigate, navigate } from 'react-router-dom';
 import { useHistory, useLocation } from "react-router-dom"
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
@@ -24,7 +24,7 @@ const EmployeesForm = () => {
         Salary: "",
 
     }
-    
+
     const dispatch = useDispatch();
     const [state, setState] = useState(Initialstate);
     const [formSubmitted, setFormSubmitted] = useState(false);
@@ -45,11 +45,11 @@ const EmployeesForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!Employee_Name || !Phone_Number || !Address || !Email ||
-             !Dob || !Role || !Salary) {
+            !Dob || !Role || !Salary) {
             // toast.error("Please provide value into each input field")
         } else {
             addemployees(state);
-            if(formSubmitted) {
+            if (formSubmitted) {
                 setState(Initialstate)
                 setFormSubmitted(false);
             }
@@ -69,7 +69,7 @@ const EmployeesForm = () => {
 
     return (
         <>
-         <ToastContainer position="top-center"  /> 
+            <ToastContainer position="top-center" />
 
             <Container style={{ width: "90%", marginTop: "20px" }} >
                 <Table striped bordered hover className='main-table'>
@@ -102,10 +102,7 @@ const EmployeesForm = () => {
             <div className='form-div' >
                 <Container>
                     <Row>
-
-
                         <form className="row g-4 p-3 registration-form" onSubmit={handleSubmit} >
-
                             <div class="col-md-4 position-relative">
                                 <label className="label">Employee Name</label>
                                 <input type="text" className="form-control"
@@ -113,34 +110,24 @@ const EmployeesForm = () => {
                                     onChange={handleInputChange} value={Employee_Name}
                                 />
                             </div>
-
-
                             <div class="col-md-4 position-relative">
                                 <label className="label">Phone Number</label>
                                 <input type="text" className="form-control" name='Phone_Number'
                                     onChange={handleInputChange} value={Phone_Number}
                                 />
-
                             </div>
-
                             <div class="col-md-4 position-relative">
                                 <label className="label">Address</label>
                                 <input type="text" className="form-control" name='Address'
                                     onChange={handleInputChange} value={Address}
                                 />
-
                             </div>
-
                             <div class="col-md-4 position-relative">
                                 <label className="label">Email</label>
                                 <input type="text" className="form-control" name='Email'
                                     onChange={handleInputChange} value={Email}
                                 />
-
                             </div>
-
-
-                           
 
                             {/* <div class="col-md-4 position-relative">
                                 <label class="form-label">Gender</label>
@@ -152,33 +139,25 @@ const EmployeesForm = () => {
 
                                 </select>
                             </div> */}
-
                             <div class="col-md-4 position-relative">
                                 <label className="label">DOB</label>
                                 <input type="text" class="form-control" name='Dob'
                                     onChange={handleInputChange} value={Dob}
                                 />
-
                             </div>
-
                             <div class="col-md-4 position-relative">
                                 <label className="label">Role</label>
                                 <input type="text" class="form-control" name='Role'
                                     onChange={handleInputChange} value={Role}
                                 />
-
                             </div>
-
                             <div class="col-md-4 position-relative">
                                 <label className="label">Salary</label>
                                 <input type="text" class="form-control" name='Salary'
                                     onChange={handleInputChange} value={Salary}
                                 />
-
                             </div>
-
                             <center>
-
                                 <Button className="stu_btn"
                                     variant="success"
                                     type="submit"
@@ -186,9 +165,7 @@ const EmployeesForm = () => {
                                 >
                                     Submit
                                 </Button>
-
                             </center>
-
                         </form>
                     </Row>
                 </Container>

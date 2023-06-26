@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 // import HotelSidebar from '../../HotelSidebar'
 import { Container, Col, Row, Table, Button } from 'react-bootstrap'
 import { AiFillDashboard, AiFillDelete, AiFillEdit, AiFillSetting } from 'react-icons/ai';
@@ -6,8 +6,33 @@ import { RiArrowGoBackLine } from 'react-icons/ri';
 import Form from 'react-bootstrap/Form';
 import { IoIosCreate } from 'react-icons/io';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import {useNavigate} from "react-router-dom";
+import { additems } from '../../../../Redux/action/AddItemAction';
 // import './RoomBooking.css'
-const Item = () => {
+const AddItem = () => {
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate("")
+    const [itemname, setItemname] = useState("");
+    const [price, setPrice] = useState("");
+    const [categories, setCategories] = useState("");
+
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if (itemname && price && categories ) {
+          dispatch(additems({
+            itemname, price, categories}));
+        
+            setItemname("");
+            setPrice("");
+            setCategories("");
+           navigate="/item-list"
+           
+           }
+      };
+    
     return (
         <>
 
@@ -44,52 +69,35 @@ const Item = () => {
                     <Row>
 
 
-                        <form className="row g-4 p-3 registration-form" >
+                        <form className="row g-4 p-3 registration-form" 
+                        onSubmit={handleSubmit}
+                        >
 
                             <div class="col-md-4 position-relative">
                                 <label className="label">Item Name</label>
                                 <input type="text" class="form-control"
-
+                                 value={itemname} onChange={(event) => setItemname(event.target.value)}
                                 />
-
                             </div>
-
                             <div class="col-md-4 position-relative">
                                 <label className="label">Price.</label>
                                 <input type="text" class="form-control"
-
+                                 value={price} onChange={(event) => setPrice(event.target.value)}
                                 />
-
                             </div>
-
-
                             <div class="col-md-4 position-relative">
-                                <label className="label">Item Type</label>
+                                <label className="label">Categories</label>
                                 <input type="text" class="form-control"
-
+                                 value={categories} onChange={(event) => setCategories(event.target.value)}
                                 />
-
                             </div>
-
-                            <div class="col-md-4 position-relative">
-                                <label className="label">Image</label>
-                                <input type="file" class="form-control"
-
-                                />
-
-                            </div>
-
-
-
                             <center>
-
                                 <Button className="stu_btn"
                                     variant="success"
                                     type="submit"
                                 >
                                     Submit
                                 </Button>
-
                             </center>
 
                         </form>
@@ -104,4 +112,4 @@ const Item = () => {
     )
 }
 
-export default Item
+export default AddItem

@@ -4,6 +4,7 @@ import EmployeeSlice from "./Slice/EmployeeSlice";
 import ServicesSlice from "./Slice/ServicesSlice";
 import GuestSlice from "./Slice/GuestSlice";
 import BookingSlice from "./Slice/BookingSlice";
+import AddItemSlice from "./Slice/AddItemSlice";
 
 
 
@@ -16,7 +17,8 @@ const store = configureStore({
         services: ServicesSlice,
         books:BookingSlice,
         rooms:RoomSlice,
-        guests:GuestSlice
+        guests:GuestSlice,
+        items:AddItemSlice
 
 
 
