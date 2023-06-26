@@ -13,12 +13,15 @@ import { useNavigate,navigate } from 'react-router-dom';
 
 const RoomForm = () => {
 
+
     const Initialstate = {
         Room_Number: '',
         Price: '',
         Room_Type: '',
         Available_Not: '',
     };
+
+    
     const dispatch = useDispatch();
     const [state, setState] = useState(Initialstate);
     const [formSubmitted, setFormSubmitted] = useState(false);
