@@ -1,0 +1,13 @@
+.billing-card{
+   
+    /* background-color: rgb(221, 214, 214); */
+ 
+    padding: 20px 10px 20px 10px;
+    background-color: #f8f9fa;
+}
+
+.res-name{
+    color: #063a41;
+    text-align: center;
+    padding-bottom: 10px;
+}

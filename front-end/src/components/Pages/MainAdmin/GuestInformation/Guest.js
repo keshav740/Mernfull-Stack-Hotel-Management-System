@@ -55,6 +55,9 @@ const Guest = () => {
             setFormSubmitted(true);
         }
 
+    const [state, setState] = useState(initialState);
+    const [formSubmitted, setFormSubmitted] = useState(false);
+
         const handleSubmit = (e) => {
             e.preventDefault();
             if (!Guest_Name || !Guest_Number || !Address || !Email || !Room_Number || !Room_Quantity
