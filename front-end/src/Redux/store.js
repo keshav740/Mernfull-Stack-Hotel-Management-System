@@ -5,6 +5,7 @@ import ServicesSlice from "./Slice/ServicesSlice";
 import GuestSlice from "./Slice/GuestSlice";
 import BookingSlice from "./Slice/BookingSlice";
 import AddItemSlice from "./Slice/AddItemSlice";
+// import AddItemSlice from "./Slice/AddItemSlice";
 
 
 
@@ -18,7 +19,8 @@ const store = configureStore({
         books:BookingSlice,
         rooms:RoomSlice,
         guests:GuestSlice,
-        items:AddItemSlice
+        Items:AddItemSlice
+        // Aitems:AddItemSlice
 
 
 

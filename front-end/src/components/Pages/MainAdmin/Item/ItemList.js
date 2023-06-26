@@ -5,11 +5,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from "react-router-dom"
 import { IoIosCreate } from "react-icons/io";
 // import ModalCamp from './ModalCamp';
-import { fetchitems } from '../../../../Redux/action/AddItemAction'
+// import { fetchAitems } from '../../../../Redux/action/AddItemAction'
 import Item from './Item'
-
-
-
+import { fetchItems } from '../../../../Redux/action/AddItemAction'
 
 
 const ItemList = ({ post }) => {
@@ -23,25 +21,26 @@ const ItemList = ({ post }) => {
   }
 
   const dispatch = useDispatch()
-  const items = useSelector(state => state.items.item)
-  const itemsStatus = useSelector(state => state.items.status)
-  const error = useSelector(state => state.items.error)
+  const Items = useSelector(state => state.Items.item.items)
+  const ItemsStatus = useSelector(state => state.Items.status)
+  const error = useSelector(state => state.Items.error)
 
 
+console.log(Items,"saloni")
 
   useEffect(() => {
-    if (itemsStatus === 'idle') {
-      dispatch(fetchitems())
+    if (ItemsStatus === 'idle') {
+      dispatch(fetchItems())
     }
-  }, [itemsStatus, dispatch])
+  }, [ItemsStatus, dispatch])
 
   let content
 
-  if (itemsStatus === 'loading') {
+  if (ItemsStatus === 'loading') {
     content = <div>Loading...</div>
-  } else if (itemsStatus === 'succeeded') {
-    content = items.map(additem => <Item key={additem.id} additem={additem} />)
-  } else if (itemsStatus === 'failed') {
+  } else if (ItemsStatus === 'succeeded') {
+    content = Items.lenght>0 && Items.map(additem => <Item key={additem.id} additem={additem} />)
+  } else if (ItemsStatus === 'failed') {
     content = <div>{error}</div>
   }
 

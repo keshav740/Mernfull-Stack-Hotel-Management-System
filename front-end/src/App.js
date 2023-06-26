@@ -35,7 +35,7 @@ import Employees from "./components/Pages/MainAdmin/Employees/Employees";
 import GuestUpdate from "./components/Pages/MainAdmin/GuestInformation/GuestUpdate";
 import ItemsForm from "./components/Pages/Restaurent/Items/ItemsForm";
 import AddItem from "./components/Pages/MainAdmin/Item/AddItems";
-import UpdateItem from "./components/Pages/MainAdmin/Item/UpdateItem";
+// import UpdateItem from "./components/Pages/MainAdmin/Item/UpdateItem";
 
 
 //
@@ -81,7 +81,7 @@ function App() {
           <Route path="/main-admin-dashboard" element={<MainAdminSidebar><AdminDashboard /></MainAdminSidebar>} />
           <Route path="/add-item" element={<MainAdminSidebar><AddItem /></MainAdminSidebar>} />
           <Route path="/item-list" element={<MainAdminSidebar><ItemList /></MainAdminSidebar>} />
-          <Route path="/edit/:id" element={<MainAdminSidebar><UpdateItem /></MainAdminSidebar>} />
+          {/* <Route path="/edit/:id" element={<MainAdminSidebar><UpdateItem /></MainAdminSidebar>} /> */}
           {/* rooms and employee  */}
           <Route path="/add-rooms" element={<MainAdminSidebar><RoomForm /></MainAdminSidebar>} />
           <Route path="/room-list" element={<MainAdminSidebar><RoomList /></MainAdminSidebar>} />

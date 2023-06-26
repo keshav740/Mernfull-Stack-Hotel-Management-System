@@ -7,9 +7,9 @@ const Item = ({ additem }) => {
     <>
       <tbody>
         <tr>
-          <td>{additem.itemname}</td>
+          <td>{additem.Item_Name}</td>
           <td>{additem.price}</td>
-          <td>{additem.categories}</td>
+          <td>{additem.Category_Name}</td>
           <td>
             <Button className='table-btn' variant="light" onClick={() => navigate(`/edit/${additem.id}`)} > &#9998;Edit</Button>
           </td>
