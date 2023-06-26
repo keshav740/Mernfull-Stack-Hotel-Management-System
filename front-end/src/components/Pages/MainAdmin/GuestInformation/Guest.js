@@ -14,65 +14,65 @@ import axios from 'axios';
 const Guest = () => {
 
 
-    // const initialState = {
-    //     Guest_Name: '',
-    //     Guest_Number: '',
-    //     Address: '',
-    //     Email: '',
-    //     Room_Number: '',
-    //     Room_Quantity: '',
-    //     Booking_Date_Time: '',
-    //     Checkin_Date_Time: '',
-    //     Checkout_Date_Time: '',
-    //     Number_Of_Children: '',
-    //     Number_Of_Adults: '',
-    // };
+    const initialState = {
+        Guest_Name: '',
+        Guest_Number: '',
+        Address: '',
+        Email: '',
+        Room_Number: '',
+        Room_Quantity: '',
+        Booking_Date_Time: '',
+        Checkin_Date_Time: '',
+        Checkout_Date_Time: '',
+        Number_Of_Children: '',
+        Number_Of_Adults: '',
+    };
 
-    // const [state, setState] = useState(initialState);
-    // const [formSubmitted, setFormSubmitted] = useState(false);
+    const [state, setState] = useState(initialState);
+    const [formSubmitted, setFormSubmitted] = useState(false);
 
 
-    // const {
-    //     Guest_Name,
-    //     Guest_Number,
-    //     Address,
-    //     Email,
-    //     Room_Number,
-    //     Room_Quantity,
-    //     Booking_Date_Time,
-    //     Checkin_Date_Time,
-    //     Checkout_Date_Time,
-    //     Number_Of_Children,
-    //     Number_Of_Adults,
-    // } = state;
+    const {
+        Guest_Name,
+        Guest_Number,
+        Address,
+        Email,
+        Room_Number,
+        Room_Quantity,
+        Booking_Date_Time,
+        Checkin_Date_Time,
+        Checkout_Date_Time,
+        Number_Of_Children,
+        Number_Of_Adults,
+    } = state;
 
-    // const addGuest = async (data) => {
-    //     const response = await axios.post('http://localhost:4000/api/v1/guest/new', data);
-    //     if (response.status === 200) {
-    //         // toast.success('Guest Added Successfully');
-    //         setFormSubmitted(true);
+    const addGuest = async (data) => {
+        const response = await axios.post('http://localhost:4000/api/v1/guest/new', data);
+        if (response.status === 200) {
+            // toast.success('Guest Added Successfully');
+            setFormSubmitted(true);
 
-    //     }
-    // };
+        }
+    };
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     if (!Guest_Name || !Email) {
-    //         // toast.error('Please Provide required value');
-    //     } else {
-    //         addGuest(state);
-    //         if (formSubmitted) {
-    //             setState(initialState);
-    //             // toast.info('Form submitted successfully!');
-    //             setFormSubmitted(false);
-    //         }
-    //     }
-    // };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!Guest_Name || !Email) {
+            // toast.error('Please Provide required value');
+        } else {
+            addGuest(state);
+            if (formSubmitted) {
+                setState(initialState);
+                // toast.info('Form submitted successfully!');
+                setFormSubmitted(false);
+            }
+        }
+    };
 
-    // const handleInputChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setState({ ...state, [name]: value });
-    // };
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setState({ ...state, [name]: value });
+    };
 
     return (
         <>

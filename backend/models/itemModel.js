@@ -2,16 +2,16 @@ const mongoose = require("mongoose");
 
 const itemSchema = new mongoose.Schema({
     
-    image: {
-        public_id: {
-            type: String,
-            required: true,
-        },
-        url: {
-            type: String,
-            required: true,
-        },
-    },
+    // image: {
+    //     public_id: {
+    //         type: String,
+    //         required: true,
+    //     },
+    //     url: {
+    //         type: String,
+    //         required: true,
+    //     },
+    // },
     Item_Name: {
         type: String,
         required: [true, "Please enter your Item Name"],
@@ -20,6 +20,10 @@ const itemSchema = new mongoose.Schema({
         type: Number,
         required: [true, "Please enter your Item Price"],
     },
+    Category_Name: {
+        type: String,
+        required: [true, "Please enter your Item Name"],
+    }
 
 
 });
