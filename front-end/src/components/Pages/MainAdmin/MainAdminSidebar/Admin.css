@@ -5,13 +5,10 @@
 }
 .container-fluid{
     display: flex;
-
-
 }
 
 main{
     width: 100%;
- 
 
 }
 .sidebar{

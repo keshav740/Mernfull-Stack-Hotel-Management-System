@@ -6,18 +6,23 @@ import { AiFillDashboard, AiOutlineDashboard } from 'react-icons/ai';
 import {  addroom } from '../../../../Redux/action/RoomAction';
 import { useDispatch } from 'react-redux';
 import { useNavigate,navigate } from 'react-router-dom';
+
+
+
+
+
 const RoomForm = () => {
 
-    const initialState = {
+    const Initialstate = {
         Room_Number: '',
         Price: '',
         Room_Type: '',
         Available_Not: '',
     };
     const dispatch = useDispatch();
-    const [state, setState] = useState(initialState);
+    const [state, setState] = useState(Initialstate);
     const [formSubmitted, setFormSubmitted] = useState(false);
-    const { Room_Number, Price, Room_Type, Available_Not } = state;
+    const { Room_Number, Price,Room_Type, Available_Not } = state;
 
       const navigate = useNavigate();
 
@@ -28,26 +33,22 @@ const RoomForm = () => {
             }
      
     }
-
-
-
-
-    const handalSubmit = (event) =>{
-        event.preventDefalut();
-        if( ! Room_Number || !Price || !Room_Type || !Available_Not ) {
+    const handalSubmit = (e) =>{
+        e.preventDefault();
+        if( !Room_Number || !Price || !Available_Not || !Room_Type  ) {
           
         }else{
             addroom(state);
             if(formSubmitted) {
-                setState(initialState)
-                setFormSubmitted(false)
+                setState(Initialstate)
+                setFormSubmitted(false);
             }
             navigate("/room-list")
         }
     }
       const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setState({... state, [name]: value})
+        setState({... state, [name]: value});
     };
     return (
         <>
@@ -109,7 +110,7 @@ const RoomForm = () => {
                             <div className="col-md-4 position-relative" controlId="formGridState" >
                                 <label className="form-label">Room Type</label>
                                 <Form.Select name="Room_Type"
-                                       value={Room_Type}
+                                    //    value={Room_Type}
                                        onChange={handleInputChange}
                                 >
                                     <option>Choose</option>
@@ -122,7 +123,7 @@ const RoomForm = () => {
                             <div className="col-md-4 position-relative" controlId="formGridState">
                                 <label className="form-label">Available/Not-Available</label>
                                 <Form.Select name="Available_Not"
-                                      value={Available_Not}
+                                    //   value={Available_Not}
                                       onChange={handleInputChange}
                                 >
                                     <option>Choose</option>

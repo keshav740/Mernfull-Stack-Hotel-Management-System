@@ -8,11 +8,6 @@ import ModalCamp from './ModalCamp';
 import axios from "axios";
 import Employees from './Employees'
 import { fetchemployees } from '../../../../Redux/action/EmployeeAction'
-// import context from 'react-bootstrap/esm/AccordionContext'
-
-
-
-
 
 
 
@@ -21,20 +16,16 @@ const EmployeesList = ({post}) => {
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState({});
 
-  const handleModel = () => {
-    setOpen(true);
-    setUser(post);
-
-  }
-
-
+  // const handleModel = () => {
+  //   setOpen(true);
+  //   setUser(post);
     const dispatch = useDispatch()
-    const employees = useSelector(state => state.employees.item)
+    const employees = useSelector(state => state.employees.item.emp)
     const employeesStatus = useSelector(state => state.employees.status)
     const error = useSelector(state => state.employees.error)
-
-
-    console.log(employees,"hellow")
+    
+  
+    // console.log(employees,"hello")
     useEffect(() => {
       if (employeesStatus === 'idle') {
         dispatch(fetchemployees())
@@ -42,47 +33,14 @@ const EmployeesList = ({post}) => {
     }, [employeesStatus, dispatch])
 
     let content
-
   
-
     if (employeesStatus === 'loading') {
       content = <div>Loading...</div>
     } else if (employeesStatus === 'succeeded') {
-      content = employees.lenght>0 && employees.map(employe => <Employees key={employe.id} employe={employe} />)
+      content = employees.length>0 && employees.map(employe => <Employees key={employe.id} employe={employe} />)
     } else if (employeesStatus === 'failed') {
       content = <div>{error}</div>
     }
-
-
-
-
-  //   const dispatch = useDispatch()
-  // const employees = useSelector(state => state.employees.item)
-  // const employeesStatus = useSelector(state => state.employees.status)
-  // const error = useSelector(state => state.employees.error)
-
- 
-
-
-  // useEffect(() => {
-  //   if (employeesStatus === 'idle') {
-  //     dispatch(fetchemployees())
-  //   }
-  // }, [employeesStatus, dispatch])
-
-
-  // let content
-
-  // console.log(employees,"hello")
-
-  // if (employeesStatus === 'loading') {
-  //   content = <div>Loading...</div>
-  // } else if (employeesStatus === 'succeeded') {
-  //   content = employees.length>0 && employees.map(employe => <Employees key={employe.id} employe={employe} />)
-  // } else if (employeesStatus === 'failed') {
-  //   content = <div>{error}</div>
-  // }
-
   return (
 
     <>
@@ -126,11 +84,13 @@ const EmployeesList = ({post}) => {
                 <tr>
                   <th>Employee Name</th>
                   <th>Phone Number</th>
-                  <th>Gender</th>
+                  <th>Address</th>
+                  <th>Email</th>
+                  <th>DOB</th>
                   <th>Salary</th>
-                  <th>Role</th>
                   <th>Action Edit</th>
                   <th>Action View</th>
+                  <th>Delete View</th>
                 </tr>
               </thead>
                 {content}

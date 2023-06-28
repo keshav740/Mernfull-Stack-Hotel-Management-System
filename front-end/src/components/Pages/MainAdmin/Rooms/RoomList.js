@@ -3,74 +3,33 @@ import { Button, Container, Row, Table } from 'react-bootstrap'
 import { AiFillDashboard, AiFillDelete, AiFillEdit, } from 'react-icons/ai'
 import { Link } from "react-router-dom"
 import { IoIosCreate } from "react-icons/io";
-import ModalCamp from './ModalCamp';
-import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
-import {  fetchroom } from '../../../../Redux/action/RoomAction';
+import {  fetchrooms } from '../../../../Redux/action/RoomAction';
 import Rooms from './Rooms';
 
-
-
-
-
-
-const RoomList = ({post}) => {
-
-  const [open, setOpen] = useState(false);
-  const [user, setUser] = useState({});
-  const [data, setData] = useState([]);
-
-
+const RoomList = ({ post }) => {
   const dispatch = useDispatch()
   const rooms = useSelector(state => state.rooms.item.rom)
   const roomsStatus = useSelector(state => state.rooms.status)
   const error = useSelector(state => state.rooms.error)
-  
-  const handleModel = () => {
-    setOpen(true);
-    setUser(post);
-  }
-  
+  // console.log(rooms,"hello")
   useEffect(() => {
     if (roomsStatus === 'idle') {
-      dispatch(fetchroom())
+      dispatch(fetchrooms())
     }
   }, [roomsStatus, dispatch])
 
   let content
 
-  console.log(rooms,"hello")
-
   if (roomsStatus === 'loading') {
     content = <div>Loading...</div>
   } else if (roomsStatus === 'succeeded') {
     content = rooms.length>0 && rooms.map(room => <Rooms key={room.id} room={room} />)
-    // content=[]
   } else if (roomsStatus === 'failed') {
     content = <div>{error}</div>
   }
 
 
-//   useEffect(() => {
-//     getUsers();
-//   }, []);
-
-//   const getUsers = async () => {
-//     const response = await axios.get("http://localhost:4000/api/v1/rooms");
-//     if (response.status === 200) {
-//       setData(response.data);
-//     }
-//   }
-//   console.log("data=>", data)
-
-
-// const handalupdate=(e)=>{
-//   e.preventDefault()
-//   axios.put("http://localhost:4000/api/v1/rooms",data)
-//     .then((response) =>{
-//       console.log(response)
-//     })
-// }
     
   return (
 
@@ -101,8 +60,6 @@ const RoomList = ({post}) => {
           <hr />
         </Row>
       </Container>
-
-
 
       <div className='form-div'>
 

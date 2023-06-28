@@ -35,18 +35,17 @@ import UpdateService from "./components/Pages/MainAdmin/AddService/UpdateService
 import Employees from "./components/Pages/MainAdmin/Employees/Employees";
 import GuestUpdate from "./components/Pages/MainAdmin/GuestInformation/GuestUpdate";
 
-// 
-// import RoomServiceList from "./components/Pages/MainAdmin/Roomservice/RoomServiceList";
 function App() {
+
 
   return (
     <>
       <Header />
-      <ToastContainer position="top-center"  />
+      <ToastContainer position="top-center" />
       <Routes>
-      
+
         <Route>
-       
+
           <Route path='/' element={<Home />} />
 
           {/* hotel  sidebar routing start*/}
@@ -75,25 +74,26 @@ function App() {
           <Route path="/main-admin-dashboard" element={<MainAdminSidebar><AdminDashboard /></MainAdminSidebar>} />
           <Route path="/items" element={<MainAdminSidebar><Item /></MainAdminSidebar>} />
           <Route path="/item-list" element={<MainAdminSidebar><ItemList /></MainAdminSidebar>} />
-
-
-          {/* <Route path="/add-rooms" element={<MainAdminSidebar><Room /></MainAdminSidebar>} /> */}
+          {/* rooms and employee  */}
           <Route path="/add-rooms" element={<MainAdminSidebar><RoomForm /></MainAdminSidebar>} />
           <Route path="/room-list" element={<MainAdminSidebar><RoomList /></MainAdminSidebar>} />
-         
+          {/* <Route path="/roomedit/:id" element={<MainAdminSidebar><Rupdate /></MainAdminSidebar>} /> */}
+          <Route path="/employees" element={<MainAdminSidebar><EmployeesForm /></MainAdminSidebar>} />
+          <Route path="/employees-list" element={<MainAdminSidebar><EmployeesList /></MainAdminSidebar>} />
+          {/* rooms and employee  */}
           {/* <Route path="/room-service-list"  element={<MainAdminSidebar><RoomServiceList/></MainAdminSidebar>}/> */}
           <Route path="/services" element={<MainAdminSidebar><AddService /></MainAdminSidebar>} />
           <Route path="/service-list" element={<MainAdminSidebar><ServicesList /></MainAdminSidebar>} />
+          <Route path="/serviceEdit/:id" element={<MainAdminSidebar><UpdateService /></MainAdminSidebar>} />
           <Route path="/employees" element={<MainAdminSidebar><EmployeesForm /></MainAdminSidebar>} />
-          <Route path="/serviceEdit/:serviceId" element={<MainAdminSidebar><UpdateService /></MainAdminSidebar>} />
           <Route path="/employees" element={<MainAdminSidebar><Employees /></MainAdminSidebar>} />
-          <Route path="/empupdate/:id" element={<MainAdminSidebar><Employees /></MainAdminSidebar>} />
-          <Route path="/employees-list" element={<MainAdminSidebar><EmployeesList /></MainAdminSidebar>} />
           <Route path="/add-guest" element={<MainAdminSidebar><Guest /></MainAdminSidebar>} />
           <Route path="/guest-details" element={<MainAdminSidebar><GuestList /></MainAdminSidebar>} />
           <Route path="/guestEdit/:id" element={<MainAdminSidebar><GuestUpdate /></MainAdminSidebar>} />
           {/* Admin  sidebar routing end*/}
-
+          {/* <Route path="/create" element={<MainAdminSidebar><Create /></MainAdminSidebar>} />
+          <Route path="/read" element={<MainAdminSidebar><Read /></MainAdminSidebar>} />
+          <Route path="/edit/:id" element={<MainAdminSidebar><Update /></MainAdminSidebar>} /> */}
 
 
           {/* <Route

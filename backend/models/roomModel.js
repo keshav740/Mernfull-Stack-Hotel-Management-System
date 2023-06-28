@@ -8,17 +8,17 @@ const RoomSchema = new mongoose.Schema({
     Room_Type: {
         type: String,
         required: [true, "Please enter your Room Type"],
-        enum: ['Luxury', 'Delux', 'Normal', 'Super Delux']
+        // enum: ['Luxury', 'Delux', 'Normal', 'Super Delux']
         },
 
     Price: {
         type: String,
-        required: [true, "Please enter your Item Number"],
+        // required: [true, "Please enter your Item Number"],
     },
     Avilable_Not: {
         type: String,
         required: [true, "Room Avialable or Not "],
-        enum:['Yes','No']
+        // enum:['Yes','No']
         },
 });
 
