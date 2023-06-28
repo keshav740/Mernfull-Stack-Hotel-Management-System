@@ -101,20 +101,20 @@ const ResBilling = () => {
               </div>
 
 
+                  <Link to="/BILL">
+                    <Button className='table-btn d-flex' variant="light" >
+                      &#128065; Bill
+                    </Button>
+                  </Link>
+              
+             
             </Col>
-
-
-
             <Col sm={4}></Col>
             <Col sm={4}></Col>
           </Row>
         </Container>
 
-
-
-
-      </div>
-
+</div>
 
 
 
