@@ -26,7 +26,7 @@ const ItemList = ({ post }) => {
   const error = useSelector(state => state.Items.error)
 
 
-console.log(Items,"saloni")
+  console.log(Items, "saloni")
 
   useEffect(() => {
     if (ItemsStatus === 'idle') {
@@ -39,7 +39,7 @@ console.log(Items,"saloni")
   if (ItemsStatus === 'loading') {
     content = <div>Loading...</div>
   } else if (ItemsStatus === 'succeeded') {
-    content = Items.lenght>0 && Items.map(additem => <Item key={additem.id} additem={additem} />)
+    content = Items.lenght > 0 && Items.map(additem => <Item key={additem.id} additem={additem} />)
   } else if (ItemsStatus === 'failed') {
     content = <div>{error}</div>
   }
@@ -78,33 +78,118 @@ console.log(Items,"saloni")
 
 
       {/* <div className="post-table"> */}
-      <div className='form-div'>
-
+      {/* <div className='form-div'>
         <h5 className="w3-center w3-flat-midnight-blue w3-padding-48 w3-border-blue-grey w3-grey text text-center mb-5 mt-3">Item-Details</h5>
         <Container>
           <Row>
-
-
             <Table responsive>
               <table class="table table-bordered border-secondary">
                 <thead>
                   <tr>
-
                     <th>Item Name</th>
                     <th>Price</th>
                     <th>Catrgories</th>
                     <th>Action Edit</th>
-                    {/* <th>Action View</th> */}
+                    <th>Action View</th>
                   </tr>
                 </thead>
                 {content}
-              
               </table>
             </Table>
           </Row>
         </Container>
+      </div> */}
 
-      </div>
+
+      <Container className='item-table'>
+        <Row>
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+
+                <th>Item Name</th>
+                <th>Item Price</th>
+                <th>Category</th>
+                <th>Action Edit</th>
+                <th>Action Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Pizza</td>
+
+                <td>500/</td>
+
+                <td>
+                  Shankes
+                </td>
+                <td>
+                  <Button className='table-btn' variant="light" >
+                    &#9998;Edit
+                  </Button>
+                </td>
+                <td>
+                  <Button className='table-btn' variant="light" >
+                    &#9998;Delete
+                  </Button>
+                </td>
+              </tr>
+              <tr>
+                <td>Dosa</td>
+                <td>200/</td>
+                <td> Shankes</td>
+                <td><Button className='table-btn' variant="light" >
+                  &#9998;Edit
+                </Button>
+                </td>
+                <td>
+                  <Button className='table-btn' variant="light" >
+                    &#9998;Delete
+                  </Button>
+                </td>
+              </tr>
+              <tr>
+                <td>Burgur</td>
+
+                <td>150</td>
+
+                <td>
+                  Shankes
+                </td>
+                <td>
+                  <Button className='table-btn' variant="light" >
+                    &#9998;Edit
+                  </Button>
+                </td>
+                <td>
+                  <Button className='table-btn' variant="light" >
+                    &#9998;Delete
+                  </Button>
+                </td>
+              </tr>
+              <tr>
+                <td>chawmein</td>
+
+                <td>250/</td>
+
+                <td>
+                  Shankes
+                </td>
+                <td>
+                  <Button className='table-btn' variant="light" >
+                    &#9998;Edit
+                  </Button>
+                </td>
+                <td>
+            <Button className='table-btn' variant="light" >
+              &#9998;Delete
+            </Button>
+          </td>
+              </tr>
+            </tbody>
+          </Table>
+        </Row>
+      </Container>
 
 
 
