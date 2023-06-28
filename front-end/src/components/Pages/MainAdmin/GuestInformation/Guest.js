@@ -15,7 +15,6 @@ import { addguest } from '../../../../Redux/action/GuestAction';
 const Guest = () => {
 
 
-
     const initialState = {
         Guest_Name: '',
         Guest_Number: '',
