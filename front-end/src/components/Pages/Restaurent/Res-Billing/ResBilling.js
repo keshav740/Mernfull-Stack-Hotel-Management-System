@@ -45,7 +45,9 @@ const ResBilling = () => {
           <Row>
             <Col sm={4}>
               <div className='billing-card'>
+                
                 <h3 className='res-name'> Samriddhi </h3>
+
                 <h5> Phone.no : <span>8796541234</span>  </h5>
                 <h5> Address : <span>mansrowar</span>  </h5>
                 <h5> Gst.no : <span>1</span>  </h5>
@@ -55,18 +57,23 @@ const ResBilling = () => {
                   <table class="table table-bordered border-secondary">
                     <thead>
                       <tr>
+
                         <th>Item</th>
                         <th>Price</th>
                         {/* <th>Total</th> */}
+
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
+
                         <td>Veg</td>
                         <td>100</td>
                         {/* <td>100</td> */}
                       </tr>
                     </tbody>
+
+
                   </table>
                   <hr></hr>
 
@@ -76,29 +83,38 @@ const ResBilling = () => {
 
                 <div className='d-flex text-center'>
 
-                  <Link to="/KOT">
-                    <Button className='table-btn d-flex' variant="light" >
-                      &#128065;KOT
-                    </Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  </Link>
+
+                  <Button className='table-btn d-flex' variant="light" >
+                    &#128065;KOT
+                  </Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
                   <Button className='table-btn d-flex' variant="light" >
                     &#9998; Edit
                   </Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <Button className='table-btn d-flex' variant="light" >
+                    &#128065; Bill
+                  </Button>
+
+                </div>
+
+              </div>
+
 
                   <Link to="/BILL">
                     <Button className='table-btn d-flex' variant="light" >
                       &#128065; Bill
                     </Button>
                   </Link>
-                </div>
-              </div>
+              
+             
             </Col>
             <Col sm={4}></Col>
             <Col sm={4}></Col>
           </Row>
         </Container>
-      </div>
 
+</div>
 
 
 

@@ -1,15 +1,14 @@
 import React from 'react'
 import { Container, Col, Row, Table, Button, } from 'react-bootstrap'
 // import { ToastContainer, toast } from 'react-toastify';
-import { AiFillDashboard, AiFillDelete, AiFillEdit, AiFillSetting } from 'react-icons/ai';
-import { RiArrowGoBackLine } from 'react-icons/ri';
+import { AiFillDashboard } from 'react-icons/ai';
 import Form from 'react-bootstrap/Form';
 import { IoIosCreate } from 'react-icons/io';
-import { Link, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-// import { Navigate, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import axios from 'axios';
 import { addguest } from '../../../../Redux/action/GuestAction';
+import {useNavigate} from 'react-router-dom'
 // import 'react-toastify/dist/ReactToastify.css';
 
 const Guest = () => {
