@@ -30,11 +30,8 @@ const Rooms = ({ room }) => {
           </td>
 
           <td>
-            <Button className='table-btn' variant="light"
-          
-            >
+            <Button className='table-btn' variant="light" >
               &#9998;Delete
-             
             </Button>
           </td>
 

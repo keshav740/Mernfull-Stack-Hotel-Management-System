@@ -13,7 +13,7 @@ const ResBilling = () => {
   return (
     <>
 
-<Container className='main-col' >
+      <Container className='main-col' >
         <Table striped bordered hover className='main-table'>
           <thead>
             <tr>
@@ -44,61 +44,62 @@ const ResBilling = () => {
         <Container>
           <Row>
             <Col sm={4}>
-            <div className='billing-card'>
-              <h3 className='res-name'> Samriddhi </h3>
+              <div className='billing-card'>
+                
+                <h3 className='res-name'> Samriddhi </h3>
 
-              <h5> Phone.no : <span>8796541234</span>  </h5> 
-              <h5> Address : <span>mansrowar</span>  </h5> 
-              <h5> Gst.no : <span>1</span>  </h5> 
-              <h5>Booking Date&Time :<span>2/7/23/ 7:05</span>  </h5> 
-              <h5>Table No. :<span>1</span>  </h5> 
-              <Table responsive>
-            <table class="table table-bordered border-secondary">
-              <thead>
-                <tr>
-                 
-                  <th>Item</th>
-                  <th>Price</th>
-                  {/* <th>Total</th> */}
-                 
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                 
-                  <td>Veg</td>
-                  <td>100</td>
-                   {/* <td>100</td> */}
-                </tr>
-              </tbody>
-              
-      
-            </table>
-            <hr></hr>
+                <h5> Phone.no : <span>8796541234</span>  </h5>
+                <h5> Address : <span>mansrowar</span>  </h5>
+                <h5> Gst.no : <span>1</span>  </h5>
+                <h5>Booking Date&Time :<span>2/7/23/ 7:05</span>  </h5>
+                <h5>Table No. :<span>1</span>  </h5>
+                <Table responsive>
+                  <table class="table table-bordered border-secondary">
+                    <thead>
+                      <tr>
 
-            <h5 className='mt-2'>Total: <span className='float-end'>100</span> </h5>
+                        <th>Item</th>
+                        <th>Price</th>
+                        {/* <th>Total</th> */}
 
-          </Table>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
 
-          <div className='d-flex text-center'>
+                        <td>Veg</td>
+                        <td>100</td>
+                        {/* <td>100</td> */}
+                      </tr>
+                    </tbody>
 
-         
-            <Button className='table-btn d-flex' variant="light" >
-            &#128065;KOT
-            </Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-            <Button className='table-btn d-flex' variant="light" >
-            &#9998; Edit
-            </Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  </table>
+                  <hr></hr>
 
-            <Button className='table-btn d-flex' variant="light" >
-            &#128065; Bill
-            </Button>
+                  <h5 className='mt-2'>Total: <span className='float-end'>100</span> </h5>
 
-          </div>
+                </Table>
 
-        </div>
-        
+                <div className='d-flex text-center'>
+
+
+                  <Button className='table-btn d-flex' variant="light" >
+                    &#128065;KOT
+                  </Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <Button className='table-btn d-flex' variant="light" >
+                    &#9998; Edit
+                  </Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <Button className='table-btn d-flex' variant="light" >
+                    &#128065; Bill
+                  </Button>
+
+                </div>
+
+              </div>
+
 
             </Col>
 
@@ -108,14 +109,14 @@ const ResBilling = () => {
             <Col sm={4}></Col>
           </Row>
         </Container>
-       
 
-     
+
+
 
       </div>
 
 
-    
+
 
     </>
   )

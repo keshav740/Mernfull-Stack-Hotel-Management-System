@@ -1,13 +1,11 @@
 import React from 'react'
 import { Container, Col, Row, Table, Button, } from 'react-bootstrap'
 // import { ToastContainer, toast } from 'react-toastify';
-import { AiFillDashboard, AiFillDelete, AiFillEdit, AiFillSetting } from 'react-icons/ai';
-import { RiArrowGoBackLine } from 'react-icons/ri';
+import { AiFillDashboard } from 'react-icons/ai';
 import Form from 'react-bootstrap/Form';
 import { IoIosCreate } from 'react-icons/io';
-import { Link, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-// import { Navigate, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import axios from 'axios';
 import { addguest } from '../../../../Redux/action/GuestAction';
 // import 'react-toastify/dist/ReactToastify.css';
@@ -46,6 +44,21 @@ const Guest = () => {
     //     Number_Of_Children: '',
     //     Number_Of_Adults: '',
     // };
+
+    const {
+        Guest_Name,
+        Guest_Number,
+        Address,
+        Email,
+        Room_Number,
+        Room_Quantity,
+        Booking_Date_Time,
+        Checkin_Date_Time,
+        Checkout_Date_Time,
+        Number_Of_Children,
+        Number_Of_Adults,
+    } = state;
+
 
     const addguest = async (data) => {
         const response = await axios.post('http://localhost:4000/api/v1/guest/new', data);
