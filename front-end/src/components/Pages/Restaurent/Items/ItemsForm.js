@@ -5,7 +5,7 @@ import Table from 'react-bootstrap/Table';
 import { IoIosCreate } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import { AiFillDashboard } from 'react-icons/ai';
-const Items = () => {
+const ItemsForm = () => {
     return (
         <>
             <Container >
@@ -38,8 +38,82 @@ const Items = () => {
             </Container>
 
 
+
+
+
+
+                  {/* form section start */}
+
+                  <div className='form-div' >
+                <Container>
+                    <Row>
+                        <form className="row g-4 p-3 registration-form" >
+                            <div class="col-md-4 position-relative">
+                                <label className="label">Item Name</label>
+                                <input type="text" className="form-control"
+                               
+                                />
+                            </div>
+                            <div class="col-md-4 position-relative">
+                                <label className="label">Phone Number</label>
+                                <input type="text" className="form-control" name='Phone_Number'
+                              
+                                />
+                            </div>
+                            <div class="col-md-4 position-relative">
+                                <label className="label">Address</label>
+                                <input type="text" className="form-control" name='Address'
+                                />
+                            </div>
+                            <div class="col-md-4 position-relative">
+                                <label className="label">Email</label>
+                                <input type="text" className="form-control" name='Email'
+                                />
+                            </div>
+
+                            {/* <div class="col-md-4 position-relative">
+                                <label class="form-label">Gender</label>
+                                <select class="form-select" value={Gender} onChange={handleInputChange}>
+                                    <option >choose</option>
+                                    <option >Male </option>
+                                    <option >Female</option>
+                                    <option >Other</option>
+
+                                </select>
+                            </div> */}
+                            <div class="col-md-4 position-relative">
+                                <label className="label">DOB</label>
+                                <input type="text" class="form-control" name='Dob'
+                                />
+                            </div>
+                            <div class="col-md-4 position-relative">
+                                <label className="label">Role</label>
+                                <input type="text" class="form-control" name='Role'
+                                />
+                            </div>
+                            <div class="col-md-4 position-relative">
+                                <label className="label">Salary</label>
+                                <input type="text" class="form-control" name='Salary'
+                                />
+                            </div>
+                            <center>
+                                <Button className="stu_btn"
+                                    variant="success"
+                                    type="submit"
+                                    value="Add"
+                                >
+                                    Submit
+                                </Button>
+                            </center>
+                        </form>
+                    </Row>
+                </Container>
+            </div>
+
+
+
             {/* Table section start */}
-            <Container className='item-table'>
+            {/* <Container className='item-table'>
                 <Row>
                     <Table striped bordered hover>
                         <thead>
@@ -95,10 +169,10 @@ const Items = () => {
                         </tbody>
                     </Table>
                 </Row>
-            </Container>
+            </Container> */}
 
         </>
     )
 }
 
-export default Items
+export default ItemsForm

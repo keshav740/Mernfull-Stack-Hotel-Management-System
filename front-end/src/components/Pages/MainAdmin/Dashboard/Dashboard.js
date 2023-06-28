@@ -6,23 +6,16 @@ import { Link } from 'react-router-dom'
 const AdminDashboard = () => {
   return (
     <>
-      <Container>
+     <marquee className="mar-bg">
+        <p className='Dash-title'> Welcome to the Dasboard of Our Hotel ! A hotel dashboard is a tool used by hotel management to monitor and analyze various aspects of their hotel's operations. </p>
+      </marquee>
+      <Container >
         <Row>
-          <Col sm={12}><br /><br />
-
-            <div className='main-card'>
-              <h3 className='heading slide-right'>WELCOME TO THE ADMINPANNEL</h3>
-            </div>
-            <div className="name">
-              <p>Dashboard</p>
-              <div className="hover">
-                <Link href="#" class="link">Hotel Management</Link>
+          <div className='dash-img-box'>
+           <img className='dash-img-fill' src='/img/admin.gif' />
               </div>
-            </div>
-          </Col>
-
-        </Row>
-      </Container>
+            </Row>
+          </Container>
 
 
 

@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { addbook, fetchbooks, updatebook } from '../action/BookingAction'
+import { addbook, fetchbooks } from '../action/BookingAction'
 
 
 
@@ -62,18 +62,18 @@ const BooksSlice = createSlice({
 
 
       
-      .addCase(updatebook.pending, state => {
-        state.status = 'loading'
+      // .addCase(updatebook.pending, state => {
+      //   state.status = 'loading'
 
-        })
-        .addCase(updatebook.fulfilled, (state, action) => {
-        state.status = 'succeeded'
-        state.data.put(action.payload._id)
-        })
-        .addCase(updatebook.rejected, (state, action) => {
-        state.status = 'failed'
-        state.error = action.error.message
-        })
+      //   })
+      //   .addCase(updatebook.fulfilled, (state, action) => {
+      //   state.status = 'succeeded'
+      //   state.data.put(action.payload._id)
+      //   })
+      //   .addCase(updatebook.rejected, (state, action) => {
+      //   state.status = 'failed'
+      //   state.error = action.error.message
+      //   })
 
 
 

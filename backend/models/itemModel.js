@@ -23,7 +23,7 @@ const itemSchema = new mongoose.Schema({
     Category_Name: {
         type: String,
         required: [true, "Please enter your Item Name"],
-    }
+    },
 
 
 });
