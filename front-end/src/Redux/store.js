@@ -16,6 +16,7 @@ const store = configureStore({
     reducer: {
         employees: EmployeeSlice,
         services: ServicesSlice,
+        guests:GuestSlice
         books:BookingSlice,
         rooms:RoomSlice,
         guests:GuestSlice,
