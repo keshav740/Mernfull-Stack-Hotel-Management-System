@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react'
-// import MainLayout from '../../Admin/Pages/MainLayout'
 import { Button, Container, Row, Table } from 'react-bootstrap'
 import { AiFillDashboard, AiFillDelete, AiFillEdit, } from 'react-icons/ai'
-// import { useDispatch, useSelector } from 'react-redux'
-// import { fetchleaves } from '../../reducer/action/leaveAction'
-// import Leave from './Leave'
 import { Link } from "react-router-dom"
 import { IoIosCreate } from "react-icons/io";
 import { useNavigate } from 'react-router-dom'
@@ -14,23 +10,16 @@ import { fetchbooks } from '../../../../../Redux/action/BookingAction';
 import Booking from './Booking';
 
 
-const BookingList = ({ post }) => {
-  const [open, setOpen] = useState(false);
-  const [user, setUser] = useState({});
-  const navigate = useNavigate()
-  const handleModel = () => {
-    setOpen(true);
-    setUser(post);
+const BookingList = () => {
 
-  }
 
   const dispatch = useDispatch()
-  const books = useSelector(state => state.books.item)
+  const books = useSelector(state => state.books.item.book)
   const booksStatus = useSelector(state => state.books.status)
   const error = useSelector(state => state.books.error)
 
 
-
+  console.log(books,"hellow")
   useEffect(() => {
     if (booksStatus === 'idle') {
       dispatch(fetchbooks())
@@ -42,7 +31,7 @@ const BookingList = ({ post }) => {
   if (booksStatus === 'loading') {
     content = <div>Loading...</div>
   } else if (booksStatus === 'succeeded') {
-    content = books.map(book => <Booking key={book.id} book={book} />)
+    content = books.length> 0 && books.map(book => <Booking key={book.id} book={book} />)
   } else if (booksStatus === 'failed') {
     content = <div>{error}</div>
   }

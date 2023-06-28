@@ -1,0 +1,44 @@
+{
+  "items": [
+    {
+      "itemname": "Pizza",
+      "price": "500",
+      "categories": "Snakes",
+      "id": 2
+    },
+    {
+      "itemname": "Pizza",
+      "price": "500",
+      "categories": "Snakes",
+      "id": 3
+    },
+    {
+      "itemname": "Chawmein",
+      "price": "250",
+      "categories": "Snake",
+      "id": 4
+    },
+    {
+      "itemname": "Burgur",
+      "price": "100",
+      "categories": "Snake",
+      "id": 5
+    },
+    {
+      "itemname": "Dosa",
+      "price": "300",
+      "categories": "Snakes",
+      "id": 6
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

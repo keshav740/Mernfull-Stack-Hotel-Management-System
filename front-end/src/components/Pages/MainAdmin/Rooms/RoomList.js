@@ -12,7 +12,10 @@ const RoomList = ({ post }) => {
   const rooms = useSelector(state => state.rooms.item.rom)
   const roomsStatus = useSelector(state => state.rooms.status)
   const error = useSelector(state => state.rooms.error)
-  // console.log(rooms,"hello")
+
+
+  
+  console.log(rooms,"hello")
   useEffect(() => {
     if (roomsStatus === 'idle') {
       dispatch(fetchrooms())
@@ -28,7 +31,6 @@ const RoomList = ({ post }) => {
   } else if (roomsStatus === 'failed') {
     content = <div>{error}</div>
   }
-
 
     
   return (

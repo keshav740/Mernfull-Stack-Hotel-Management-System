@@ -13,7 +13,8 @@ main{
 }
 .sidebar{
     /* background-image: linear-gradient(rgb(8, 17, 24), rgb(41, 57, 70)); */
-    background-color: black;
+    /* background-color: black; */
+    background-image: linear-gradient(rgb(8, 17, 24), rgb(63, 85, 104));
     color: white;
     height: 100vh;
     width: 260px;

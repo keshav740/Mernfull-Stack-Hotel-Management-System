@@ -1,19 +1,21 @@
 import React from 'react'
 import Layout from '../../../Layout'
-import { Container, Row } from 'react-bootstrap'
+import { Col, Container, Row } from 'react-bootstrap'
 
 const Home = () => {
   return (
  <>
- <Layout>
+ 
      <Container >
       <Row>
+      <Col sm={12}>
       <div className='home-container'>
         <img className='home-container-fill' src="home-banner.gif"/>
       </div>
+      </Col>
       </Row>
      </Container>
- </Layout>
+
  
  </>
   )

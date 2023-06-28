@@ -22,7 +22,7 @@ const MainAdminSidebar = ({ children }) => {
     },
 
     {
-      path: "/items",
+      path: "/add-item",
       name: "Item ",
       icon: <BiFoodTag />
     },

@@ -1,7 +1,5 @@
 const Room = require("../models/roomModel");
 
-
-
 // create student --Admin
 exports.createRoom = (async (req, res, next) => {
     const room = await Room.create(req.body);

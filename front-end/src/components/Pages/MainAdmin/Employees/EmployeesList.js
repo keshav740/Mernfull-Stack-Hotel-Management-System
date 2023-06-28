@@ -4,21 +4,14 @@ import { AiFillDashboard, AiFillDelete, AiFillEdit, } from 'react-icons/ai'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from "react-router-dom"
 import { IoIosCreate } from "react-icons/io";
-import ModalCamp from './ModalCamp';
-import axios from "axios";
 import Employees from './Employees'
 import { fetchemployees } from '../../../../Redux/action/EmployeeAction'
 
 
 
-const EmployeesList = ({post}) => {
+const EmployeesList = () => {
 
-  const [open, setOpen] = useState(false);
-  const [user, setUser] = useState({});
 
-  // const handleModel = () => {
-  //   setOpen(true);
-  //   setUser(post);
     const dispatch = useDispatch()
     const employees = useSelector(state => state.employees.item.emp)
     const employeesStatus = useSelector(state => state.employees.status)

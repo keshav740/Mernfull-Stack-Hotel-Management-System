@@ -1,53 +1,48 @@
 import React, { useEffect, useState } from 'react'
-// import MainLayout from '../../Admin/Pages/MainLayout'
 import { Button, Container, Row, Table } from 'react-bootstrap'
 import { AiFillDashboard, AiFillDelete, AiFillEdit, } from 'react-icons/ai'
-// import { useDispatch, useSelector } from 'react-redux'
-// import { fetchleaves } from '../../reducer/action/leaveAction'
-// import Leave from './Leave'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from "react-router-dom"
 import { IoIosCreate } from "react-icons/io";
-import ModalCamp from './ModalCamp';
+// import ModalCamp from './ModalCamp';
+// import { fetchAitems } from '../../../../Redux/action/AddItemAction'
+import Item from './Item'
+import { fetchItems } from '../../../../Redux/action/AddItemAction'
 
 
-
-
-
-const ItemList = ({post}) => {
+const ItemList = ({ post }) => {
 
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState({});
-
-
-
   const handleModel = () => {
     setOpen(true);
     setUser(post);
 
   }
 
-  //   const dispatch = useDispatch()
-  //   const leaves = useSelector(state => state.leaves.item)
-  //   const leavesStatus = useSelector(state => state.leaves.status)
-  //   const error = useSelector(state => state.leaves.error)
+  const dispatch = useDispatch()
+  const Items = useSelector(state => state.Items.item.items)
+  const ItemsStatus = useSelector(state => state.Items.status)
+  const error = useSelector(state => state.Items.error)
 
 
+console.log(Items,"saloni")
 
-  //   useEffect(() => {
-  //     if (leavesStatus === 'idle') {
-  //       dispatch(fetchleaves())
-  //     }
-  //   }, [leavesStatus, dispatch])
+  useEffect(() => {
+    if (ItemsStatus === 'idle') {
+      dispatch(fetchItems())
+    }
+  }, [ItemsStatus, dispatch])
 
-  //   let content
+  let content
 
-  //   if (leavesStatus === 'loading') {
-  //     content = <div>Loading...</div>
-  //   } else if (leavesStatus === 'succeeded') {
-  //     content = leaves.map(leave => <Leave key={leave.id} leave={leave} />)
-  //   } else if (leavesStatus === 'failed') {
-  //     content = <div>{error}</div>
-  //   }
+  if (ItemsStatus === 'loading') {
+    content = <div>Loading...</div>
+  } else if (ItemsStatus === 'succeeded') {
+    content = Items.lenght>0 && Items.map(additem => <Item key={additem.id} additem={additem} />)
+  } else if (ItemsStatus === 'failed') {
+    content = <div>{error}</div>
+  }
 
 
 
@@ -70,7 +65,7 @@ const ItemList = ({post}) => {
                   <div className='table-div' >
 
                     <Button className='table-btn' variant="light" >
-                      <IoIosCreate />&nbsp;<Link to="/items">Create</Link>
+                      <IoIosCreate />&nbsp;<Link to="/add-item">Create</Link>
                     </Button>
                   </div>
                 </th>
@@ -96,48 +91,14 @@ const ItemList = ({post}) => {
                   <tr>
 
                     <th>Item Name</th>
-                    <th>Image</th>
                     <th>Price</th>
-                    <th>Item Type</th>
+                    <th>Catrgories</th>
                     <th>Action Edit</th>
-                    <th>Action View</th>
+                    {/* <th>Action View</th> */}
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-
-                    <td>keshav</td>
-                    <td>keshav</td>
-                    <td>keshav</td>
-                    <td>keshav</td>
-                    <td>
-
-                      <Link to="/items">
-                      <Button className='table-btn' variant="light" >
-                        &#9998;Edit
-                      </Button>
-                      </Link>
-                    </td>
-                    <td>
-                      <Button className='table-btn' variant="light"
-                        onClick={() => handleModel()} >
-                        &#128065;View
-                      </Button>
-                      {open && (
-            <ModalCamp
-            
-              open={open}
-              setOpen={setOpen}
-              // updatePost={updatePost}
-              {...user}
-            />
-          )}
-
-                    </td>
-
-                    {/* <button className="view-btn">View </button> */}
-                  </tr>
-                </tbody>
+                {content}
+              
               </table>
             </Table>
           </Row>
