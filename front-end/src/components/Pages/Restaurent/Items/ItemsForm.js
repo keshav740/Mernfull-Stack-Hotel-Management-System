@@ -24,7 +24,7 @@ const ItemsForm = () => {
                                     <div className='table-div'>
 
                                         <Button className='table-btn' variant="light" >
-                                            <IoIosCreate />&nbsp;<Link to="#">Go Back</Link>
+                                            {/* <IoIosCreate />&nbsp;<Link to="#">Go Back</Link> */}
                                         </Button>
 
 
@@ -44,7 +44,7 @@ const ItemsForm = () => {
 
                   {/* form section start */}
 
-                  <div className='form-div' >
+                  {/* <div className='form-div' >
                 <Container>
                     <Row>
                         <form className="row g-4 p-3 registration-form" >
@@ -71,7 +71,7 @@ const ItemsForm = () => {
                                 />
                             </div>
 
-                            {/* <div class="col-md-4 position-relative">
+                            <div class="col-md-4 position-relative">
                                 <label class="form-label">Gender</label>
                                 <select class="form-select" value={Gender} onChange={handleInputChange}>
                                     <option >choose</option>
@@ -80,7 +80,7 @@ const ItemsForm = () => {
                                     <option >Other</option>
 
                                 </select>
-                            </div> */}
+                            </div>
                             <div class="col-md-4 position-relative">
                                 <label className="label">DOB</label>
                                 <input type="text" class="form-control" name='Dob'
@@ -108,68 +108,63 @@ const ItemsForm = () => {
                         </form>
                     </Row>
                 </Container>
-            </div>
+            </div> */}
 
 
 
             {/* Table section start */}
-            {/* <Container className='item-table'>
+            <Container className='item-table'>
                 <Row>
                     <Table striped bordered hover>
                         <thead>
                             <tr>
 
                                 <th>Item Name</th>
-                                <th>Item Image</th>
                                 <th>Item Price</th>
-                                <th>Add</th>
+                                <th>Category</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>Pizza</td>
-                                <td>
-                                    <div className='item-img'>
-                                        <img className='item-img-fill' src='/img/item-pizza.jpg' />
-                                    </div>
-                                </td>
+                              
                                 <td>500/</td>
-                                <td><Button variant='light' className='plus-btn'>+</Button></td>
+                                {/* <td><Button variant='light' className='plus-btn'>+</Button></td> */}
+                                <td>
+                                    Shankes
+                                  </td>
                             </tr>
                             <tr>
                                 <td>Dosa</td>
-                                <td>
-                                    <div className='item-img'>
-                                        <img className='item-img-fill' src='/img/item-dosa.jpg' />
-                                    </div>
-                                </td>
+                              
                                 <td>200/</td>
-                                  <td><Button variant='light' className='plus-btn'>+</Button></td>
+                                  {/* <td><Button variant='light' className='plus-btn'>+</Button></td> */}
+                                  <td>
+                                    Shankes
+                                  </td>
                             </tr>
                             <tr>
                                 <td>Burgur</td>
-                                <td>
-                                    <div className='item-img'>
-                                        <img className='item-img-fill' src='/img/item-burgur.jpg' />
-                                    </div>
-                                </td>
+                             
                                 <td>150</td>
-                                  <td><Button variant='light' className='plus-btn'>+</Button></td>
+                                  {/* <td><Button variant='light' className='plus-btn'>+</Button></td> */}
+                                  <td>
+                                    Shankes
+                                  </td>
                             </tr>
                             <tr>
                                 <td>chawmein</td>
-                                <td>
-                                    <div className='item-img'>
-                                        <img className='item-img-fill' src='/img/item-chawmein.jpg' />
-                                    </div>
-                                </td>
+                               
                                 <td>250/</td>
-                                <td><Button variant='light' className='plus-btn'>+</Button></td>
+                                {/* <td><Button variant='light' className='plus-btn'>+</Button></td> */}
+                                <td>
+                                    Shankes
+                                  </td>
                             </tr>
                         </tbody>
                     </Table>
                 </Row>
-            </Container> */}
+            </Container>
 
         </>
     )
