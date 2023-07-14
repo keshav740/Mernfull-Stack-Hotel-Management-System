@@ -35,6 +35,8 @@ import Employees from "./components/Pages/MainAdmin/Employees/Employees";
 import GuestUpdate from "./components/Pages/MainAdmin/GuestInformation/GuestUpdate";
 import ItemsForm from "./components/Pages/Restaurent/Items/ItemsForm";
 import AddItem from "./components/Pages/MainAdmin/Item/AddItems";
+import Kot from "./components/Pages/Restaurent/KOT/Kot";
+import Bill from "./components/Pages/Restaurent/Bill/Bill";
 // import UpdateItem from "./components/Pages/MainAdmin/Item/UpdateItem";
 
 
@@ -72,6 +74,8 @@ function App() {
           <Route path="/res-items" element={<RestaurentSidebar><ItemsForm /></RestaurentSidebar>} />
           <Route path="/order" element={<RestaurentSidebar><Order /></RestaurentSidebar>} />
           <Route path="/res-billing" element={<RestaurentSidebar><ResBilling /></RestaurentSidebar>} />
+          <Route path="/KOT" element={<RestaurentSidebar><Kot /></RestaurentSidebar>} />
+          <Route path="/BILL" element={<RestaurentSidebar><Bill /></RestaurentSidebar>} />
 
           {/* Restaurent  sidebar routing end*/}
 
@@ -95,7 +99,7 @@ function App() {
           <Route path="/employees" element={<MainAdminSidebar><EmployeesForm /></MainAdminSidebar>} />
           <Route path="/employees" element={<MainAdminSidebar><Employees /></MainAdminSidebar>} />
           <Route path="/add-guest" element={<MainAdminSidebar><Guest /></MainAdminSidebar>} />
-          <Route path="/guest-details" element={<MainAdminSidebar><GuestList /></MainAdminSidebar>} />
+          <Route path="/guest-List" element={<MainAdminSidebar><GuestList /></MainAdminSidebar>} />
           <Route path="/guestEdit/:id" element={<MainAdminSidebar><GuestUpdate /></MainAdminSidebar>} />
           {/* Admin  sidebar routing end*/}
       
